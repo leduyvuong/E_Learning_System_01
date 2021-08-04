@@ -243,3 +243,338 @@ Processing by Rails::WelcomeController#index as HTML
 Completed 200 OK in 29ms (Views: 10.1ms | ActiveRecord: 0.0ms | Allocations: 3344)
 
 
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (4.9ms)[0m  [1m[34mSELECT `ar_internal_metadata`.`value` FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `ar_internal_metadata`.`value` FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `ar_internal_metadata`.`value` FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+  [1m[35m (144.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS `elearning`[0m
+  [1m[35m (21.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS `E_Learning_System_01_test`[0m
+  [1m[35m (9.4ms)[0m  [1m[35mCREATE DATABASE `elearning` DEFAULT CHARACTER SET `utf8mb4`[0m
+  [1m[35m (5.7ms)[0m  [1m[35mCREATE DATABASE `E_Learning_System_01_test` DEFAULT CHARACTER SET `utf8mb4`[0m
+  [1m[35m (77.1ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL PRIMARY KEY)[0m
+  [1m[35m (33.3ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) NOT NULL PRIMARY KEY, `value` varchar(255), `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT GET_LOCK('3130052965522379190', 0)[0m
+  [1m[35m (5.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to CreateCategories (20210804140806)
+  [1m[35m (25.5ms)[0m  [1m[35mCREATE TABLE `categories` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `status` tinyint(1), `decription` text, `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20210804140806')[0m
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.9ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'development', '2021-08-04 14:15:23.587139', '2021-08-04 14:15:23.587139')[0m
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT RELEASE_LOCK('3130052965522379190')[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (1.1ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `decription`, `created_at`, `updated_at`) VALUES ('Course of Eastern Khang University', 'Language designers want to design the perfect language. They want to be able to say, \'My language is perfect. It can do everything.\' But it\'s just plain impossible to design a perfect language, because there are two ways to look at a language. One way is by looking at what can be done with that language. The other is by looking at how we feel using that language-how we feel while programming.', '2021-08-04 14:15:33.168074', '2021-08-04 14:15:33.168074')[0m
+  [1m[36mTRANSACTION (5.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (1.9ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `decription`, `created_at`, `updated_at`) VALUES ('Course of Southern New Hampshire University', 'People are different. People choose different criteria. But if there is a better way among many alternatives, I want to encourage that way by making it comfortable. So that\'s what I\'ve tried to do.', '2021-08-04 14:15:33.181899', '2021-08-04 14:15:33.181899')[0m
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (1.4ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `decription`, `created_at`, `updated_at`) VALUES ('Course of Dương Institute', 'People are different. People choose different criteria. But if there is a better way among many alternatives, I want to encourage that way by making it comfortable. So that\'s what I\'ve tried to do.', '2021-08-04 14:15:33.196259', '2021-08-04 14:15:33.196259')[0m
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (1.3ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `decription`, `created_at`, `updated_at`) VALUES ('Course of Northern Tennessee Academy', 'It is not the responsibility of the language to force good looking code, but the language should make good looking code possible.', '2021-08-04 14:15:33.207032', '2021-08-04 14:15:33.207032')[0m
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (1.0ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `decription`, `created_at`, `updated_at`) VALUES ('Course of Thắng Academy', 'Often people, especially computer engineers, focus on the machines. But in fact we need to focus on humans, on how humans care about doing programming or operating the application of the machines.', '2021-08-04 14:15:33.214460', '2021-08-04 14:15:33.214460')[0m
+  [1m[36mTRANSACTION (3.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (1.0ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `decription`, `created_at`, `updated_at`) VALUES ('Course of North Oklahoma College', 'Language designers want to design the perfect language. They want to be able to say, \'My language is perfect. It can do everything.\' But it\'s just plain impossible to design a perfect language, because there are two ways to look at a language. One way is by looking at what can be done with that language. The other is by looking at how we feel using that language-how we feel while programming.', '2021-08-04 14:15:33.221877', '2021-08-04 14:15:33.221877')[0m
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.7ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `decription`, `created_at`, `updated_at`) VALUES ('Course of Western Loan', 'Everyone has an individual background. Someone may come from Python, someone else may come from Perl, and they may be surprised by different aspects of the language. Then they come up to me and say, \'I was surprised by this feature of the language, so therefore Ruby violates the principle of least surprise.\' Wait. Wait. The principle of least surprise is not for you only.', '2021-08-04 14:15:33.229794', '2021-08-04 14:15:33.229794')[0m
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.7ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `decription`, `created_at`, `updated_at`) VALUES ('Course of North Vương', 'I hope to see Ruby help every programmer in the world to be productive, and to enjoy programming, and to be happy. That is the primary purpose of Ruby language.', '2021-08-04 14:15:33.235841', '2021-08-04 14:15:33.235841')[0m
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (1.5ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `decription`, `created_at`, `updated_at`) VALUES ('Course of Southern Bùi Academy', 'Ruby inherited the Perl philosophy of having more than one way to do the same thing. I inherited that philosophy from Larry Wall, who is my hero actually. I want to make Ruby users free. I want to give them the freedom to choose.', '2021-08-04 14:15:33.243059', '2021-08-04 14:15:33.243059')[0m
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (1.4ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `decription`, `created_at`, `updated_at`) VALUES ('Course of East North Dakota Institute', 'People are different. People choose different criteria. But if there is a better way among many alternatives, I want to encourage that way by making it comfortable. So that\'s what I\'ve tried to do.', '2021-08-04 14:15:33.249748', '2021-08-04 14:15:33.249748')[0m
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.7ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `decription`, `created_at`, `updated_at`) VALUES ('Course of Eastern Hồ', 'It is not the responsibility of the language to force good looking code, but the language should make good looking code possible.', '2021-08-04 14:15:33.257817', '2021-08-04 14:15:33.257817')[0m
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (1.1ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `decription`, `created_at`, `updated_at`) VALUES ('Course of West Bùi', 'You want to enjoy life, don\'t you? If you get your job done quickly and your job is fun, that\'s good isn\'t it? That\'s the purpose of life, partly. Your life is better.', '2021-08-04 14:15:33.263282', '2021-08-04 14:15:33.263282')[0m
+  [1m[36mTRANSACTION (2.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.8ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `decription`, `created_at`, `updated_at`) VALUES ('Course of East Minh', 'Ruby inherited the Perl philosophy of having more than one way to do the same thing. I inherited that philosophy from Larry Wall, who is my hero actually. I want to make Ruby users free. I want to give them the freedom to choose.', '2021-08-04 14:15:33.270106', '2021-08-04 14:15:33.270106')[0m
+  [1m[36mTRANSACTION (3.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.9ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `decription`, `created_at`, `updated_at`) VALUES ('Course of Western Arkansas University', 'I hope to see Ruby help every programmer in the world to be productive, and to enjoy programming, and to be happy. That is the primary purpose of Ruby language.', '2021-08-04 14:15:33.277037', '2021-08-04 14:15:33.277037')[0m
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.9ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `decription`, `created_at`, `updated_at`) VALUES ('Course of The Thanh College', 'From the viewpoint of what you can do, therefore, languages do differ - but the differences are limited. For example, Python and Ruby provide almost the same power to the programmer.', '2021-08-04 14:15:33.282511', '2021-08-04 14:15:33.282511')[0m
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.7ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `decription`, `created_at`, `updated_at`) VALUES ('Course of Southern Sinh University', 'I didn\'t work hard to make Ruby perfect for everyone, because you feel differently from me. No language can be perfect for everyone. I tried to make Ruby perfect for me, but maybe it\'s not perfect for you. The perfect language for Guido van Rossum is probably Python.', '2021-08-04 14:15:33.289526', '2021-08-04 14:15:33.289526')[0m
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.6ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `decription`, `created_at`, `updated_at`) VALUES ('Course of Phan College', 'Because of the Turing completeness theory, everything one Turing-complete language can do can theoretically be done by another Turing-complete language, but at a different cost. You can do everything in assembler, but no one wants to program in assembler anymore.', '2021-08-04 14:15:33.294812', '2021-08-04 14:15:33.294812')[0m
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.8ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `decription`, `created_at`, `updated_at`) VALUES ('Course of Western Tú College', 'You want to enjoy life, don\'t you? If you get your job done quickly and your job is fun, that\'s good isn\'t it? That\'s the purpose of life, partly. Your life is better.', '2021-08-04 14:15:33.302001', '2021-08-04 14:15:33.302001')[0m
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (2.6ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `decription`, `created_at`, `updated_at`) VALUES ('Course of North Nhàn Institute', 'Often people, especially computer engineers, focus on the machines. But in fact we need to focus on humans, on how humans care about doing programming or operating the application of the machines.', '2021-08-04 14:15:33.308245', '2021-08-04 14:15:33.308245')[0m
+  [1m[36mTRANSACTION (3.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.9ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `decription`, `created_at`, `updated_at`) VALUES ('Course of Northern Phú', 'Everyone has an individual background. Someone may come from Python, someone else may come from Perl, and they may be surprised by different aspects of the language. Then they come up to me and say, \'I was surprised by this feature of the language, so therefore Ruby violates the principle of least surprise.\' Wait. Wait. The principle of least surprise is not for you only.', '2021-08-04 14:15:33.317273', '2021-08-04 14:15:33.317273')[0m
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (1.5ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `decription`, `created_at`, `updated_at`) VALUES ('Course of Vũ College', 'Language designers want to design the perfect language. They want to be able to say, \'My language is perfect. It can do everything.\' But it\'s just plain impossible to design a perfect language, because there are two ways to look at a language. One way is by looking at what can be done with that language. The other is by looking at how we feel using that language-how we feel while programming.', '2021-08-04 14:15:33.324449', '2021-08-04 14:15:33.324449')[0m
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (1.0ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `decription`, `created_at`, `updated_at`) VALUES ('Course of West Trần University', 'I believe that the purpose of life is, at least in part, to be happy. Based on this belief, Ruby is designed to make programming not only easy but also fun. It allows you to concentrate on the creative side of programming, with less stress.', '2021-08-04 14:15:33.331358', '2021-08-04 14:15:33.331358')[0m
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (1.4ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `decription`, `created_at`, `updated_at`) VALUES ('Course of Kim College', 'People are different. People choose different criteria. But if there is a better way among many alternatives, I want to encourage that way by making it comfortable. So that\'s what I\'ve tried to do.', '2021-08-04 14:15:33.338805', '2021-08-04 14:15:33.338805')[0m
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (1.6ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `decription`, `created_at`, `updated_at`) VALUES ('Course of Bùi University', 'Sometimes people jot down pseudo-code on paper. If that pseudo-code runs directly on their computers, its best, isn\'t it? Ruby tries to be like that, like pseudo-code that runs. Python people say that too.', '2021-08-04 14:15:33.345543', '2021-08-04 14:15:33.345543')[0m
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (1.5ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `decription`, `created_at`, `updated_at`) VALUES ('Course of Trung University', 'From the viewpoint of what you can do, therefore, languages do differ - but the differences are limited. For example, Python and Ruby provide almost the same power to the programmer.', '2021-08-04 14:15:33.353389', '2021-08-04 14:15:33.353389')[0m
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.9ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `decription`, `created_at`, `updated_at`) VALUES ('Course of North Tăng College', 'Everyone has an individual background. Someone may come from Python, someone else may come from Perl, and they may be surprised by different aspects of the language. Then they come up to me and say, \'I was surprised by this feature of the language, so therefore Ruby violates the principle of least surprise.\' Wait. Wait. The principle of least surprise is not for you only.', '2021-08-04 14:15:33.360386', '2021-08-04 14:15:33.360386')[0m
+  [1m[36mTRANSACTION (3.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.8ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `decription`, `created_at`, `updated_at`) VALUES ('Course of The Loan', 'Often people, especially computer engineers, focus on the machines. But in fact we need to focus on humans, on how humans care about doing programming or operating the application of the machines.', '2021-08-04 14:15:33.367451', '2021-08-04 14:15:33.367451')[0m
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (1.0ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `decription`, `created_at`, `updated_at`) VALUES ('Course of Long Institute', 'Smart people underestimate the ordinarity of ordinary people.', '2021-08-04 14:15:33.372715', '2021-08-04 14:15:33.372715')[0m
+  [1m[36mTRANSACTION (2.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.8ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `decription`, `created_at`, `updated_at`) VALUES ('Course of North Colorado Institute', 'Most of the tasks we do are for humans. For example, a tax calculation is counting numbers so the government can pull money out from my wallet, but government consists of humans.', '2021-08-04 14:15:33.379566', '2021-08-04 14:15:33.379566')[0m
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.7ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `decription`, `created_at`, `updated_at`) VALUES ('Course of East Delaware Institute', 'Often people, especially computer engineers, focus on the machines. But in fact we need to focus on humans, on how humans care about doing programming or operating the application of the machines.', '2021-08-04 14:15:33.386483', '2021-08-04 14:15:33.386483')[0m
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.8ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `decription`, `created_at`, `updated_at`) VALUES ('Course of Vân University', 'I hope to see Ruby help every programmer in the world to be productive, and to enjoy programming, and to be happy. That is the primary purpose of Ruby language.', '2021-08-04 14:15:33.391991', '2021-08-04 14:15:33.391991')[0m
+  [1m[36mTRANSACTION (3.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (1.0ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `decription`, `created_at`, `updated_at`) VALUES ('Course of Western West Virginia University', 'From the viewpoint of what you can do, therefore, languages do differ - but the differences are limited. For example, Python and Ruby provide almost the same power to the programmer.', '2021-08-04 14:15:33.399048', '2021-08-04 14:15:33.399048')[0m
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (1.0ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `decription`, `created_at`, `updated_at`) VALUES ('Course of Eastern New Jersey Institute', 'Everyone has an individual background. Someone may come from Python, someone else may come from Perl, and they may be surprised by different aspects of the language. Then they come up to me and say, \'I was surprised by this feature of the language, so therefore Ruby violates the principle of least surprise.\' Wait. Wait. The principle of least surprise is not for you only.', '2021-08-04 14:15:33.405237', '2021-08-04 14:15:33.405237')[0m
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.7ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `decription`, `created_at`, `updated_at`) VALUES ('Course of The Triệu Academy', 'I believe that the purpose of life is, at least in part, to be happy. Based on this belief, Ruby is designed to make programming not only easy but also fun. It allows you to concentrate on the creative side of programming, with less stress.', '2021-08-04 14:15:33.413579', '2021-08-04 14:15:33.413579')[0m
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.8ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `decription`, `created_at`, `updated_at`) VALUES ('Course of West Hữu Institute', 'It is not the responsibility of the language to force good looking code, but the language should make good looking code possible.', '2021-08-04 14:15:33.418858', '2021-08-04 14:15:33.418858')[0m
+  [1m[36mTRANSACTION (3.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (1.0ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `decription`, `created_at`, `updated_at`) VALUES ('Course of East Tuân', 'I didn\'t work hard to make Ruby perfect for everyone, because you feel differently from me. No language can be perfect for everyone. I tried to make Ruby perfect for me, but maybe it\'s not perfect for you. The perfect language for Guido van Rossum is probably Python.', '2021-08-04 14:15:33.425679', '2021-08-04 14:15:33.425679')[0m
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/" for ::1 at 2021-08-04 21:16:17 +0700
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by StaticPagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered layouts/_sidebar.html.erb (Duration: 725.5ms | Allocations: 195191)
+  Rendered static_pages/home.html.erb within layouts/application (Duration: 1094.3ms | Allocations: 543327)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 2.9ms | Allocations: 700)
+  Rendered layouts/_footer.html.erb (Duration: 1.2ms | Allocations: 709)
+  Rendered layout layouts/application.html.erb (Duration: 1238.8ms | Allocations: 629437)
+Completed 200 OK in 1264ms (Views: 1248.6ms | ActiveRecord: 0.0ms | Allocations: 632487)
+
+
+Started GET "/" for ::1 at 2021-08-04 21:16:19 +0700
+Started GET "/images/footer/F_Logo.png" for ::1 at 2021-08-04 21:16:19 +0700
+Processing by StaticPagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered layouts/_sidebar.html.erb (Duration: 3.6ms | Allocations: 1094)
+  Rendered static_pages/home.html.erb within layouts/application (Duration: 6.7ms | Allocations: 2136)
+  
+ActionController::RoutingError (No route matches [GET] "/images/footer/F_Logo.png"):
+  
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.6ms | Allocations: 275)
+  Rendered layouts/_footer.html.erb (Duration: 0.4ms | Allocations: 263)
+  Rendered layout layouts/application.html.erb (Duration: 163.3ms | Allocations: 82788)
+Completed 200 OK in 165ms (Views: 164.7ms | ActiveRecord: 0.0ms | Allocations: 83394)
+
+
+Started GET "/vi/cate" for ::1 at 2021-08-04 21:16:21 +0700
+  
+AbstractController::ActionNotFound (The action 'categories' could not be found for StaticPagesController):
+  
+actionpack (6.1.4) lib/abstract_controller/base.rb:160:in `process'
+actionview (6.1.4) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.1.4) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.1.4) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.1.4) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.1.4) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.1.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (6.1.4) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.1.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.1.4) lib/action_dispatch/routing/route_set.rb:842:in `call'
+rack (2.2.3) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+actionpack (6.1.4) lib/action_dispatch/http/permissions_policy.rb:22:in `call'
+actionpack (6.1.4) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.3) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.3) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (6.1.4) lib/action_dispatch/middleware/cookies.rb:689:in `call'
+activerecord (6.1.4) lib/active_record/migration.rb:601:in `call'
+actionpack (6.1.4) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.4) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.4) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.1.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.4) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.4) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.4) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.1.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.4) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.4) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.4) lib/action_dispatch/middleware/host_authorization.rb:98:in `call'
+rack-mini-profiler (2.3.2) lib/mini_profiler/profiler.rb:384:in `call'
+webpacker (5.4.0) lib/webpacker/dev_server_proxy.rb:25:in `perform_request'
+rack-proxy (0.7.0) lib/rack/proxy.rb:63:in `call'
+railties (6.1.4) lib/rails/engine.rb:539:in `call'
+puma (5.3.2) lib/puma/configuration.rb:249:in `call'
+puma (5.3.2) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.3.2) lib/puma/thread_pool.rb:338:in `with_force_shutdown'
+puma (5.3.2) lib/puma/request.rb:76:in `handle_request'
+puma (5.3.2) lib/puma/server.rb:438:in `process_client'
+puma (5.3.2) lib/puma/thread_pool.rb:145:in `block in spawn_thread'
+Started GET "/vi/images/footer/F_Logo.png" for ::1 at 2021-08-04 21:16:21 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/vi/images/footer/F_Logo.png"):
+  
+Started GET "/vi/cate" for ::1 at 2021-08-04 21:16:48 +0700
+Processing by CategoriesController#home as HTML
+  Parameters: {"locale"=>"vi"}
+  Rendering layout layouts/application.html.erb
+  Rendering categories/home.html.erb within layouts/application
+  [1m[36mCategory Load (2.9ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` LIMIT 6 OFFSET 0[0m
+  ↳ app/views/categories/home.html.erb:42
+  [1m[35m (6.5ms)[0m  [1m[34mSELECT COUNT(*) FROM `categories`[0m
+  ↳ app/views/categories/home.html.erb:76
+  Rendered categories/home.html.erb within layouts/application (Duration: 36.7ms | Allocations: 11396)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.5ms | Allocations: 290)
+  Rendered layouts/_footer.html.erb (Duration: 0.4ms | Allocations: 263)
+  Rendered layout layouts/application.html.erb (Duration: 104.9ms | Allocations: 36035)
+Completed 200 OK in 112ms (Views: 90.0ms | ActiveRecord: 18.4ms | Allocations: 37744)
+
+
+Started GET "/vi/images/footer/F_Logo.png" for ::1 at 2021-08-04 21:16:48 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/vi/images/footer/F_Logo.png"):
+  
+Started GET "/vi/cate" for ::1 at 2021-08-04 21:18:23 +0700
+Processing by CategoriesController#home as HTML
+  Parameters: {"locale"=>"vi"}
+  Rendering layout layouts/application.html.erb
+  Rendering categories/home.html.erb within layouts/application
+  [1m[36mCategory Load (1.2ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` LIMIT 6 OFFSET 0[0m
+  ↳ app/views/categories/home.html.erb:42
+  [1m[35m (7.3ms)[0m  [1m[34mSELECT COUNT(*) FROM `categories`[0m
+  ↳ app/views/categories/home.html.erb:76
+  Rendered categories/home.html.erb within layouts/application (Duration: 19.3ms | Allocations: 5596)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.4ms | Allocations: 259)
+  Rendered layouts/_footer.html.erb (Duration: 0.4ms | Allocations: 263)
+  Rendered layout layouts/application.html.erb (Duration: 544.9ms | Allocations: 190842)
+Completed 200 OK in 549ms (Views: 539.2ms | ActiveRecord: 8.4ms | Allocations: 191410)
+
+
+Started GET "/vi/images/footer/F_Logo.png" for ::1 at 2021-08-04 21:18:23 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/vi/images/footer/F_Logo.png"):
+  
+Started GET "/vi/cate?page=3" for ::1 at 2021-08-04 21:18:27 +0700
+Processing by CategoriesController#home as HTML
+  Parameters: {"page"=>"3", "locale"=>"vi"}
+  Rendering layout layouts/application.html.erb
+  Rendering categories/home.html.erb within layouts/application
+  [1m[36mCategory Load (1.2ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` LIMIT 6 OFFSET 12[0m
+  ↳ app/views/categories/home.html.erb:42
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT COUNT(*) FROM `categories`[0m
+  ↳ app/views/categories/home.html.erb:76
+  Rendered categories/home.html.erb within layouts/application (Duration: 14.6ms | Allocations: 5913)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.5ms | Allocations: 259)
+  Rendered layouts/_footer.html.erb (Duration: 0.7ms | Allocations: 263)
+  Rendered layout layouts/application.html.erb (Duration: 88.6ms | Allocations: 30787)
+Completed 200 OK in 90ms (Views: 85.8ms | ActiveRecord: 3.7ms | Allocations: 31360)
+
+
+Started GET "/vi/images/footer/F_Logo.png" for ::1 at 2021-08-04 21:18:27 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/vi/images/footer/F_Logo.png"):
+  
+Started GET "/vi/cate?page=5" for ::1 at 2021-08-04 21:18:29 +0700
+Processing by CategoriesController#home as HTML
+  Parameters: {"page"=>"5", "locale"=>"vi"}
+  Rendering layout layouts/application.html.erb
+  Rendering categories/home.html.erb within layouts/application
+  [1m[36mCategory Load (1.0ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` LIMIT 6 OFFSET 24[0m
+  ↳ app/views/categories/home.html.erb:42
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `categories`[0m
+  ↳ app/views/categories/home.html.erb:76
+  Rendered categories/home.html.erb within layouts/application (Duration: 12.9ms | Allocations: 5713)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.4ms | Allocations: 259)
+  Rendered layouts/_footer.html.erb (Duration: 0.4ms | Allocations: 263)
+  Rendered layout layouts/application.html.erb (Duration: 85.6ms | Allocations: 30118)
+Completed 200 OK in 87ms (Views: 83.6ms | ActiveRecord: 3.0ms | Allocations: 30682)
+
+
+Started GET "/vi/images/footer/F_Logo.png" for ::1 at 2021-08-04 21:18:30 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/vi/images/footer/F_Logo.png"):
+  
+Started GET "/vi/cate?page=6" for ::1 at 2021-08-04 21:18:32 +0700
+Processing by CategoriesController#home as HTML
+  Parameters: {"page"=>"6", "locale"=>"vi"}
+  Rendering layout layouts/application.html.erb
+  Rendering categories/home.html.erb within layouts/application
+  [1m[36mCategory Load (1.0ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` LIMIT 6 OFFSET 30[0m
+  ↳ app/views/categories/home.html.erb:42
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT COUNT(*) FROM `categories`[0m
+  ↳ app/views/categories/home.html.erb:76
+  Rendered categories/home.html.erb within layouts/application (Duration: 14.3ms | Allocations: 5597)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.6ms | Allocations: 259)
+  Rendered layouts/_footer.html.erb (Duration: 0.6ms | Allocations: 263)
+  Rendered layout layouts/application.html.erb (Duration: 76.1ms | Allocations: 30004)
+Completed 200 OK in 80ms (Views: 76.1ms | ActiveRecord: 2.8ms | Allocations: 30577)
+
+
+Started GET "/vi/images/footer/F_Logo.png" for ::1 at 2021-08-04 21:18:32 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/vi/images/footer/F_Logo.png"):
+  

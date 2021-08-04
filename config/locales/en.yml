@@ -1,4 +1,7 @@
 en:
+  page:
+    next: 'Next'
+    pre:  'Prev'
   layouts:
     header:
       hi: 'welcome to E-Learning'
@@ -33,3 +36,8 @@ en:
       wellcome: 'Welcome to Dashboard'
       course_number: 'Course %{numberc}'
       lesson_number: 'Lesson %{numberl}'
+  categories:
+    home:
+      title:  'Categories'
+      allcourses:  'All Courses'
+      getinvolved:  'Get Involved'

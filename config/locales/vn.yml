@@ -1,4 +1,7 @@
 vi:
+  page:
+    next: 'Trang sau'
+    pre:  'Trang trước'
   layouts:
     header:
       hi: 'Chào mừng tới E-Learning'
@@ -32,4 +35,9 @@ vi:
       summary:  'Tóm tắt'
       course_number: 'Khóa học %{numberc}'
       lesson_number: 'Bài học %{numberl}'
+  categories:
+    home:
+      title:  'Khóa học'
+      allcourses:  'Tất cả khóa học'
+      getinvolved:  'Tham gia '
         

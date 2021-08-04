@@ -21,6 +21,8 @@ gem "i18n", "~> 1.8", ">= 1.8.10"
 gem "rails-i18n", "~> 6.0"
 gem "will_paginate", "~> 3.3"
 gem "bootstrap-will_paginate", "~> 1.0"
+gem "faker", "~> 2.18"
+gem "config", "~> 3.1"
 
 group :development, :test do
   

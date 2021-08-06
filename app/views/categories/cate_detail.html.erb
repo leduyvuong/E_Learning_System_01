@@ -1,0 +1,54 @@
+<div class="ed_dashboard_wrapper ed_course_single ed_toppadder80 ed_bottompadder80">
+	<div class="container signup">
+		<div class="row">
+			<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+				<div class="ed_course_single_item">
+					<div class="ed_course_single_image">
+						<%= image_tag "brdcrm_bg.jpg" %>
+					</div>
+					<div class="ed_course_single_info">
+						<h2><%=@categories.name%></h2>
+					</div>
+          <div class="ed_course_single_tab">
+						<div role="tabpanel">
+							<!-- Nav tabs -->
+							<ul class="nav nav-tabs" role="tablist">
+								<li role="presentation" class="active">
+                  <%= link_to t("categories.details.descrip"), "#description", { :class => "", "data-toggle" => "tab", "aria-controls" => "description" } %>
+                </li>
+								<li role="presentation">
+                  <%= link_to t("categories.details.student"), "#students", { :class => "", "data-toggle" => "tab", "aria-controls" => "description" } %>
+                </li>
+							</ul>
+							<!-- Tab panes -->
+							<div class="tab-content">
+								<div role="tabpanel" class="tab-pane active" id="description">
+									<div class="ed_course_tabconetent">
+									<h2><%= t("categories.details.about")%></h2>
+										<%= @categories.decription%>
+									</div>
+								</div>
+                <div role="tabpanel" class="tab-pane active" id="students">
+
+                </div>						
+							</div>
+						</div>
+					</div>
+        </div>
+        <div class="ed_time_executor ed_toppadder40">
+          <ul>
+            <li>
+              <%=link_to t("categories.details.lessons"), "#" %> <span><%= t("categories.details.words")%></span> 
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 ed_course_single_item">
+        <div class="join_courses">
+            <%= link_to t("categories.home.getinvolved"), "#"%>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>

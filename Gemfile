@@ -24,6 +24,8 @@ gem "bootstrap-will_paginate", "~> 1.0"
 gem "omniauth-facebook", "~> 8.0"
 gem "devise", "~> 4.8"
 gem 'figaro', '~> 1.2'
+gem "faker", "~> 2.18"
+gem "config", "~> 3.1"
 
 group :development, :test do
   

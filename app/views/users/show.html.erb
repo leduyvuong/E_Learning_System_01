@@ -123,6 +123,7 @@
             <div class="tab-pane" id="profile">
                
                 <div class="col-md-12 ed_dashboard_tab_info"> 
+                <div class ="row">  
                   <div class = "col-md-6">                     
                     <p>UserName:</p>
                     <p>Email: </p>
@@ -141,7 +142,8 @@
                     <p><%= @user.user_profile.phone%></p>
                     <p>13</p>
                   </div>
-                  <div class ="row">
+                  </div>
+                  <div class ="row ed_dashboard_tab_info">
                     <%= link_to t('users.edit.update_profile'), edit_path, class: "btn btn-primary"%>
                   </div>
                 </div> 

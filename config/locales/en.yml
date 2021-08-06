@@ -66,3 +66,14 @@ en:
       address:  'Address :'
       phone:  'Phone :'
       courses:  'Courses :'
+  categories:
+    home:
+      title:  'Categories'
+      allcourses:  'All Courses'
+      getinvolved:  'Get Involved'
+    details:
+      descrip: 'Description'
+      about:  'About Courses'
+      student:  'Students'
+      lessons:  'Lessons'
+      words:  'Words'

@@ -65,3 +65,14 @@ vi:
       address:  'Địa chỉ :'
       phone:  'Số điện thoại :'
       courses:  'Khóa học :'
+  categories:
+    home:
+      title:  'Khóa học'
+      allcourses:  'Tất cả khóa học'
+      getinvolved:  'Tham gia '
+    details:
+      descrip: 'Giới thiệu'
+      about:  'Về khóa học'
+      student:  'Học viên'
+      lessons:  'Bài học '
+      words:  'Số từ'

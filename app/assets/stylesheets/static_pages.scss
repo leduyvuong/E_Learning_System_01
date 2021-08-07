@@ -480,6 +480,12 @@ textarea {
 /* ------ HeaderBottomend----------- */
 
 /* --------menustart---------- */
+.ed_tabs_lesson > .nav-tabs {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-right: 1px solid black;
+}
 .ed_tabs_left > .nav-tabs {
   display: flex;
   flex-direction: column;

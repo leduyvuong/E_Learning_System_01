@@ -41,11 +41,11 @@
                   <p><%= t('static_pages.home.summary')%></p>
                   <div >
                     <section class="notepaper">                        
-                      <% @summary_list.each do |s| %>                     
+                      <% @user.summaries.suma.each do |s| %>                     
                       <blockquote id="summary-<%s.id%>" class="curly-quotes">
                          Content: <%=s.content%><br>
                          <div class = "time_ago">
-                         Posted <%= time_ago_in_words(s.created_at) %> ago.
+                          Posted <%= time_ago_in_words(s.created_at) %> ago.
                             <%= link_to "delete", delete_summary_path(id: s.id), method: :delete,
                                                     data: { confirm: "You sure?" } %>
                           </div>
@@ -56,98 +56,115 @@
                 </div>
               </div>
             </div>
-              <div class="tab-pane" id="wordlist">  
-
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 container ed_dashboard_tab_info" id ="wordlist"> 
-                
-                <h3 ><%= t('layouts.sidebar.wordlist')%></h3>                                 
-                <ul class="nav nav-tabs">
-                  <li class="active"><%= link_to t('static_pages.home.course_number', numberc: 1), "#course1", { :class => '', 'data-toggle' => 'tab' }%></li>
-                  <li><%= link_to t('static_pages.home.course_number', numberc: 2), "#course2", { :class => '', 'data-toggle' => 'tab' }%></li>
-                  <li><%= link_to t('static_pages.home.course_number', numberc: 3), "#course3", { :class => '', 'data-toggle' => 'tab' }%></li>
-                  <li><%= link_to t('static_pages.home.course_number', numberc: 4), "#course4", { :class => '', 'data-toggle' => 'tab' }%></li>
-                </ul>
-
-                <div class="tab-content">
-                  <div id="course1" class="tab-pane active">
-                    <ul class="nav nav-tabs">
-                      <li class="active"><%= link_to t('static_pages.home.lesson_number', numberl: 1), "#menu2", { :class => '', 'data-toggle' => 'tab' }%></li>
-                      <li><%= link_to t('static_pages.home.lesson_number', numberl: 2), "#menu3", { :class => '', 'data-toggle' => 'tab' }%></li>
-                      <li><%= link_to t('static_pages.home.lesson_number', numberl: 3), "#menu4", { :class => '', 'data-toggle' => 'tab' }%></li>
-                      <li><%= link_to t('static_pages.home.lesson_number', numberl: 4), "#menu5", { :class => '', 'data-toggle' => 'tab' }%></li>
-                      <li><%= link_to t('static_pages.home.lesson_number', numberl: 5), "#menu6", { :class => '', 'data-toggle' => 'tab' }%></li>
-                      <li><%= link_to t('static_pages.home.lesson_number', numberl: 6), "#menu7", { :class => '', 'data-toggle' => 'tab' }%></li>
+            <div class="tab-pane" id="wordlist">                  
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 container ed_dashboard_tab_info " id ="wordlist"> 
+                <% if @categories %>
+                  <h3 ><%= t('layouts.sidebar.wordlist')%></h3>                          
+                    <ul class="nav nav-tabs ">
+                      <% @categories.each do |w| %>                
+                        <% if @categories.index(w) == 0%>
+                          <li class="active"><%= link_to w.name, "#course#{w.id}", { :class => '', 'data-toggle' => 'tab' }%></li>
+                        <% else %>
+                          <li><%= link_to w.name, "#course#{w.id}", { :class => '', 'data-toggle' => 'tab' }%></li>
+                        <%end%>
+                      <% end %>
                     </ul>
-
-                    <div class="tab-content" >
-                      
-                      <div id="menu2" class="tab-pane active">
-                        <h3><%= t('static_pages.home.lesson_number', numberl: 1)%></h3>
-                        
+                  <div class="tab-content">  
+                    <% @categories.each do |cate|%> 
+                      <% if @categories.index(cate) == 0 %>              
+                        <div id="course<%=cate.id%>" class="tab-pane active">  
+                          <div class = "col-md-3 ed_tabs_lesson">                                           
+                            <ul class="nav nav-tabs ">
+                              <% cate.lessons.each do |l|%> 
+                                <% if cate.lessons.index(l) == 0 %>                       
+                                  <li class="active"><%= link_to l.name_lesson, "#lesson#{l.id}", { :class => '', 'data-toggle' => 'tab' }%></li>                    
+                                <% else %>
+                                  <li class=""><%= link_to l.name_lesson, "#lesson#{l.id}", { :class => '', 'data-toggle' => 'tab' }%></li>
+                                <%end%> 
+                              <%end%>
+                            </ul>
+                          </div>
+                          <div class = "col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                            <div class="tab-content" >
+                              <%cate.lessons.each do |lesson_content|%>  
+                                <% if cate.lessons.index(lesson_content) == 0%>
+                                  <div id="lesson<%=lesson_content.id%>" class="tab-pane active">
+                                    <h3><%= lesson_content.name_lesson%></h3>                          
+                                  </div>
+                                <%else%>
+                                  <div id="lesson<%=lesson_content.id%>" class="tab-pane">
+                                    <h3><%= lesson_content.name_lesson%></h3>                          
+                                  </div>
+                                <%end%>
+                              <%end%>                                       
+                            </div>
+                          </div>
+                        </div>                    
+                      <%else%>
+                      <div id="course<%=cate.id%>" class="tab-pane">
+                        <div class="row">
+                          <div class = "col-md-3 ed_tabs_lesson">
+                            <ul class="nav nav-tabs">
+                              <% cate.lessons.each do |lesson|%> 
+                                <% if cate.lessons.index(lesson) == 0 %>                       
+                                  <li class="active"><%= link_to lesson.name_lesson, "#lesson#{lesson.id}", { :class => '', 'data-toggle' => 'tab' }%></li>                    
+                                <% else %>
+                                  <li class=""><%= link_to lesson.name_lesson, "#lesson#{lesson.id}", { :class => '', 'data-toggle' => 'tab' }%></li>
+                                <%end%> 
+                              <%end%>
+                            </ul>
+                          </div>
+                          <div class = "col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                            <div class=" tab-content" >
+                              <%cate.lessons.each do |lesson_content|%>  
+                                <% if cate.lessons.index(lesson_content) == 0%>
+                                  <div id="lesson<%=lesson_content.id%>" class="tab-pane active">
+                                    <h3><%= lesson_content.name_lesson%></h3>                          
+                                  </div>
+                                <%else%>
+                                  <div id="lesson<%=lesson_content.id%>" class="tab-pane">
+                                    <h3><%= lesson_content.name_lesson%></h3>                          
+                                  </div>
+                                <%end%>
+                              <%end%>                                       
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <div id="menu3" class="tab-pane fade">
-                        <h3><%= t('static_pages.home.lesson_number', numberl: 2)%></h3>
-                        
-                      </div>
-                      <div id="menu4" class="tab-pane fade">
-                        <h3><%= t('static_pages.home.lesson_number', numberl: 3)%></h3>
-                        
-                      </div>
-                      <div id="menu5" class="tab-pane fade">
-                        <h3><%= t('static_pages.home.lesson_number', numberl: 4)%></h3>
-                        
-                      </div>
-                      
-                    
-                      <div id="menu6" class="tab-pane fade">
-                        <h3><%= t('static_pages.home.lesson_number', numberl: 5)%></h3>
-                        
-                      </div>
-                      <div id="menu7" class="tab-pane fade">
-                        <h3><%= t('static_pages.home.lesson_number', numberl: 6)%></h3>
-                        
-                      </div>
-
-                      <div id="#course4" class="tab-pane fade">
-                        <h3>Menu 3</h3>
-                        
-                      </div>
-                    </div>
-                  </div>
-                  <div id="course2" class="tab-pane fade">  
-                  </div>
-                 </div> 
-              </div>
-              
+                      <%end%>
+                    <%end%>
+                    </div>                 
+                  </div>                                   
+                <% else %>
+                    <h3 >Bạn chưa tham gia khóa học nào</h3>
+                <% end %>
             </div>
             <div class="tab-pane" id="profile">
-               
-                <div class="col-md-12 ed_dashboard_tab_info"> 
-                <div class ="row">  
-                  <div class = "col-md-6">                     
-                    <p>UserName:</p>
-                    <p>Email: </p>
-                    <p><%= t("users.profile.fullname")%></p>
-                    <p><%= t("users.profile.sex")%></p>
-                    <p><%= t("users.profile.address")%></p>
-                    <p><%= t("users.profile.phone")%></p>
-                    <p><%= t("users.profile.courses")%></p>
-                  </div>
-                  <div class = "col-md-6">                     
-                    <p><%= @user.username%></p>
-                    <p><%= @user.email%></p>
-                    <p><%= @user.user_profile.fullname%></p>
-                    <p><%= @user.user_profile.sex%></p>
-                    <p><%= @user.user_profile.address%></p>
-                    <p><%= @user.user_profile.phone%></p>
-                    <p>13</p>
-                  </div>
-                  </div>
-                  <div class ="row ed_dashboard_tab_info">
-                    <%= link_to t('users.edit.update_profile'), edit_path, class: "btn btn-primary"%>
-                  </div>
-                </div> 
-                
+              <div class="col-md-12 ed_dashboard_tab_info"> 
+              <div class ="row">  
+                <div class = "col-md-6">                     
+                  <p>UserName:</p>
+                  <p>Email: </p>
+                  <p><%= t("users.profile.fullname")%></p>
+                  <p><%= t("users.profile.sex")%></p>
+                  <p><%= t("users.profile.address")%></p>
+                  <p><%= t("users.profile.phone")%></p>
+                  <p><%= t("users.profile.courses")%></p>
+                </div>
+                <div class = "col-md-6">                     
+                  <p><%= @user.username%></p>
+                  <p><%= @user.email%></p>
+                  <p><%= @user.user_profile.fullname%></p>
+                  <p><%= @user.user_profile.sex%></p>
+                  <p><%= @user.user_profile.address%></p>
+                  <p><%= @user.user_profile.phone%></p>
+                  <p>13</p>
+                </div>
+                </div>
+                <div class ="row ed_dashboard_tab_info">
+                  <%= link_to t('users.edit.update_profile'), edit_path, class: "btn btn-primary"%>
+                </div>
+              </div>               
             </div>
           </div>
         </div>

@@ -45,7 +45,7 @@
       </div>
       <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 ed_course_single_item">
         <div class="join_courses">
-            <%= link_to t("categories.home.getinvolved"), "#"%>
+            <%= link_to t("categories.home.getinvolved"), join_class_path(id_cate: @categories.id), method: :post%>
         </div>
       </div>
       

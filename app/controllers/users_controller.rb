@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     end
   end
   def show 
-    @summary_list = @user.summaries.where("status = 1")
+    @categories = @user.categories      
   end
   def edit
   end

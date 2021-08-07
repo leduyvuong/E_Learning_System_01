@@ -1,4 +1,5 @@
 class Category < ApplicationRecord
+  has_many :users, through: :wordlists
   has_many :wordlists, dependent: :destroy
   has_many :lessons, dependent: :destroy
   self.per_page = Settings.WillPaginate.cate_per_page

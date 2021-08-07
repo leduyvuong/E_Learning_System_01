@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     delete "/logout",         to: "sessions#destroy"
     delete "/delete_summary", to: "summaries#unactive"
     post "/add_summary",      to: "summaries#create"   
+    post "/join_class",       to: "wordlists#create"
   end
   resources :summaries
   resources :users

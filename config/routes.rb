@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     get "/signup",            to: "users#new"
     get "/cate",              to: "categories#cate"
     get "/cate_detail",       to: "categories#cate_detail"
+    get "/lesson",            to: "lessons#show"
+    get "/word_summary",      to: "summaries#word_summary"
     get "/login",             to: "sessions#new"
     post "/login",            to: "sessions#create"
     delete "/logout",         to: "sessions#destroy"

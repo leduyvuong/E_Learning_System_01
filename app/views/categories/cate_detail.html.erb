@@ -38,8 +38,14 @@
         <div class="ed_time_executor ed_toppadder40">
           <ul>
             <li>
-              <%=link_to t("categories.details.lessons"), "#" %> <span><%= t("categories.details.words")%></span> 
+              <%=link_to t("categories.details.lessons"), "#" %> <span><%= t("categories.details.words")%></span>
+              
             </li>
+            <%@categories.lessons.each do |l|%> 
+              <li>
+                <%=link_to l.name_lesson, "#" %> <span><%= l.content_lessons.count%></span>
+              </li>
+              <%end%>
           </ul>
         </div>
       </div>

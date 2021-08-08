@@ -9,6 +9,9 @@ module SessionsHelper
   def current_user
     if session[:user_id]
       @current_user ||= User.find_by(id: session[:user_id])
+    else
+      flash[:danger] = t('errors.not_login')
+      redirect_to root_path
     end
   end
   def logged_in?

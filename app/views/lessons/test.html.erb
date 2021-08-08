@@ -1,0 +1,16 @@
+<div class="row ed_dashboard_wrapper">
+  <div class="col-lg-8 col-lg-offset-2  container ed_dashboard_tab_info ">
+  <%= form_with url: send_test_path(id: params[:id]), method: :post do |f| %>   
+   <%= render "shared/flash_messages" %> 
+  <%@questions.each do |q|%> 
+    <b>Question <%= @questions.index(q) + 1%>:  </b> <%= q.content%><br>
+    <%q.answers.each do |a|%>
+      <%= f.radio_button "ques#{q.id}" , a.content, :checked => false, :value => q.id%> 
+      <%= f.label q.id, a.content%><br>
+    <%end%>
+    <br>    
+    <%end%>
+    <%= f.submit  "Submit", class: "btn btn-primary" %>
+  <%end%>
+  </div>
+</div>

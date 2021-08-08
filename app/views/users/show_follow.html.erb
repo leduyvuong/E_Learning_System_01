@@ -1,0 +1,34 @@
+<div class = "ed_dashboard_wrapper ">
+<div class = "col-md-4 col-md-offset-4 ed_dashboard_tab_info ">
+  <ul class="users">
+      <% @users.each do |u|%>
+          <li >
+            <div class = "row ">            
+              <div class = "col-md-3">
+                <% if u.user_profile.image.attached? %>
+                  <%= image_tag  u.user_profile.image%>
+                <%else%>
+                  <%= image_tag "avadefault.jpg" %>
+                <%end%>
+              </div>
+              <div class = "col-md-6">
+                  <%= link_to u.username, "#" %>
+                  <% if current_user.following?(u.id) %>
+                    <%= form_with(model: current_user.active_relationships.find_by(followed_id: u.id),
+                                  html: { method: :delete }, local: true) do |f| %>
+                      <%= f.submit "Unfollow", class: "btn" %>
+                    <% end %>
+                  <% else %>
+                    <%= form_with(model: current_user.active_relationships.build, local: true) do |f| %>
+                      <div><%= hidden_field_tag :followed_id, u.id %></div>
+                      <%= f.submit "Follow", class: "btn btn-primary" %>
+                    <% end %>
+                  <%end%>
+              </div>
+            </div>
+          </li>
+      <%= will_paginate @users%>
+      <%end%>
+  </ul>
+  </div>
+</div>

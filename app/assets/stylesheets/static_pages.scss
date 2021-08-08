@@ -513,6 +513,49 @@ textarea {
   position: relative;
 }
 
+.users {
+  list-style: none;
+  margin: 0;
+  
+  li {
+      padding: 10px 0;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #edf2f6;
+  }
+}
+
+.stats {
+  overflow: auto;
+  margin-top: 0;
+  padding: 0;
+
+  a {
+  font-size: 10px;
+  float: left;
+  padding: 0 10px;
+  border-left: 1px solid $gray-lighter;
+  color: gray;
+
+    &:first-child {
+      padding-left: 0;
+      border: 0;
+    }
+
+    &:hover {
+      text-decoration: none;
+      color: blue;
+    }
+  }
+
+  strong {
+  display: block;
+  }
+}
+
+.users.follow {
+  padding: 0;
+}
+
 /* --------- Slider end --------- */
 
 /* --------- Search form start -------- */

@@ -20,8 +20,13 @@ Rails.application.routes.draw do
     get "/send_test",        to: "lessons#result_test"
   end
   resources :summaries
-  resources :users
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
   resources :wordlists
   resources :lessons
   resources :categories
+  resources :relationships, only: [:create, :destroy]
 end

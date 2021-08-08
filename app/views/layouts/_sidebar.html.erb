@@ -13,6 +13,8 @@
       <%else%>
           <%=@user.user_profile.fullname %>
       <%end%>
+      <% @user ||= current_user %>
+      <%= render "stats" %>
     </h3>
     <div class="ed_tabs_left">
       <ul class="nav nav-tabs">

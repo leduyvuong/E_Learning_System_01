@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'summary/create'
   scope "(:locale)", locale: /en|vi/ do
     root "sessions#new"
+    get "/ac",                to: "users#activities"
     get "/edit",              to: "users#edit"
     get "/home",              to: "users#show"
     get "/signup",            to: "users#new"

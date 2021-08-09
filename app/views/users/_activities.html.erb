@@ -1,0 +1,15 @@
+<div class="tab-pane" id="activities">
+  <div class="ed_dashboard_tab_info activities">
+    <ul class="users">
+    <%if !@activities.nil? %>
+      <% @activities.each do |act|%>
+      <li>
+        <%= act["username"]%> joined to <%=act["name"]%> <%= time_ago_in_words(act["created_at"]) %> ago.
+      </li>
+      <%end%>
+    <%else%>
+      Nothing
+    <%end%>
+    <ul>
+  </div>
+</div>

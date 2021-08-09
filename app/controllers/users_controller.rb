@@ -1,14 +1,23 @@
 class UsersController < ApplicationController
-  before_action :found_user, only: [:show, :edit, :update, :following, :followers]
+  before_action :found_user, only: [:show, :edit, :update, :following, :followers, :activities]
 
   def index
     @user = User.all.paginate(page: params[:page])
   end
- 
   def show 
-    @categories = @user.categories      
+    @categories = @user.categories 
+    @user_f = @user.following.ids
+    @activities = ActiveRecord::Base.connection.exec_query("select u.username, w.created_at, c.name from wordlists w 
+      inner join users u on u.id = w.user_id and w.user_id in (#{ @user_f.map(&:inspect).join(", ")}) 
+      inner join categories c on c.id = w.category_id order by  w.created_at desc").to_a
+    if @activities.nil?
+      return @categories
+    else
+      return @activities.paginate(:page => params[:page]) && @categories
+    end   
   end
-  def edit
+  def activities
+    
   end
   def logged_in_user
     unless logged_in?

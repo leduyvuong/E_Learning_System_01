@@ -1,0 +1,115 @@
+<div class="tab-pane" id="wordlist">                  
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 container ed_dashboard_tab_info " id ="wordlist"> 
+    <% if @categories %>
+      <h3 ><%= t('layouts.sidebar.wordlist')%></h3>                          
+        <ul class="nav nav-tabs ">
+          <% @categories.each do |w| %>                
+            <% if @categories.index(w) == 0%>
+              <li class="active"><%= link_to w.name, "#course#{w.id}", { :class => '', 'data-toggle' => 'tab' }%></li>
+            <% else %>
+              <li><%= link_to w.name, "#course#{w.id}", { :class => '', 'data-toggle' => 'tab' }%></li>
+            <%end%>
+          <% end %>
+        </ul>
+      <div class="tab-content">  
+        <% @categories.each do |cate|%> 
+          <% if @categories.index(cate) == 0 %>              
+            <div id="course<%=cate.id%>" class="tab-pane active">  
+              <div class = "col-md-3 ed_tabs_lesson">                                           
+                <ul class="nav nav-tabs ">
+                  <% cate.lessons.each do |l|%> 
+                    <% if cate.lessons.index(l) == 0 %>                       
+                      <li class="active"><%= link_to l.name_lesson, "#lesson#{l.id}", { :class => '', 'data-toggle' => 'tab' }%></li>                    
+                    <% else %>
+                      <li class=""><%= link_to l.name_lesson, "#lesson#{l.id}", { :class => '', 'data-toggle' => 'tab' }%></li>
+                    <%end%> 
+                  <%end%>
+                </ul>
+              </div>
+              <div class = "col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                <div class="tab-content" >
+                  <%cate.lessons.each do |lesson_content|%>  
+                    <% if cate.lessons.index(lesson_content) == 0%>
+                      <div id="lesson<%=lesson_content.id%>" class="tab-pane active">
+                        <h3><%= lesson_content.name_lesson%>(<%= lesson_content.content_lessons.count%> words)</h3>  
+                        <% lesson_content.content_lessons.each do |words|%>
+                          <div class = "col-md-3">
+                            <%= words.word%>
+                          </div>
+                        <%end%>
+                        <div class ="row ed_dashboard_tab_info">
+                          <%= link_to "Strart Lesson", lesson_path(id: lesson_content.id), class: "btn btn-primary"%>
+                        </div>                     
+                      </div>
+                    <%else%>
+                      <div id="lesson<%=lesson_content.id%>" class="tab-pane">
+                        <h3><%= lesson_content.name_lesson%>(<%= lesson_content.content_lessons.count%> words)</h3>  
+                        <% lesson_content.content_lessons.each do |words|%>
+                          <div class = "col-md-3">
+                            <%= words.word%>
+                          </div>
+                        <%end%>
+                        <div class ="row ed_dashboard_tab_info">
+                          <%= link_to "Strart Lesson", lesson_path(id: lesson_content.id), class: "btn btn-primary"%>
+                        </div>                         
+                      </div>
+                    <%end%>
+                  <%end%>                                       
+                </div>
+              </div>
+            </div>                    
+          <%else%>
+          <div id="course<%=cate.id%>" class="tab-pane">
+            <div class="row">
+              <div class = "col-md-3 ed_tabs_lesson">
+                <ul class="nav nav-tabs">
+                  <% cate.lessons.each do |lesson|%> 
+                    <% if cate.lessons.index(lesson) == 0 %>                       
+                      <li class="active"><%= link_to lesson.name_lesson, "#lesson#{lesson.id}", { :class => '', 'data-toggle' => 'tab' }%></li>                    
+                    <% else %>
+                      <li class=""><%= link_to lesson.name_lesson, "#lesson#{lesson.id}", { :class => '', 'data-toggle' => 'tab' }%></li>
+                    <%end%> 
+                  <%end%>
+                </ul>
+              </div>
+              <div class = "col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                <div class=" tab-content" >
+                  <%cate.lessons.each do |lesson_content|%>  
+                    <% if cate.lessons.index(lesson_content) == 0%>
+                      <div id="lesson<%=lesson_content.id%>" class="tab-pane active">
+                        <h3><%= lesson_content.name_lesson%>(<%= lesson_content.content_lessons.count%> words)</h3>  
+                        <% lesson_content.content_lessons.each do |words|%>
+                          <div class = "col-md-3">
+                            <%= words.word%>
+                          </div>
+                        <%end%>
+                        <div class ="row ed_dashboard_tab_info">
+                          <%= link_to "Strart Lesson", lesson_path(id: lesson_content.id), class: "btn btn-primary"%>
+                        </div>                           
+                      </div>
+                    <%else%>
+                      <div id="lesson<%=lesson_content.id%>" class="tab-pane">
+                        <h3><%= lesson_content.name_lesson%>(<%= lesson_content.content_lessons.count%> words)</h3>  
+                        <% lesson_content.content_lessons.each do |words|%>
+                          <div class = "col-md-3">
+                            <%= words.word%>
+                          </div>
+                        <%end%>
+                        <div class ="row ed_dashboard_tab_info">
+                          <%= link_to "Strart Lesson", lesson_path(id: lesson_content.id), class: "btn btn-primary"%>
+                        </div>                           
+                      </div>
+                    <%end%>
+                  <%end%>                                       
+                </div>
+              </div>
+            </div>
+          </div>
+          <%end%>
+        <%end%>
+        </div>                 
+      </div>                                   
+    <% else %>
+        <h3 >Bạn chưa tham gia khóa học nào</h3>
+    <% end %>
+</div>

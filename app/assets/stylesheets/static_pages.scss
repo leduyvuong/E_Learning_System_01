@@ -350,6 +350,87 @@ textarea {
   }
 }
 
+.active {
+  width: 15px;
+  height: 15px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+  background-color: #31a24c;
+}
+
+.unactive {
+  width: 15px;
+  height: 15px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+  background-color: rgb(204, 22, 22);
+}
+
+.dashboad_left {  
+  height: 500px;
+  text-align: center;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  .childdash {
+    border: 1px solid white;
+    width: 100%;
+    padding: 10px 10px 10px 0;
+    background-color: #167ac6;
+
+    a {
+      text-decoration: none;
+      color: white;
+      font-size: 16px;
+      font-weight: 500;  
+      
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  .childdash_cos {
+    border: 1px solid white;
+    width: 100%;
+    padding: 10px 10px 10px 0;
+    background-color: #167ac6;
+
+    a {
+      text-decoration: none;
+      color: white;
+      font-size: 16px;
+      font-weight: 500;
+      border-bottom: 1px solid #6a5f49;
+      padding-bottom: 5px;
+      margin-top: 5px;
+      margin-left: 5px;
+      display: flex;
+      flex-direction: column;
+      
+      &:first-child {
+        text-decoration: none;
+        color: white;
+        font-size: 16px;
+        font-weight: 500;
+        border-bottom: 1px solid #6a5f49;
+        padding-bottom: 5px;
+        margin-top: -5px;
+        margin-left: 5px;
+      }
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+    
+  }
+
+  
+}
+
 .course_faculty a::before {
   text-transform: uppercase;
   color: #272727;

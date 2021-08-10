@@ -13,11 +13,8 @@ class UsersController < ApplicationController
     if @activities.nil?
       return @categories
     else
-      return @activities.paginate(:page => params[:page]) && @categories
+      return @activities.to_a && @categories
     end   
-  end
-  def activities
-    
   end
   def logged_in_user
     unless logged_in?
@@ -71,5 +68,5 @@ class UsersController < ApplicationController
         flash[:danger] = t('errors.not_login')
         redirect_to login_path
       end
-    end
+    end   
 end

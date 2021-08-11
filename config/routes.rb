@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   scope "(:locale)", locale: /en|vi/ do
     root "sessions#new"
+    get "/search",            to: "admin#search"
     get "/admin",             to: "admin#new"
     get "/ac",                to: "users#activities"
     get "/edit",              to: "users#edit"

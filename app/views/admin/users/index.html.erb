@@ -1,6 +1,15 @@
 <%= render "admin/sidebar_admin" %>
 
 <div class = "col-md-6">
+  <div class = "col-md-3">
+    <%= render "shared/flash_messages" %>
+  </div>
+  <div class = "col-md-6 ">
+    <%= form_with( url: admin_users_path,method: :get, class: "form-inline md-form mr-auto mb-4") do |f| %>
+        <%= f.text_field :name, class: "form-control mr-sm-2"%>
+        <%= f.submit "Search", class: "btn aqua-gradient btn-rounded btn-sm my-0"%>
+    <%end%>
+  </div>
   <table class="table table-striped table-inverse table-responsive table-bordered table-hover">
       <thead class="thead-inverse">
         <tr>
@@ -13,22 +22,24 @@
         </thead>
         <tbody>
         <% @users.each do |u| %>
-          <tr>
-            <td ><%= u.id%></td>
-            <td scope="row"><%= u.username%></td>
-            <td ><%= u.email%></td>
-            <td><% if u.status.nil?%>
-                  <div class ="active"></div>
-                <%else%>
-                  <div class ="unactive"></div>
-                <%end%></td>
-            <td>
-              <%= link_to "Edit", "" %> | <%= link_to "Unactive", "" %>         
-            </td>
-          </tr> 
-                  
+          <% if u.admin != true%>
+            <tr>
+              <td ><%= u.id%></td>
+              <td scope="row"><%= link_to u.username, admin_user_path(id: u.id) %></td>
+              <td ><%= u.email%></td>
+              <td><% if u.status%>
+                    <div class ="active_status"></div>
+                  <%else%>
+                    <div class ="unactive_status"></div>
+                  <%end%></td>
+              <td>
+                <%= link_to "Edit", edit_admin_user_path(id: u.id) %> | <%= link_to "Unactive", [:admin, u], method: :delete %>         
+              </td>
+            </tr> 
+          <%end%>        
         <%end%>
         </tbody>
     </table>
     <%= will_paginate @users, :previous_label=> t("page.pre"), :next_label => t("page.next") %> 
 </div>
+

@@ -1,0 +1,48 @@
+<%= render "admin/sidebar_admin" %>
+<div class = "col-md-9">
+  <h1><%= t('users.edit.resetpass')%></h1>
+  <%= render "shared/error_messages" %>
+  <%= render "shared/flash_messages" %>
+  <%= form_with(model: [:admin, @user], local: true) do |f| %>
+  <div class="col-md-4 col-md-offset-1 signup">
+    <%= f.label :username, "Username" %>
+    <%= f.text_field :username, value: @user.username %>
+    <%= f.label :email, "Email" %>
+    <%= f.text_field :email, value: @user.email %>
+    <%= f.label :admin %><%= f.select :admin, options_for_select(["0", "1"], :selected => @user.admin)%>                       
+    <%= f.label :password, t('users.new.password') %>
+    <%= f.password_field :password %>
+    <%= f.label :password_confirmation, t('users.new.confirm') %>
+    <%= f.password_field :password_confirmation %>                 
+</div>
+<div class="col-md-6 signup">
+  <h1><%= t('users.edit.profile')%></h1>
+      <div class="col-md-4 ed_profile_img">
+        <% if @user.user_profile.image.attached? %>
+          <%= image_tag  @user.user_profile.image  %>
+        <%else%>
+          <%= image_tag "23.png" %>
+        <%end%>
+        <span class="image">
+          <%= f.file_field :image %>
+        </span>
+
+      </div>
+      <div class="col-md-8 ">                     
+        <%= f.label :fullname%>
+        <%= f.text_field :fullname, value: @user.user_profile.fullname %>
+        <%= f.label :sex %>
+        <%= f.text_field :sex, value: @user.user_profile.sex %>
+        <%= f.label :address%>
+        <%= f.text_field :address, value: @user.user_profile.address %>
+        <%= f.label :phone %>
+        <%= f.text_field :phone, value: @user.user_profile.phone %>           
+
+      </div> 
+    </div>
+      <div class = "row col-md-4 col-md-offset-4 ed_dashboard_tab">
+          <%= f.submit  t('users.edit.update_profile'), class: "btn btn-primary" %>
+      </div>
+    <% end %>                     
+
+</div>

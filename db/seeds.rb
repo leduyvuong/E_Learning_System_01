@@ -1,3 +1,21 @@
+@user = User.create!(username: "admin",
+              email: "firesoul0608@gmail.com",
+              password: "123456",
+              password_confirmation: "123456",
+              status: true,
+              admin: true)
+@user.create_user_profile(fullname: @user.username)
+60.times do |n|
+  name = Faker::Name.name
+  email = "elearning-#{n+1}@railstutorial.org"
+  @user = User.create!(username: name,
+    email: email,
+    password: "123456",
+    password_confirmation: "123456",
+    status: true,
+    admin: false)
+  @user.create_user_profile(fullname: @user.username)
+end
 #create category
 36.times do 
   name = "Course of " + Faker::University.name

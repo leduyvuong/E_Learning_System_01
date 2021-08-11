@@ -7,11 +7,12 @@ class UsersController < ApplicationController
   def show 
     @categories = @user.categories 
     @user_f = @user.following.ids
-    @activities = ActiveRecord::Base.connection.exec_query("select u.username, w.created_at, c.name from wordlists w 
-      inner join users u on u.id = w.user_id and w.user_id in (#{ @user_f.map(&:inspect).join(", ")}) 
-      inner join categories c on c.id = w.category_id order by  w.created_at desc").to_a
-    if @activities.nil?
-      return @categories
+    begin
+      @activities = ActiveRecord::Base.connection.exec_query("select u.username, w.created_at, c.name from wordlists w 
+        inner join users u on u.id = w.user_id and w.user_id in (#{ @user_f.map(&:inspect).join(", ")}) 
+        inner join categories c on c.id = w.category_id order by  w.created_at desc").to_a
+    rescue
+      return @categories && @activities = nil
     else
       return @activities.to_a && @categories
     end   
@@ -32,7 +33,7 @@ class UsersController < ApplicationController
     end
   end
   def new
-    @user =User.new
+    @user = User.new
   end
   def create
     @user = User.new(user_params)

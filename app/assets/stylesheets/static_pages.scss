@@ -350,7 +350,7 @@ textarea {
   }
 }
 
-.active {
+.active_status {
   width: 15px;
   height: 15px;
   -webkit-border-radius: 25px;
@@ -359,7 +359,7 @@ textarea {
   background-color: #31a24c;
 }
 
-.unactive {
+.unactive_status {
   width: 15px;
   height: 15px;
   -webkit-border-radius: 25px;
@@ -425,10 +425,7 @@ textarea {
         text-decoration: none;
       }
     }
-    
   }
-
-  
 }
 
 .course_faculty a::before {

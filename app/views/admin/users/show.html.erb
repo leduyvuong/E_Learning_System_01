@@ -1,0 +1,35 @@
+<%= render "admin/sidebar_admin" %>
+<div class = "col-md-9">
+  <div class="col-md-12 ed_dashboard_tab_info"> 
+    <div class = "col-md-3">
+      <% if @user.user_profile.image.attached? %>
+        <%= image_tag  @user.user_profile.image  %>
+      <%else%>
+        <%= image_tag "23.png" %>
+      <%end%>
+    </div>
+    <div class = "col-md-8">
+      <div class ="col-md-6">                     
+        <p>UserName:</p>
+        <p>Email: </p>
+        <p><%= t("users.profile.fullname")%></p>
+        <p><%= t("users.profile.sex")%></p>
+        <p><%= t("users.profile.address")%></p>
+        <p><%= t("users.profile.phone")%></p>
+        <p><%= t("users.profile.courses")%></p> 
+      </div> 
+      <div class ="col-md-6">                
+        <p><%= @user.username%></p>
+        <p><%= @user.email%></p>
+        <p><%= @user.user_profile.fullname%></p>
+        <p><%= @user.user_profile.sex%></p>
+        <p><%= @user.user_profile.address%></p>
+        <p><%= @user.user_profile.phone%></p>
+        <p><%= @user.categories.count%></p>
+      </div>
+    </div>  
+    <div class ="row ed_dashboard_tab_info">
+      <%= link_to t('users.edit.update_profile'), edit_admin_user_path(id: @user.id), class: "btn btn-primary"%>
+    </div>
+  </div> 
+</div>

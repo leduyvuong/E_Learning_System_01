@@ -1,0 +1,19 @@
+<%= render "admin/sidebar_admin" %>
+<div class = "col-md-4">
+  <%= form_with( model: [:admin, @user], local: true) do |f| %>
+    <%= render "shared/error_messages" %>
+  <div class="col-md-offset-1 signup">
+    <%= f.label :username, "Username" %>
+    <%= f.text_field :username  %>
+    <%= f.label :email, "Email" %>
+    <%= f.text_field :email %>
+    <%= f.label :admin %><%= f.select :admin, options_for_select(["0", "1"], selected: :adm)%>
+    <%= f.label :admin %><%= f.select :status, options_for_select(["1", "0"], selected: :sts)%>                    
+    <%= f.label :password, t('users.new.password') %>
+    <%= f.password_field :password %>
+    <%= f.label :password_confirmation, t('users.new.confirm') %>
+    <%= f.password_field :password_confirmation %>  
+    <%= f.submit  t('users.new.create'), class: "btn btn-primary" %>               
+  </div>
+  <%end%>
+</div>

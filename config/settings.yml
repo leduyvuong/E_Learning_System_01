@@ -1,2 +1,4 @@
 WillPaginate:
   cate_per_page: 6
+  less_per_page: 10
+  user_per_page: 15

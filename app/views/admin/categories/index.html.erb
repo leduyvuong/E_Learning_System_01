@@ -19,9 +19,9 @@
             <td ><%= c.id%></td>
             <td scope="row"><%= c.name%></td>           
             <td><% if c.status.nil?%>
-                  <div class ="active"></div>
+                  <div class ="active_status"></div>
                 <%else%>
-                  <div class ="unactive"></div>
+                  <div class ="unactive_status"></div>
                 <%end%>
             </td>
             <td ><%= c.decription%></td>

@@ -14,4 +14,7 @@ module SessionsHelper
   def logged_in?
     !current_user.nil?
   end
+  def admin_user
+    redirect_to(home_url) unless current_user.admin?
+  end
 end

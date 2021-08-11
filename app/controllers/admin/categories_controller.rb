@@ -9,7 +9,8 @@ class Admin::CategoriesController < ApplicationController
   def new
     @category = Category.new 
   end
-  
+  def show
+  end 
   def create
     @category = Category.new(cate_params)
     @category.image.attach(params[:category][:image])

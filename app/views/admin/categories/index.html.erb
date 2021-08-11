@@ -1,6 +1,5 @@
 <%= render "admin/sidebar_admin" %>
 <div class = "col-md-10 ">
-
   <table class="table table-striped table-inverse table-responsive table-bordered table-hover">
       <thead class="thead-inverse">
         <tr>
@@ -15,7 +14,7 @@
         <div class="row d-flex justify-content-center mt-4">
           <tr>
             <td ><%= c.id%></td>
-            <td scope="row"><%= c.name%></td>           
+            <td scope="row"><%= link_to c.name, admin_category_path(id: c.id), method: :get %></td>           
             <td><% if c.status == true%>
                   <div class ="active_status"></div>
                 <%else%>

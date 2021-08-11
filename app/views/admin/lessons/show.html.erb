@@ -1,0 +1,37 @@
+<%= render "admin/sidebar_admin" %>
+<div class = "col-md-9">
+  <div class="col-md-12 ed_dashboard_tab_info"> 
+    <div class = "col-md-6">
+      <div class ="col-md-6">                     
+        <p>ID: </p>
+          <p>Name Lesson</p>
+          <p>Time</p>
+          <p>Category</p>
+          <p>Words</p> 
+      </div> 
+      <div class ="col-md-6">                
+        <p><%= @lesson.id%></p>
+        <p><%= @lesson.name_lesson%></p>
+        <p><%= @lesson.time%> minutues</p>
+        <p><%= @lesson.category_id%></p>
+        <p><%= @lesson.content_lessons.count%></p>
+      </div>
+     
+      <div class ="row ed_dashboard_tab_info">
+        <%= link_to "Update Category", edit_admin_lesson_path(id: @lesson.id), class: "btn btn-primary"%>
+      </div>
+    </div> 
+    <div class = "col-md-6">
+    <div class="row ">
+      <h3>Word</h3>
+    </div>
+    <div class="row" style = "border: 1px solid">
+    <% @lesson.content_lessons.each do |w|%>
+      <div class = "col-md-4">
+        <%= w.word%>
+      </div>
+    <%end%>
+    </div>
+    </div>
+  </div> 
+</div>

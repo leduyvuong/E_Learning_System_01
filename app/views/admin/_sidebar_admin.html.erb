@@ -18,8 +18,15 @@
         <div class="card card-body childdash_cos">
           <%= link_to "Categories List", admin_categories_path, class: "login_button"%>
           <%= link_to "Add Categories", new_admin_category_path, class: "login_button"%>
-          <%= link_to "Update Categories", login_path, class: "login_button"%>
-          <%= link_to "UnActive Categories", login_path, class: "login_button"%>
+        </div>
+      </div>
+      <div class = "childdash">
+        <%= link_to "Lesson Management", "#lesson_mangament", {"data-toggle" => "collapse" } %>
+      </div>
+      <div class="collapse" id="lesson_mangament">
+        <div class="card card-body childdash_cos">
+          <%= link_to "Lesson List", admin_lessons_path, class: "login_button"%>
+          <%= link_to "Add Lesson", new_admin_lesson_path, class: "login_button"%>
         </div>
       </div>
   </div>

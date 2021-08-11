@@ -1,0 +1,43 @@
+<%= render "admin/sidebar_admin" %>
+<div class = "col-md-9">
+  <div class="col-md-12 ed_dashboard_tab_info"> 
+    <div class = "col-md-3">
+      <% if @category.image.attached? %>
+        <%= image_tag @category.image  %>
+      <%else%>
+        <%= image_tag "23.png" %>
+      <%end%>
+    </div>
+    <div class = "col-md-8">
+      <div class ="col-md-6">                     
+        <p>ID: </p>
+        <p>Name: </p>
+        <p>Description: </p> 
+      </div> 
+      <div class ="col-md-6">                
+        <p><%= @category.id%></p>
+        <p><%= @category.name%></p>
+        <p><%= @category.decription%></p>
+      </div>
+    </div>  
+    <div class ="row ed_dashboard_tab_info">
+      <%= link_to "Update Category", edit_admin_category_path(id: @category.id), class: "btn btn-primary"%>
+    </div>
+    <div class = "row" >
+      <div class="ed_time_executor ed_toppadder40" style = "border: 1px solid">
+          <ul>
+            <li>
+              <%=link_to t("categories.details.lessons"), "#" %> <span><%= t("categories.details.words")%></span>
+              
+            </li>
+            <%@category.lessons.each do |l|%> 
+              <li>
+                <%=link_to l.name_lesson, "#" %> <span><%= l.content_lessons.count%></span>
+              </li>
+              <%end%>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div> 
+</div>

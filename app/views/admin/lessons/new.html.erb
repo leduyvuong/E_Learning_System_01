@@ -1,0 +1,13 @@
+<%= render "admin/sidebar_admin" %>
+<div class = "col-md-9 signup">
+  <%= form_with(model: [:admin, @lesson], local: true) do |c|%>
+    <%= render "shared/error_messages",object:  c.object%>
+      <%= c.label :name %>
+      <%= c.text_field :name_lesson%>
+      <%= c.label :time %>
+      <%= c.text_field :time%>
+      <%= c.label :decription%>
+      <%= c.label :status %><%= c.select :cate, options_for_select(@categories)%>
+      <%= c.submit  "Update", class: "btn btn-primary" %>
+  <%end%>
+</div>

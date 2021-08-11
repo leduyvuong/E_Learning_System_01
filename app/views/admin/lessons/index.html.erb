@@ -1,7 +1,16 @@
 <%= render "admin/sidebar_admin" %>
 <div class = "col-md-10 ">
-  <table class="table table-striped table-inverse table-responsive table-bordered table-hover">
+  <div class = "col-md-6 ">
     <%= render "shared/flash_messages" %>
+  </div>
+  <div class = "col-md-6 ">
+    <%= form_with( url: admin_lessons_path,method: :get, class: "form-inline md-form mr-auto mb-4") do |f| %>
+        <%= f.text_field :name, class: "form-control mr-sm-2"%>
+        <%= f.submit "Search", class: "btn aqua-gradient btn-rounded btn-sm my-0"%>
+    <%end%>
+  </div>
+  <table class="table table-striped table-inverse table-responsive table-bordered table-hover">
+    
       <thead class="thead-inverse">
         <tr>
           <th>ID</th>
@@ -15,7 +24,7 @@
       <tbody>
         <% @lessons.each do |l| %>
         <div class="row d-flex justify-content-center mt-4">
-        <%= form_with(url: admin_lesson_path(id: l.id),method: :put, local: true) do |f| %>
+        <%= form_with(model: [:admin, l], local: true) do |f| %>
           <tr>
             <td colspan = "7">
             </td>
@@ -30,21 +39,21 @@
                   <div class ="unactive_status"></div>
                 <%end%>
             </td>
-            <td ><%= l.category_id%></td>
+            <td ><%= f.text_field :category_id, value: l.category_id%></td>
             <td><%= l.content_lessons.count%></td>
             <td>
-            <%= f.submit "Edit", class: "btn btn-primary" %> 
-            <%if l.status == true%>
-              <%= link_to "Unactive", [:admin, l], method: :delete, class: "btn btn-primary m-1"%>
-            <%else%>
-              <%= link_to "Active", admin_lesson_path(id: l.id), method: :patch, class: "btn btn-primary m-1"%>
-            <%end%>    
+            <%= f.submit "Edit", class: "btn btn-primary" %>  
+        <%end%>
+        <%if l.status == true %>
+          <%= link_to "Unactive", [:admin, l], method: :delete, class: "btn btn-primary m-1"%>
+        <%else%>
+          <%= link_to "Active", admin_lesson_path(id: l.id), method: :patch, class: "btn btn-primary m-1"%>
+        <%end%>    
             </td>
           </tr> 
-          <%end%>
         </div>      
         <%end%>
       </tbody>
     </table>
-    <%= will_paginate @categories, :previous_label=> t("page.pre"), :next_label => t("page.next") %>
+    <%= will_paginate @lessons, :previous_label=> t("page.pre"), :next_label => t("page.next") %>
 </div>

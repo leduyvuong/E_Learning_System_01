@@ -3,8 +3,8 @@
   <%= form_with url: send_test_path(id: params[:id]), method: :post do |f| %>   
    <%= render "shared/flash_messages" %> 
   <%@questions.each do |q|%> 
-    <b>Question <%= @questions.index(q) + 1%>:  </b> <%= q.content%><br>
-    <%q.answers.each do |a|%>
+    <b><%= t("lesson.question")%> <%= @questions.index(q) + 1%>:  </b> <%= q.content%><br>
+    <%change_ans(q).each do |a|%>
       <%= f.radio_button "ques#{q.id}" , a.content, :checked => false, :value => q.id%> 
       <%= f.label q.id, a.content%><br>
     <%end%>

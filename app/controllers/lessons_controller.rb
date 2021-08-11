@@ -24,7 +24,7 @@ class LessonsController < ApplicationController
         @ans_user[ans.id.to_s] = params["ques#{ans.id}"]
       end
     end
-    not_choose = "Choose answer question"
+    not_choose = t("errors.lesson.choose_answer")
     @questions.each do |q|
         @ans = q.answers.where("right_ans = 1").first  
         if params["ques#{q.id}"].nil?
@@ -35,7 +35,7 @@ class LessonsController < ApplicationController
           end
         end
       end 
-    if not_choose == "Choose answer question" 
+    if not_choose == t("errors.lesson.choose_answer")
       flash[:success] = "#{@dem}/#{@questions.count}"
       return @ans_user && @questions
     else

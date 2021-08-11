@@ -5,10 +5,10 @@
     <table class="table table-striped table-inverse table-responsive">
       <thead class="thead-inverse">
         <tr>
-          <th>Word</th>
-          <th>Pronounce</th>
-          <th>Mean</th>
-          <th>Actions</th>
+          <th><%= t("lesson.word")%></th>
+          <th><%= t("lesson.pronounce")%></th>
+          <th><%= t("lesson.mean")%></th>
+          <th><%= t("lesson.actions")%></th>
         </tr>
         </thead>
         <tbody>
@@ -18,15 +18,15 @@
             <td ><%= l.pronounce%></td>
             <td><%= l.mean%></td>
             <td>
-              <%= link_to "add summary", word_summary_path(id: l.id) %> |
-              <%= link_to "more", "https://translate.google.com/?hl=vi&sl=auto&tl=vi&text=#{l.word}&op=translate", target: :_blank %>
+              <%= link_to t("lesson.add_summary"), word_summary_path(id: l.id) %> |
+              <%= link_to t("lesson.more"), "https://translate.google.com/?hl=vi&sl=auto&tl=vi&text=#{l.word}&op=translate", target: :_blank %>
             </td>
           </tr>          
         <%end%>
         </tbody>
     </table>
     <div class="join_courses">
-      <%= link_to "Strart test", test_path(id: @lesson.id)%>
+      <%= link_to t("lesson.strart_test"), test_path(id: @lesson.id)%>
     </div>
   </div>
 </div>

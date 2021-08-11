@@ -1,5 +1,6 @@
 class Category < ApplicationRecord
-  default_scope -> { where(status: true) }
+  scope :sp, -> { where(status: true)}
+  # Ex:- scope :active, -> {where(:active => true)}
   has_many :users, through: :wordlists
   has_many :wordlists, dependent: :destroy
   has_many :lessons, dependent: :destroy

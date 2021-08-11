@@ -5,18 +5,18 @@
     </div>
   </div>
   <div class="col-md-3 col-md-offset-1 signup">
-    <h1><%= t('users.edit.resetpass')%></h1>
+    <h1><%= t("users.edit.resetpass")%></h1>
     <%= form_with(model: @user, local: true) do |f| %>
-      <%= render 'shared/error_messages' %>                       
-      <%= f.label :password, t('users.new.password') %>
+      <%= render "shared/error_messages", object: f.object %>                       
+      <%= f.label :password, t("users.new.password") %>
       <%= f.password_field :password %>
-      <%= f.label :password_confirmation, t('users.new.confirm') %>
+      <%= f.label :password_confirmation, t("users.new.confirm") %>
       <%= f.password_field :password_confirmation %>
-      <%= f.submit  t('users.edit.resetpass'), class: "btn btn-primary" %>
+      <%= f.submit  t("users.edit.resetpass"), class: "btn btn-primary" %>
     <% end %>                   
   </div>
   <div class="col-md-6 signup">
-    <h1><%= t('users.edit.profile')%></h1>
+    <h1><%= t("users.edit.profile")%></h1>
       <%= form_with(model: @user, local: true) do |f| %>
         <div class="col-md-4 ed_profile_img">
           <% if @user.user_profile.image.attached? %>
@@ -30,16 +30,16 @@
 
         </div>
         <div class="col-md-8 "> 
-          <%= render 'shared/error_messages' %>                     
-          <%= f.label :fullname%>
+          <%= render "shared/error_messages", object: f.object %>                     
+          <%= f.label t("users.profile.fullname")%>
           <%= f.text_field :fullname, value: @user.user_profile.fullname %>
-          <%= f.label :sex %>
+          <%= f.label t("users.profile.Sex") %>
           <%= f.text_field :sex, value: @user.user_profile.sex %>
-          <%= f.label :address%>
+          <%= f.label t("users.profile.address")%>
           <%= f.text_field :address, value: @user.user_profile.address %>
-          <%= f.label :phone %>
+          <%= f.label t("users.profile.phone") %>
           <%= f.text_field :phone, value: @user.user_profile.phone %>
-          <%= f.submit  t('users.edit.update_profile'), class: "btn btn-primary" %>
+          <%= f.submit  t("users.edit.update_profile"), class: "btn btn-primary" %>
         </div> 
       <% end %>                     
   </div>

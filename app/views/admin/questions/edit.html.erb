@@ -1,0 +1,21 @@
+<%= render "admin/sidebar_admin" %>
+<div class="col-md-9">
+  <%= render "shared/flash_messages" %>
+  <div class ="col-md-4 signup">
+  <h4>Questions :</h4>
+  <%= form_with(model: [:admin, @question], local: true) do |f| %>
+    <%=f.label :content%>
+    <%= f.text_field :content, value: @question.content %>
+    <%= f.submit "Update", class: "btn btn-primary"%>
+  <%end%>
+  </div>
+  <div class ="col-md-6">
+    <h4>Answers :</h4> 
+    <% @question.answers.each do |a|%>
+      <%= form_with(url: admin_answer_path(id: a.id), local: true, method: :put) do |f| %>
+        <%= f.text_field :content, value: a.content%>
+        <%= f.submit "edit"%>       
+      <%end%>
+    <%end%>
+  </div>
+</div>

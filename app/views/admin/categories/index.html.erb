@@ -4,9 +4,9 @@
       <thead class="thead-inverse">
         <tr>
           <th>ID</th>
-          <th>Name</th>
-          <th style ="text_align: center">Status</th>
-          <th>Description</th>
+          <th><%= t("categories.home.name")%></th>
+          <th style ="text_align: center"><%= t("categories.home.status")%></th>
+          <th><%= t("categories.home.decrip")%></th>
         </tr>
       </thead>
       <tbody>
@@ -23,7 +23,13 @@
             </td>
             <td ><%= c.decription%></td>
             <td>
-              <%= link_to "Edit", edit_admin_category_path(id: c.id) %> | <%= link_to "Unactive", "" %>         
+              <%= link_to t("admin.edit"), edit_admin_category_path(id: c.id), class: "btn btn-primary m-1" %>
+              <% if c.status %>
+                <%= link_to t("admin.unactive"), [:admin, c], method: :delete , class: "btn btn-primary m-1"%> 
+              <%else%>
+                <%= link_to t("admin.active"), admin_category_path(id: c.id), method: :patch , class: "btn btn-primary m-1"%> 
+              <%end%>
+                      
             </td>
           </tr> 
         </div>      

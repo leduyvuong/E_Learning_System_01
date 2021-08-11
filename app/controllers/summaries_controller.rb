@@ -4,10 +4,10 @@ class SummariesController < ApplicationController
     @summary = @current_user.summaries.new(summary_params)
     @summary.status = true
     if @summary.save
-      flash[:success] = "Summary created!"
+      flash[:success] = t("errors.summary.created")
       redirect_to home_path
     else
-      flash[:danger] = "Content can't be empty "
+      flash[:danger] = t("errors.content_empty")
       redirect_to home_path
     end 
   end
@@ -17,23 +17,23 @@ class SummariesController < ApplicationController
       @content = @words.word + " | " + @words.mean
       @summary = @current_user.summaries.new(content: @content, status: true)
       if @summary.save
-        flash[:success] = "Add summary successful!"
+        flash[:success] = t("summary.success")
         redirect_to request.referer
       else
-        flash[:danger] = "Something wrong!" + @summary.content
+        flash[:danger] = flash_errors(@content)
         redirect_to request.referer
       end        
     else
-      flash[:danger] = "Something wrong!" + params[:id]
+      flash[:danger] = t("errors.word_not_found")
       redirect_to request.referer
     end
   end
   def unactive
-    if Summary.find_by(id: params[:id]).update(status: false)
-      flash[:success] = "Successful"
+    if @summary = Summary.find_by(id: params[:id]).update(status: false)
+      flash[:success] = t("errors.success")
       redirect_to home_path
     else
-      flash[:danger] = "Not successful"
+      flash[:danger] = flash_errors(@summary)
       redirect_to home_path
     end
   end

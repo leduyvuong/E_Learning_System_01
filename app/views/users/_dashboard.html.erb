@@ -1,21 +1,21 @@
 <div class="tab-pane active" id="dasboard">
   <div class="ed_dashboard_tab_info">
     <div class = "tabcon">
-      <h1><%= t('static_pages.home.hello')%>, <span>
+      <h1><%= t("static_pages.home.hello")%>, <span>
         <% if @user.user_profile.fullname.nil? %>
           <%= @user.username%>
         <%else%>
           <%=@user.user_profile.fullname %>
         <%end%>
       </span></h1>
-      <h1><%= t('static_pages.home.wellcome')%></h1>
-      <p><%= t('static_pages.home.hi')%> <strong><span>
+      <h1><%= t("static_pages.home.wellcome")%></h1>
+      <p><%= t("static_pages.home.hi")%> <strong><span>
         <% if @user.user_profile.fullname.nil? %>
           <%= @user.username%>
         <%else%>
           <%=@user.user_profile.fullname %>
         <%end%>
-      </strong><%= t('static_pages.home.content')%>
+      </strong><%= t("static_pages.home.content")%>
       </p>
     </div>                
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" style ="padding-top: 50px">
@@ -25,12 +25,12 @@
           <%= f.text_area :content, placeholder: "Compose new summary...", class: "form-control" %>
         </div>
         <div class="form-group">                   
-          <%= f.submit t('static_pages.home.post'), class: "btn ed_btn ed_green" %>
+          <%= f.submit t("static_pages.home.post"), class: "btn ed_btn ed_green" %>
         </div>
       <% end %>                
     </div>
     <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12" style ="padding-top: 20px">
-      <p><%= t('static_pages.home.summary')%></p>
+      <p><%= t("static_pages.home.summary")%></p>
       <div >
         <section class="notepaper">                        
           <% @user.summaries.suma.each do |s| %>                     

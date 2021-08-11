@@ -5,8 +5,8 @@ class SessionsController < ApplicationController
       log_in @user
       redirect_to home_path
     else
-      flash.now[:danger] = t('errors.fail_login')
-      render 'new'
+      flash.now[:danger] = t("errors.wrong_login")
+      render "new"
     end
   end
   def destroy

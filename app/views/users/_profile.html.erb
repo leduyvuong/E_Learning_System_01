@@ -17,11 +17,11 @@
       <p><%= @user.user_profile.sex%></p>
       <p><%= @user.user_profile.address%></p>
       <p><%= @user.user_profile.phone%></p>
-      <p>13</p>
+      <p><%= @user.categories.count%></p>
     </div>
     </div>
     <div class ="row ed_dashboard_tab_info">
-      <%= link_to t('users.edit.update_profile'), edit_path, class: "btn btn-primary"%>
+      <%= link_to t("users.edit.update_profile"), edit_path, class: "btn btn-primary"%>
     </div>
   </div>               
 </div>

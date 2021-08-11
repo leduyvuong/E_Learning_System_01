@@ -18,12 +18,12 @@
                   <% if current_user.following?(u.id) %>
                     <%= form_with(model: current_user.active_relationships.find_by(followed_id: u.id),
                                   html: { method: :delete }, local: true) do |f| %>
-                      <%= f.submit "Unfollow", class: "btn" %>
+                      <%= f.submit t("follow.unfol"), class: "btn" %>
                     <% end %>
                   <% else %>
                     <%= form_with(model: current_user.active_relationships.build, local: true) do |f| %>
                       <div><%= hidden_field_tag :followed_id, u.id %></div>
-                      <%= f.submit "Follow", class: "btn btn-primary" %>
+                      <%= f.submit t("follow.fol"), class: "btn btn-primary" %>
                     <% end %>
                   <%end%>
               </div>

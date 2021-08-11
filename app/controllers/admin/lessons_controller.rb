@@ -2,7 +2,7 @@ class Admin::LessonsController < ApplicationController
   before_action :admin_user
   before_action :found_lesson, only: [:edit, :update, :show, :destroy]
   def index
-    @lessons = Lesson.all.paginate(page: params[:page])
+    @lessons = Lesson.paginate(page: params[:page])
   end
   def new 
     @lesson = Lesson.new
@@ -22,13 +22,13 @@ class Admin::LessonsController < ApplicationController
   end
   def show
   end
-  def update
+  def update  
     @lesson.status = true unless @lesson.status == true
     if @lesson.update(params_lesson)
       flash[:success] = "Update success"
       redirect_to admin_lessons_path
-    else
-      flash[:danger] = "Update the lesson #{@lesson.id} not success"
+    else 
+      flash[:danger] = flash_errors(@lesson)
       redirect_to admin_lessons_path
     end
   end
@@ -37,21 +37,21 @@ class Admin::LessonsController < ApplicationController
       flash[:success] = "Unactive success"
       redirect_to admin_lessons_path
     else
-      flash[:success] = "Unactive unsuccess"
+      flash[:danger] = flash_errors(@lesson)
       redirect_to admin_lessons_path
     end
   end
   private
     def params_lesson
-      params.permit(:name_lesson, :time)
+      params.permit(:name_lesson, :time, :category_id)
     end
     def params_lesson_new
       params.require(:lesson).permit(:name_lesson, :time)
     end
     def found_lesson
       @lesson = Lesson.find_by(id: params[:id])
-        return @lesson unless @lesson.nil? 
-        flash[:danger] = "No found lesson"
-        redirect_to admin_lessons_path
+      return @lesson unless @lesson.nil? 
+      flash[:danger] = "No found lesson"
+      redirect_to admin_lessons_path
     end 
 end

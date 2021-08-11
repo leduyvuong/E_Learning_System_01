@@ -33,7 +33,12 @@
                     <div class ="unactive_status"></div>
                   <%end%></td>
               <td>
-                <%= link_to "Edit", edit_admin_user_path(id: u.id) %> | <%= link_to "Unactive", [:admin, u], method: :delete %>         
+                <%= link_to t("admin.edit"), edit_admin_user_path(id: u.id), class: "btn btn-primary m-1" %> 
+                <%if  u.status%>
+                  <%= link_to t("admin.unactive"), [:admin, u], method: :delete, class: "btn btn-primary m-1" %> 
+                <% else%>
+                  <%= link_to t("admin.active"),  admin_user_path(id: u.id), method: :patch , class: "btn btn-primary m-1"%> 
+                <%end%>        
               </td>
             </tr> 
           <%end%>        

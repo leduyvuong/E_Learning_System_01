@@ -5,10 +5,10 @@
       <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
         <h1>Log in</h1>
         <%= render "shared/flash_messages" %>
-        <%= f.label 'Username or email' %>
-        <%= f.text_field :username, class: 'form-control' %>
+        <%= f.label "Username or email" %>
+        <%= f.text_field :username, class: "form-control" %>
         <%= f.label :password %>
-        <%= f.password_field :password, class: 'form-control' %>
+        <%= f.password_field :password, class: "form-control" %>
         <%= f.submit "Log in", class: "btn btn-primary" %>
       <% end %>
       <p>New user? <%= link_to "Sign up now!", signup_path %></p>

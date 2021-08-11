@@ -19,14 +19,14 @@ class UsersController < ApplicationController
   end
   def logged_in_user
     unless logged_in?
-        flash[:danger] = t('errors.not_login')
+        flash[:danger] = t("errors.not_login")
         redirect_to login_url
     end
   end
   def update 
     @user.user_profile.image.attach(params[:user][:image])
     if @user.update(user_params) && @user.user_profile.update(user_profile_params)
-      flash[:success] = 'Update successful'
+      flash[:success] = t("errors.success")
       redirect_to edit_path
     else
       render "edit"
@@ -66,7 +66,7 @@ class UsersController < ApplicationController
       if @user
         return @user
       else
-        flash[:danger] = t('errors.not_login')
+        flash[:danger] = t("errors.not_login")
         redirect_to login_path
       end
     end   

@@ -1,79 +1,125 @@
 en:
-  errors:
-    fail_login: 'Invalid email/password combination'
-    not_login:  'Please login!'
   layouts:
     header:
-      hi: 'welcome to E-Learning'
-      login:  'Log In'
-      logout: 'Log out'
-      home: 'Home'
-      about:  'About Us'
-      courses:  'Courses'
-      contact:  'Contact'
+      hi: "welcome to E-Learning"
+      login:  "Log In"
+      logout: "Log out"
+      home: "Home"
+      about:  "About Us"
+      courses:  "Courses"
+      contact:  "Contact"
+      user: "User"
     sidebar:
-      wordlist: 'Word List'
-      strartlesson: 'Strart Lesson'
-      activity: 'Activity'
-      profile:  'Profile'
+      wordlist: "Word List"
+      strartlesson: "Strart Lesson"
+      activity: "Activity"
+      profile:  "Profile"
     footer:
-      elearning_about:  'E-Learning is a form of education and learning based on the connection of the Internet. Lecturers and students can both participate in learning and training on the E-learning system on computers, tablets, or smartphones with Internet connection.'
-      educate:  'How many students do you educate monthly? Open'
-      ago:  'ago'
-      design: ' Web Design that works. Have a look at this masterpiece.'
-      private: 'Private Policy'
-      find: 'Find Us'
-      social: 'Social Media'
+      elearning_about:  "E-Learning is a form of education and learning based on the connection of the Internet. Lecturers and students can both participate in learning and training on the E-learning system on computers, tablets, or smartphones with Internet connection."
+      educate:  "How many students do you educate monthly? Open"
+      ago:  "ago"
+      design: " Web Design that works. Have a look at this masterpiece."
+      private: "Private Policy"
+      find: "Find Us"
+      social: "Social Media"
   static_pages:
     home:
-      title: 'Home'
-      hello: 'Hello'
-      hi: 'Hi'
-      content: ', here you have to see and update your profile, subscribed
+      title: "Home"
+      hello: "Hello"
+      hi: "Hi"
+      content: ", here you have to see and update your profile, subscribed
                   courses, activities and other things. All the above updates can be modified from
-                  the left panel provided.'
-      post: 'Post'
-      summary:  'Summary'
-      wellcome: 'Welcome to Dashboard'
-      course_number: 'Course %{numberc}'
-      lesson_number: 'Lesson %{numberl}'
+                  the left panel provided."
+      post: "Post"
+      summary:  "Summary"
+      wellcome: "Welcome to Dashboard"
+      course_number: "Course %{numberc}"
+      lesson_number: "Lesson %{numberl}"
     cate:
-      title:  'Courses'
-      coursename: 'Course Name'
-      location: 'Location'
-      language: 'Language'
-      type: 'Type'
-      search: 'Search'
-      allcourse:  'All Course'
-      students: 'students'
-      getinvolved:  'Get Involved '
-      previous_label: 'Prev'
-      next_label: 'Next'
+      title:  "Courses"
+      coursename: "Course Name"
+      location: "Location"
+      language: "Language"
+      type: "Type"
+      search: "Search"
+      allcourse:  "All Course"
+      students: "students"
+      getinvolved:  "Get Involved "
+      previous_label: "Prev"
+      next_label: "Next"
   users:
     new:
-      title:  'SignUp'
-      signup: 'Sign Up'
-      create: 'Create my account'
-      password: 'Password'
-      confirm:  'Password Confirmation'
+      title:  "SignUp"
+      signup: "Sign Up"
+      create: "Create my account"
+      password: "Password"
+      confirm:  "Password Confirmation"
     edit:
-      resetpass:  'Reset Password'
-      profile:  'Profile'
-      update_profile: 'Update Profile'
+      resetpass:  "Reset Password"
+      profile:  "Profile"
+      update_profile: "Update Profile"
     profile:
-      fullname: 'Full Name :'
-      Sex:  'Sex :'
-      address:  'Address :'
-      phone:  'Phone :'
-      courses:  'Courses :'
+      fullname: "Full Name :"
+      Sex:  "Sex :"
+      address:  "Address :"
+      phone:  "Phone :"
+      courses:  "Courses :"
   categories:
     home:
-      title:  'Categories'
-      allcourses:  'All Courses'
-      getinvolved:  'Get Involved'
+      name: "Name Course"
+      status: "Status"
+      decrip: "Description"
+      title:  "Categories"
+      allcourses:  "All Courses"
+      getinvolved:  "Get Involved"
     details:
-      descrip: 'Description'
-      about:  'About Courses'
-      student:  'Students'
-      lessons:  'Lessons'
-      words:  'Words'
+      descrip: "Description"
+      about:  "About Courses"
+      student:  "Students"
+      lessons:  "Lessons"
+      words:  "Words"
+
+  errors:
+    wrong_login: "Tài khoản hoặc mật khẩu không đúng"
+    not_login:  "Hãy đăng nhập!"
+    success:  "Thành công!"
+    unsuccess: "Không thành công" 
+    word_not_found: "Không tìm thấy từ!"
+    has_err:  "Có %{err} lỗi "
+    summary:
+      created:  "Summary created!"
+      success:  "Add summary successful!"
+    wordlist:
+      success:  "Join successfull!"
+      unsucces: "You joined this courses"
+    lesson:
+      choose_answer:  "Choose answer question"
+  wordlist:
+    strart_lesson:  "Strart Lesson"
+    word: "words."
+  lesson:
+    word: "Word"
+    pronounce:  "pronounce"
+    mean: "Mean"
+    actions:  "Action"
+    strart_test:  "Strart test"
+    add_summary:  "Add Summary"
+    more: "More"
+    question: "Câu hỏi"
+  follow:
+    following:  "following"
+    follower: "followers"
+    fol:  "Follow"
+    unfol:  "Unfollow"
+
+  admin:
+    user: "User Management"
+    userlist: "User list"
+    adduser:  "Add user"
+    cate: "Categories Management"
+    catelist: "Categories List"
+    addcate:  "Add Categories"
+    lesson: "Lesson Management"
+    lessonlist: "Lesson List"
+    addlesson:  "Add lesson"
+

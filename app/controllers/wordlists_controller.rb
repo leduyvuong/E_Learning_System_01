@@ -4,7 +4,7 @@ class WordlistsController < ApplicationController
     if @user = current_user
       return @user
     else
-      flash[:danger] = t("error.not_login")
+      flash[:danger] = t("errors.not_login")
       redirect_to root_path
     end
   end
@@ -12,14 +12,14 @@ class WordlistsController < ApplicationController
     if !Wordlist.where("category_id = ? and user_id = ?", params[:id_cate], current_user.id).first
       @word = Wordlist.new(category_id: params[:id_cate], user_id: current_user.id)
       if @word.save
-        flash[:success] = "Join Successfull!"
+        flash[:success] = t("errors.wordlist.success")
         redirect_to cate_path
       else
-        flash[:danger] = "Something wrong!"
+        flash[:danger] = flash_errors(@word)
         redirect_to cate_path
       end
     else
-      flash[:danger] = "You joined this courses"
+      flash[:danger] = t("errors.wordlist.unsucces")
       redirect_to cate_path
     end   
   end

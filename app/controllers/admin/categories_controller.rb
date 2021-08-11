@@ -1,6 +1,6 @@
 class Admin::CategoriesController < ApplicationController
   before_action :admin_user
-  before_action :found_cate, only: [:edit, :update, :show, :destory]
+  before_action :found_cate, only: [:edit, :update, :show, :destroy]
   def index 
     @categories = Category.paginate(page: params[:page])
   end
@@ -23,12 +23,31 @@ class Admin::CategoriesController < ApplicationController
   end
   
   def update
-    @category.image.attach(params[:category][:image])
-    if @category.update(cate_params)
-      flash[:success] = "Successfull"
-      redirect_to edit_admin_category_path
+    if @category.status == true 
+      @category.image.attach(params[:category][:image])
+      if @category.update(cate_params)
+        flash[:success] = "Successfull"
+        redirect_to edit_admin_category_path
+      else
+        render :edit
+      end
     else
-      render :edit
+      if @category.update(status: true)
+        flash[:success] = "Active Successfull"
+        redirect_to admin_categories_path
+      else
+        flash[:dange] = flash_errors(@category)
+        redirect_to admin_categories_path
+      end
+    end
+  end
+  def destroy
+    if @category.update(status: false)
+      flash[:success] = "Successfull"
+      redirect_to admin_categories_path
+    else
+      flash[:danger] = flash_errors(@category)
+      redirect_to admin_categories_path
     end
   end
   private

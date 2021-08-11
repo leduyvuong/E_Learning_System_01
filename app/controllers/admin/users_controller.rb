@@ -31,12 +31,23 @@ class Admin::UsersController < ApplicationController
     end
   end
   def update 
-    @user.user_profile.image.attach(params[:user][:image])
-    if @user.update(user_params) && @user.user_profile.update(user_profile_params)
-      flash[:success] = "Update successful"
-      render :edit
+    if @user.status == false
+      if @user.update(status: true)
+        flash[:success] = "Update successful"
+        redirect_to admin_users_path
+      else
+        flash[:danger] = flash_errors(@user)
+        render redirect_to admin_users_path
+      end
     else
-      render :edit
+      @user.status = true unless @user.status
+      @user.user_profile.image.attach(params[:user][:image])
+      if @user.update(user_params) && @user.user_profile.update(user_profile_params)
+        flash[:success] = "Update successful"
+        render :edit
+      else
+        render :edit
+      end
     end
   end
 
@@ -63,7 +74,7 @@ class Admin::UsersController < ApplicationController
       if @user
         return @user
       else
-        flash[:danger] = t('errors.not_login')
+        flash[:danger] = t("errors.not_login")
         redirect_to login_path
       end
     end  

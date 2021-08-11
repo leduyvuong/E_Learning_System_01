@@ -22,16 +22,19 @@
       </div>
     </div> 
     <div class = "col-md-6">
-    <div class="row ">
-      <h3>Word</h3>
-    </div>
-    <div class="row" style = "border: 1px solid">
-    <% @lesson.content_lessons.each do |w|%>
-      <div class = "col-md-4">
-        <%= w.word%>
+      <div class="row ">
+        <h3>Word <%= link_to "(Xem tất cả)", admin_content_lessons_path(id_lesson: @lesson.id) %></h3>
       </div>
-    <%end%>
-    </div>
+      <div class="row" style = "border: 1px solid">
+      <% @lesson.content_lessons.each do |w|%>
+        <div class = "col-md-4">
+          <%= w.word%>
+        </div>
+      <%end%>
+      </div>
+      <div class="row ">
+        <h3>Questions <%= link_to "(Xem tất cả)", admin_questions_path(id_lesson: @lesson.id) %></h3>
+      </div>
     </div>
   </div> 
 </div>

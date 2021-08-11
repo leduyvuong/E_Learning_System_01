@@ -17,16 +17,19 @@
             <%= f.label q.id, a.content%><br>
           </div>
           <%end%>
+        <%elsif a.right_ans == true%>
+          <div class = "correct_ans">
+            <%=  f.radio_button "ques#{q.id}" , a.content, :checked => true, :value => q.id%> 
+            <%=  f.label q.id, a.content%><br>
+          </div>
         <%else%>
-        
           <%=  f.radio_button "ques#{q.id}" , a.content, :checked => false, :value => q.id%> 
           <%=  f.label q.id, a.content%><br>
-        
         <%end%>
       <%end%>
       <br>    
     <%end%>
-     <%= f.submit  "Next", class: "btn btn-primary" %>
+     <%= link_to "Next", home_path, class: "btn btn-primary m-1" %>
   <%end%>
   </div>
 </div>

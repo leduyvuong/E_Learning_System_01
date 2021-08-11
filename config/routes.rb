@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   scope "(:locale)", locale: /en|vi/ do
     root "sessions#new"
+    
     get "/search",            to: "admin#search"
     get "/admin",             to: "admin#new"
     get "/ac",                to: "users#activities"
@@ -34,8 +35,12 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users
     resources :categories
-    resources :questions
+    resources :questions do 
+      get "/swap",   to: "questions#change_ans"
+    end
     resources :answers
     resources :lessons
+    resources :content_lessons
+    resources :answers
   end
 end

@@ -6,4 +6,12 @@ class Lesson < ApplicationRecord
   self.per_page = Settings.WillPaginate.less_per_page
   has_many :content_lessons, dependent: :destroy
   has_many :questions, dependent: :destroy
+  scope :search_name, -> (name){ where("name_lesson like ?", "%#{name}%")}
+  def self.search(name)
+    if name
+      search_name name
+    else
+      all
+    end
+  end
 end

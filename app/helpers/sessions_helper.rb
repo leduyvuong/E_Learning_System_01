@@ -17,4 +17,17 @@ module SessionsHelper
   def admin_user
     redirect_to(home_url) unless current_user.admin?
   end
+  def flash_errors(object)
+    @flash = "Has #{object.errors.count} error: "
+    if object.errors.any?
+      object.errors.full_messages.each do |n|
+        if object.errors.full_messages.last == n
+          @flash += n + "."
+        else
+          @flash += n + ", "
+        end 
+      end
+    end
+    return @flash
+  end
 end

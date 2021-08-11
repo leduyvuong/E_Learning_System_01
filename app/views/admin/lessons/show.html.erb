@@ -23,7 +23,7 @@
     </div> 
     <div class = "col-md-6">
     <div class="row ">
-      <h3>Word</h3>
+      <h3>Word <%= link_to "(Xem tất cả)", admin_content_lessons_path(id_lesson: @lesson.id) %></h3>
     </div>
     <div class="row" style = "border: 1px solid">
     <% @lesson.content_lessons.each do |w|%>

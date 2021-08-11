@@ -20,11 +20,11 @@ class SummariesController < ApplicationController
         flash[:success] = "Add summary successful!"
         redirect_to request.referer
       else
-        flash[:danger] = "Something wrong!" + @summary.content
+        flash[:danger] = "Something wrong!"
         redirect_to request.referer
       end        
     else
-      flash[:danger] = "Something wrong!" + params[:id]
+      flash[:danger] = "Something wrong!"
       redirect_to request.referer
     end
   end

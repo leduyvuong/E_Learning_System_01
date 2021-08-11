@@ -7,7 +7,7 @@
       <%= c.label :time %>
       <%= c.text_field :time%>
       <%= c.label :decription%>
-      <%= c.label :status %><%= c.select :cate, options_for_select(@categories)%>
+      <%= c.label :categories %><%= c.select :cate, options_for_select(@categories)%>
       <%= c.submit  "Update", class: "btn btn-primary" %>
   <%end%>
 </div>

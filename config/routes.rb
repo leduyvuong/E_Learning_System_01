@@ -37,5 +37,7 @@ Rails.application.routes.draw do
     resources :questions
     resources :answers
     resources :lessons
+    resources :content_lessons
+    resources :questions
   end
 end

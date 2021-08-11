@@ -2,7 +2,11 @@ class Admin::LessonsController < ApplicationController
   before_action :admin_user
   before_action :found_lesson, only: [:edit, :update, :show, :destroy]
   def index
-    @lessons = Lesson.all.paginate(page: params[:page])
+    @lessons = Lesson.search(params[:name]).paginate(page: params[:page])
+    if @lessons.count == 0
+      flash[:danger] = "There is no lesson with the same name #{params[:name]}"
+      @lessons = Lesson.all.paginate(page: params[:page])
+    end
   end
   def new 
     @lesson = Lesson.new
@@ -27,8 +31,8 @@ class Admin::LessonsController < ApplicationController
     if @lesson.update(params_lesson)
       flash[:success] = "Update success"
       redirect_to admin_lessons_path
-    else
-      flash[:danger] = "Update the lesson #{@lesson.id} not success"
+    else     
+      flash[:danger] = flash_errors(@lesson)
       redirect_to admin_lessons_path
     end
   end

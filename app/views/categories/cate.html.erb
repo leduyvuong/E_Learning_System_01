@@ -44,7 +44,11 @@
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
               <div class="ed_mostrecomeded_course">
                 <div class="ed_item_img">
-                  <%= image_tag "sec1_s5_big.jpg" , class: "img-responsive" %>
+                <% if p.image.attached? %>
+                  <%= image_tag  p.image  %>
+                <%else%>
+                  <%= image_tag "sec1_s5_big.jpg" %>
+                <%end%>
                 </div>
                 <div class="ed_item_description ed_most_recomended_data">
                   <h4>

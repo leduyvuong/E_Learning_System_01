@@ -1,15 +1,15 @@
 <%= render "admin/sidebar_admin" %>
 <div class = "col-md-9">
   <h1><%= t('users.edit.resetpass')%></h1>
-  <%= render "shared/error_messages" %>
   <%= render "shared/flash_messages" %>
   <%= form_with(model: [:admin, @user], local: true) do |f| %>
+  <%= render "shared/error_messages",object:  f.object%>
   <div class="col-md-4 col-md-offset-1 signup">
     <%= f.label :username, "Username" %>
     <%= f.text_field :username, value: @user.username %>
     <%= f.label :email, "Email" %>
     <%= f.text_field :email, value: @user.email %>
-    <%= f.label :admin %><%= f.select :admin, options_for_select(["0", "1"], :selected => @user.admin)%>                       
+    <%= f.label :admin %><%= f.select :admin, options_for_select(["0", "1"], :selected => @.admin)%>                       
     <%= f.label :password, t('users.new.password') %>
     <%= f.password_field :password %>
     <%= f.label :password_confirmation, t('users.new.confirm') %>

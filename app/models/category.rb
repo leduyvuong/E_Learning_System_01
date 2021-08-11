@@ -1,4 +1,5 @@
 class Category < ApplicationRecord
+  default_scope -> { where(status: true) }
   has_many :users, through: :wordlists
   has_many :wordlists, dependent: :destroy
   has_many :lessons, dependent: :destroy

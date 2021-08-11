@@ -1,0 +1,42 @@
+<%= render "admin/sidebar_admin" %>
+<div class = "col-md-9">
+  <%= form_with(model: [:admin, @category], local: true) do |c|%>
+    <%= render "shared/error_messages",object:  c.object%>
+    <%= render "shared/flash_messages" %>
+    <div class="col-md-4 ed_profile_img">
+      <% if @category.image.attached? %>
+        <%= image_tag  @category.image  %>
+      <%else%>
+        <%= image_tag "sec1_s5_big.jpg" %>
+      <%end%>
+      <span class="image">
+        <%= c.file_field :image %>
+      </span>
+    </div>
+    <div class = "col-md-8 signup">
+      <%= c.label :name %>
+      <%= c.text_field :name, value: @category.name%>
+      <%= c.label :status %><%= c.select :status, options_for_select(["1", "0"], selected: @category.status)%>
+      <%= c.label :decription%>
+      <%= c.text_area :decription, value: @category.decription, size: "709x10"%>
+       <%= c.submit  "Update", class: "btn btn-primary" %>
+    </div>
+    <div class = "row" >
+      <div class="ed_time_executor ed_toppadder40" style = "border: 1px solid">
+          <ul>
+            <li>
+              <%=link_to t("categories.details.lessons"), "#" %> <span><%= t("categories.details.words")%></span>
+              
+            </li>
+            <%@category.lessons.each do |l|%> 
+              <li>
+                <%=link_to l.name_lesson, "#" %> <span><%= l.content_lessons.count%></span>
+              </li>
+              <%end%>
+          </ul>
+        </div>
+      </div>
+    </div>
+  <%end%>
+
+</div>

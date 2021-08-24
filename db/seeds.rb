@@ -19,7 +19,7 @@ end
 36.times do 
   name = "Course of " + Faker::University.name
   decription = Faker::Quote.matz
-  @cate = Category.new(name: name, decription: decription)
+  @cate = Category.new(name: name, decription: decription, status: true)
   while @cate.save == false
     name = "Course of " + Faker::University.name
     decription = Faker::Quote.matz

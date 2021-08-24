@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
   before_action :found_category, only: :show
   def index
-    @categories = Category.paginate(page: params[:page])
+    @categories = Category.active.search(params[:name]).paginate(page: params[:page])
     render :home
   end
   def show

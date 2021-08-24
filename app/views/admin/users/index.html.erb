@@ -23,7 +23,13 @@
         <% @users.each do |u| %>
           <% if u.email != "firesoul0608@gmail.com"%>
             <tr>
-              <td ><%= u.id - 1%></td>
+              <td >
+                <%if params[:page]%>
+                  <%= (params[:page].to_i - 1)*10 + @users.index(u)%>
+                <%else%>
+                  <%= @users.index(u) %>
+                <%end%>
+              </td>
               <td scope="row"><%= link_to u.username, admin_user_path(id: u.id) %></td>
               <td ><%= u.email%></td>
               <td><% if u.status%>

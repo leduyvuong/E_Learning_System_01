@@ -27,7 +27,9 @@ class Admin::UsersController < ApplicationController
 
   def update
     @user_profile = @user.user_profile
-    @user_profile.image.attach(params[:user][:image])
+    if params[:user][:image]
+      @user_profile.image.attach(params[:user][:image])
+    end
     if @user.update(user_params) && @user_profile.update(user_profile_params)
       flash[:success] = t("inform.success")
       render :edit

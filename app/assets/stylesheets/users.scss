@@ -18,7 +18,7 @@
 }
 
 .signup {
-  margin-bottom: 50px;
+  margin-bottom: 10px;
 
   input,
   textarea,
@@ -34,6 +34,29 @@
   input {
     height: auto !important;
   }
+}
+
+.answer {
+  margin-bottom: 50px;
+
+  input,
+  textarea,
+  select,
+  .uneditable-input {
+    border: 1px solid #bbb;
+    width: 50%;
+    margin-bottom: 15px;
+
+    @include box_sizing;
+  }
+
+  input {
+    height: auto !important;
+  }
+}
+
+.pagination {
+  margin: 0;
 }
 
 #error_explanation {

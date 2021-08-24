@@ -1,0 +1,65 @@
+<%= render "admin/sidebar_admin" %>
+<div class="col-md-10 ">
+  <%= render "shared/flash_messages" %>
+  <div class ="row col-md-3 signup">
+  <h3><%= t("admin.questions.ques")%></h3>
+  <%= form_with(model: [:admin, @question], local: true) do |f| %>
+    <%=f.label :content, value:  t("admin.questions.content")%>
+    <%= f.text_field :content, value: @question.content %>
+    <%= f.submit "Update", class: "btn btn-primary"%>
+  <%end%>
+  </div>
+  <div class = "col-md-4 col-md-offset-3 signup">
+  <h3><%= t("admin.answers.new")%></h3>
+    <%= form_with(url: admin_answers_path(id_question: @question.id), local: true, method: :post) do |f| %>
+        <%=f.label :content, value:  t("admin.answers.content")%>
+        <%= f.text_field :content%>
+        <%=f.label :right_ans, value:  t("admin.questions.right_ans")%>
+        <%= f.select :right_ans, options_for_select([[t("admin.answers.false"), false], [t("admin.answers.true"), true] ])%> 
+        <%= f.submit "thêm", class: "btn btn-primary m-1"%>       
+      <%end%>
+  </div>
+  <div class ="col-md-10">
+    <h3><%= t("admin.answers.answer")%></h3> 
+    
+      <%= will_paginate @answers, :previous_label=> t("page.pre"), :next_label => t("page.next") %>
+
+      <table class="table table-striped table-inverse table-responsive table-bordered table-hover">
+    <thead class="thead-inverse">
+      <tr>
+        <th>STT</th>
+        <th><%= t("admin.answers.content")%></th>
+        <th><%= t("admin.answers.right_ans")%></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @answers.each do |a|%>
+      <div class="row d-flex justify-content-center mt-4">
+        <tr>
+          <td colspan = "7">
+          </td>
+        </tr>
+        <%= form_with(url: admin_answer_path(id: a.id), local: true, method: :put) do |f| %>
+        <tr>
+          <td>
+            <%if params[:page]%>
+              <%= (params[:page].to_i - 1)*10 + @answers.index(a)+1%>
+            <%else%>
+              <%= @answers.index(a)+1%>
+            <%end%>
+          </td>          
+          <td ><%= f.text_field :content, value: a.content%></td>
+          <td ><%= f.select :right_ans, options_for_select([[t("admin.answers.false"), false], [t("admin.answers.true"), true] ], a.right_ans)%> </td>
+          <td>
+            <%= f.submit t("admin.answers.edit"), class: "btn btn-primary m-1"%>  
+            <%= link_to t("admin.answers.delete"), [:admin, a], method: :delete, class: "btn btn-primary m-1" %>               
+          </td>
+        </tr>
+        <%end%> 
+      <%end%>
+      </div>      
+    </tbody>
+  </table>
+  </div>
+  
+</div>

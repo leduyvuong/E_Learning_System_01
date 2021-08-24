@@ -21,7 +21,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save &&  @user.create_user_profile(fullname: @user.username)
+    if @user.save  
+      @user.create_user_profile(fullname: @user.username)
       log_in @user
       redirect_to home_path
     else
@@ -35,7 +36,9 @@ class UsersController < ApplicationController
 
   def update
     @user_profile = @user.user_profile
-    @user_profile.image.attach(params[:user][:image])
+    if params[:user][:image]
+      @user_profile.image.attach(params[:user][:image])
+    end
     if @user.update(user_params) && @user_profile.update(user_profile_params)
       flash[:success] = t("inform.success")
       redirect_to request.referer

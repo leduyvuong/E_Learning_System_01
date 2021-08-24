@@ -1,0 +1,21 @@
+<%= render "admin/sidebar_admin" %>
+<div class = "col-md-9">
+  <%= form_with(model: [:admin, @category], local: true) do |c|%>
+    <%= render "shared/error_messages",object:  c.object%>
+    <%= render "shared/flash_messages" %>
+    <div class="col-md-4 ed_profile_img">
+        <%= image_tag "sec1_s5_big.jpg" %>
+      <span class="image">
+        <%= c.file_field :image %>
+      </span>
+    </div>
+    <div class = "col-md-8 signup">
+      <%= c.label :name, value: t("admin.categories.lesson") %>
+      <%= c.text_field :name%>
+      <%= c.label :status, value: t("admin.categories.status") %><%= c.select :status, options_for_select(["1", "0"], selected: @category.status)%>
+      <%= c.label :decription, value: t("admin.categories.decrip")%>
+      <%= c.text_area :decription,  size: "360x10"%>
+        <%= c.submit t("admin.categories.create"), class: "btn btn-primary" %>
+    </div>
+  <%end%>
+</div>

@@ -12,11 +12,11 @@ class User < ApplicationRecord
   validates :email, presence: true, length: {maximum: 255}, 
                           format: { with: VALID_EMAIL_REGEX }, 
                           uniqueness: true
-  has_many :active_relationships, class_name: "Relationship",
-                                  foreign_key: "follower_id",
+  has_many :active_relationships, class_name: :Relationship,
+                                  foreign_key: :follower_id,
                                   dependent: :destroy
-  has_many :passive_relationships, class_name: "Relationship",
-                          foreign_key: "followed_id",
+  has_many :passive_relationships, class_name: :Relationship,
+                          foreign_key: :followed_id,
                           dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
@@ -33,10 +33,27 @@ class User < ApplicationRecord
     if user
       user_array = search_name user
       return user_array unless user_array.blank?
-      return all
+      all
     else
       all
     end
+  end
+
+  def self.from_omniauth(auth)
+    user = User.where(email: auth.info.email).first
+    if user.nil?
+      password = Devise.friendly_token[0,20]
+      u = User.create!(provider: auth.provider,
+                          uid: auth.uid,
+                          email: auth.info.email,
+                          username: auth.info.name,
+                          password: password,
+                          password_confirmation: password)
+    else
+      user.user_profile.fullname = auth.info.name
+      user.user_profile.save
+    end
+    user
   end
 
   def follow(other_user)

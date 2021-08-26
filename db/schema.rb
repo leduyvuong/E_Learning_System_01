@@ -120,7 +120,7 @@ ActiveRecord::Schema.define(version: 2021_08_20_071218) do
     t.string "username"
     t.string "email"
     t.boolean "status"
-    t.boolean "admin"
+    t.integer "role"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"

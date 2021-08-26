@@ -3,7 +3,7 @@
                     password: "123456",
                     password_confirmation: "123456",
                     status: true,
-                    admin: true)
+                    role: 0)
 @user.create_user_profile(fullname: @user.username)
 30.times do |n|
   name = Faker::Name.name
@@ -13,7 +13,7 @@
                         password: "123456",
                         password_confirmation: "123456",
                         status: true,
-                        admin: false)
+                        role: 2)
   @user.create_user_profile(fullname: @user.username)
 end
 36.times do 

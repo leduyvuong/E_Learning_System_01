@@ -1,5 +1,10 @@
 class User < ApplicationRecord
+  enum role: {admin: 0, teacher: 1, student: 2 }
+  before_create :default_author
   self.per_page = Settings.WillPaginate.user_per_page
+  scope :user_admin, -> { where(role: 0)}
+  scope :user_teacher, -> { where(role: 1)}
+  scope :user_student, -> { where(role: 2)}
   has_one :user_profile
   has_many :summaries, dependent: :destroy
   has_many :wordlists, dependent: :destroy
@@ -39,6 +44,10 @@ class User < ApplicationRecord
       user_array = search_name user
       return user_array unless user_array.blank?
       all
+  end
+
+  def default_author
+    self.status ||= true
   end
 
   def follow(other_user)

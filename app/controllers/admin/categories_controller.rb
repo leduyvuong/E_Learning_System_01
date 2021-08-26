@@ -1,6 +1,7 @@
 class Admin::CategoriesController < ApplicationController
   before_action :admin_user
   before_action :found_category, only: [:edit, :update, :show, :destroy]
+  
   def index
     @categories = Category.search(params[:name]).paginate(page: ( params[:page] if is_number? params[:page] ) )
   end
@@ -34,6 +35,7 @@ class Admin::CategoriesController < ApplicationController
       render :edit
     end
   end
+
   def destroy
     if @category.update(status: !@category.status)
       flash[:success] = t("inform.success")
@@ -43,6 +45,7 @@ class Admin::CategoriesController < ApplicationController
       redirect_to admin_categories_path
     end
   end
+
   private
     def found_category
       @category = Category.find_by(id: params[:id])
@@ -50,6 +53,7 @@ class Admin::CategoriesController < ApplicationController
       flash[:danger] = t("admin.categories.not_found")
       redirect_to admin_categories_path
     end
+
     def category_params
       params.require(:category).permit(:name, :decription)
     end

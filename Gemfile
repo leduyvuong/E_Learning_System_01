@@ -23,6 +23,7 @@ gem "will_paginate", "~> 3.3"
 gem "bootstrap-will_paginate", "~> 1.0"
 gem "faker", "~> 2.18"
 gem "config", "~> 3.1"
+gem "active_storage_validations", "~> 0.9.5"
 
 group :development, :test do
   

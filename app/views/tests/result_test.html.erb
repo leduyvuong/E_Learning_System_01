@@ -5,27 +5,27 @@
     <%@questions.each do |q|%> 
       <b><%= t("lesson.show.question")%> <%= @questions.index(q) + 1%>:  </b> <%= q.content%><br>
       <%q.answers.each do |a|%>
-        <%if @ans_user["#{q.id}"] == a.content %>
+        <%if @ans_user["#{q.id}"] == a.content_lesson.word %>
           <% if a.right_ans == true%>
           <div class = "correct_ans">
-            <%=  f.radio_button "ques#{q.id}" , a.content, checked: true, value: q.id%> 
-            <%=  f.label q.id, a.content%><br>
+            <%=  f.radio_button "ques#{q.id}" , a.content_lesson.word, checked: true, value: q.id%> 
+            <%=  f.label q.id, a.content_lesson.word%><br>
           </div>
           <%else%>
           <div class = " incorrect_ans">
-            <%= f.radio_button "ques#{q.id}" , a.content, checked: true, value: q.id%> 
-            <%= f.label q.id, a.content%><br>
+            <%= f.radio_button "ques#{q.id}" , a.content_lesson.word, checked: true, value: q.id%> 
+            <%= f.label q.id, a.content_lesson.word%><br>
           </div>
           <%end%>
         <%else%>
           <% if a.right_ans == true%>
             <div class = "correct_ans">
-              <%=  f.radio_button "ques#{q.id}" , a.content, checked: false, value: q.id%> 
-              <%=  f.label q.id, a.content%><br>
+              <%=  f.radio_button "ques#{q.id}" , a.content_lesson.word, checked: false, value: q.id%> 
+              <%=  f.label q.id, a.content_lesson.word%><br>
             </div>
           <%else%>
-            <%=  f.radio_button "ques#{q.id}" , a.content, checked: false, value: q.id%> 
-            <%=  f.label q.id, a.content%><br>
+            <%=  f.radio_button "ques#{q.id}" , a.content_lesson.word, checked: false, value: q.id%> 
+            <%=  f.label q.id, a.content_lesson.word%><br>
           <%end%>
         <%end%>
       <%end%>

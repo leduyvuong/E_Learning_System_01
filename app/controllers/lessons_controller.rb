@@ -1,7 +1,11 @@
 class LessonsController < ApplicationController
-  before_action :found_lesson, only: [:show]
+  before_action :found_lesson, only: [:show, :train]
   def show
     session.delete(:ans_user)
+    @words = @lesson.content_lessons
+  end
+
+  def train
     @words = @lesson.content_lessons
   end
   private

@@ -1,0 +1,125 @@
+<div class="row ed_dashboard_wrapper">
+  <div class="col-lg-8 col-lg-offset-2  container ed_dashboard_tab_info "> 
+    <h3><%= t("lesson.show.lesson_name")%> <%= @lesson.name_lesson%></h3>
+    <%= render "shared/flash_messages" %>
+      <% @words.each do |w| %>
+        <% if @words.first == w%>
+          <div id = "game<%= w.id%>" class = "lesson">
+            <div class = "row">
+              <% if w.image.attached? %>
+                <%= image_tag w.image, size: "200x200" %>
+              <%end%>
+            </div>
+            <div class = "row">
+              <% if w.audio_word.attached? %>
+                <%= image_tag "audio_stop_bt.gif", onclick: "play(#{w.id})" %>
+                <%= audio_tag url_for(w.audio_word), id: "audio#{w.id}"%>
+              <%end%>
+            </div>
+            <input id ="<%= w.id%>" value=<%= w.word%> hidden/>
+            <div class = "row">
+              <% (swap_string w.word).each do %>
+                <button class = "btn_train btn_answer<%=w.id%>" value ="" disabled> </button>
+              <%end%>
+            </div>
+            <div class = "row">
+              <% (swap_string w.word).each do |word|%>
+                <button class = "btn_train <%=w.id%> btn_word" value = "<%= word%>"><%= word%></button>
+              <%end%>
+            </div>
+            <div id = "action" class = "row">
+              <button class = "btn_check <%= w.id%> btn btn-primary">Check</button>
+              <button class = "btn_undo <%= w.id%> btn btn-primary">Undo</button>
+            </div>
+            <div class = "row" id = "next" hidden>
+              <button class = "btn_next <%= w.id%> btn btn-primary">Next</button>
+            </div>
+          </div>
+        <%else%>
+          <div id = "game<%= w.id%>" class = "lesson" hidden>
+            <div class = "row">
+              <% if w.image.attached? %>
+                <%= image_tag w.image, size: "200x200" %>
+              <%end%>
+            </div>
+            <div class = "row">
+              <% if w.audio_word.attached? %>
+                <%= image_tag "audio_stop_bt.gif", onclick: "play(#{w.id})" %>
+                <%= audio_tag url_for(w.audio_word), id: "audio#{w.id}"%>
+              <%end%>
+            </div>
+            <input id ="<%= w.id%>" value=<%= w.word%> hidden/>
+            <div class = "row">
+              <% (swap_string w.word).each do %>
+                <button class = "btn_train btn_answer<%=w.id%>" value ="" disabled> </button>
+              <%end%>
+            </div>
+            <div class = "row">
+              <% (swap_string w.word).each do |word|%>
+                <button class = "btn_train <%=w.id%> btn_word" value = "<%= word%>"><%= word%></button>
+              <%end%>
+            </div>
+            <div id = "action" class = "row ">
+              <button class = "btn_check <%= w.id%> btn btn-primary">Check</button>
+              <button class = "btn_undo <%= w.id%> btn btn-primary">Undo</button>
+            </div>
+            <div id = "next" class = "row" hidden>
+              <button class = "btn_next <%= w.id%> btn btn-primary">Next</button>
+            </div>
+          </div>
+        <%end%>   
+      <%end%>
+  </div>
+</div>
+<script>
+  $(".btn_word").click(function() {
+    var class_button = $(this).attr('class');
+    var word = $(this).val();
+    $(this).hide();
+    var id = class_button.split(" ");
+    var array = document.getElementsByClassName("btn_answer"+id[1])
+    for ( let i = 0; i < array.length; i++) {
+      if (array[i].value == "") {
+        array[i].value += word;
+        array[i].innerHTML = word;
+        break;
+      }
+    }
+  });
+  $(".btn_check").click(function() {
+    var class_button = $(this).attr('class');
+    var id = class_button.split(" ");
+    var array = document.getElementsByClassName("btn_answer"+id[1])
+    var answer = ""
+    for ( let i = 0; i < array.length; i++) {
+      answer += array[i].value;
+    }
+    var right_ans = document.getElementById(id[1]).value
+    console.log(right_ans);
+    if (answer == right_ans) {
+      document.getElementById("next").hidden = false;
+      document.getElementById("action").hidden = true;
+      alert("Exactly");
+    }
+    else {
+      alert("No");
+    }
+  });
+  $(".btn_undo").click(function() {
+    var class_button = $(this).attr('class');
+    var id = class_button.split(" ");
+    var array = document.getElementsByClassName("btn_answer"+id[1])
+    for ( let i = 0; i < array.length; i++) {
+      array[i].innerHTML = "";
+      array[i].value = ""
+    }
+    $(".btn_word").show();
+  });
+  $(".btn_next").click(function() {
+    var class_button = $(this).attr('class');
+    var id = class_button.split(" ");
+    console.log("game" + (parseInt(id[1])+1));
+    document.getElementById("game" + id[1]).hidden = true;
+    document.getElementById("game" + (parseInt(id[1])+1)).hidden = false;
+  });
+</script>

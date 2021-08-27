@@ -1,6 +1,8 @@
 class Lesson < ApplicationRecord
   before_create :default_status
   belongs_to :category
+  has_many :result_lessons, dependent: :destroy
+  has_many :users, through: :result_lessons
   self.per_page = Settings.WillPaginate.lesson_per_page
   has_many :content_lessons, dependent: :destroy
   has_many :questions, dependent: :destroy

@@ -45,6 +45,12 @@ class Admin::ContentLessonsController < ApplicationController
     end
   end
 
+  def import
+    ContentLesson.import_file params[:file]
+    flash[:success] = t("inform.success")
+    redirect_to request.referer
+  end
+
   private
     def found_content_lesson
       @content = ContentLesson.find_by(id: params[:id])

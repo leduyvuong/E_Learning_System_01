@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   scope "(:locale)", locale: /en|vi/ do
     root "sessions#new"
     get "/admin",         to: "admin#index"
-    get "/down_lesson",      to: "lessons#down_lesson"
+    get "/down_lesson",   to: "lessons#down_lesson"
     get "/home",          to: "users#show"
     get "/signup",        to: "users#new"
     get "/cate",          to: "static_pages#categories"
@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     get "/word_summary",  to: "summaries#word_summary"
     get "result_test",    to: "tests#result_test"
     post "result_test",     to: "tests#result_test"
+    
     resources :summaries
     resources :users do
       member do
@@ -26,7 +27,8 @@ Rails.application.routes.draw do
     resources :tests
     resources :relationships, only: [:create, :destroy]
     namespace :admin do
-      resources :users
+      post "import", to: "content_lessons#import"
+      resources :users 
       resources :categories
       resources :questions
       resources :answers

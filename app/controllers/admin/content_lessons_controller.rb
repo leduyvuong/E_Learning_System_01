@@ -15,6 +15,7 @@ class Admin::ContentLessonsController < ApplicationController
   end
 
   def create
+    debugger
     @content_lesson = ContentLesson.new(params_word_new)
     if @content_lesson.save
       flash[:success] = t("inform.success")
@@ -43,6 +44,12 @@ class Admin::ContentLessonsController < ApplicationController
       flash[:danger] = flash_errors(@content)
       redirect_to request.referer
     end
+  end
+
+  def import
+    ContentLesson.import_file params[:file]
+    flash[:success] = t("inform.success")
+    redirect_to request.referer
   end
 
   private

@@ -12,4 +12,31 @@ class ContentLesson < ApplicationRecord
   has_one_attached :audio_word
   validates :audio_word, content_type: { in: %w[audio/mp3 audio/mpeg],
     message: :audio_error }
+  def self.import_file file
+    spreadsheet = Roo::Spreadsheet.open file
+    header = spreadsheet.row(1)
+    contents = []
+    temp = 0
+    (2..spreadsheet.last_row).each do |i|
+      row = [header, spreadsheet.row(i)].transpose.to_h
+      if contents.blank?
+        content = new(word: row["word"], pronounce: row["pronounce"],mean: row["mean"],lesson_id: row["lesson_id"])            
+        contents << content if content.valid?
+      else
+        contents.each do |c|
+          if c.word == row["word"]
+            temp += 1
+            break
+          end             
+        end
+        if temp == 0
+          content = new(word: row["word"], pronounce: row["pronounce"], mean: row["mean"],lesson_id: row["lesson_id"]) 
+          contents << content if content.valid?
+        else
+          temp = 0
+        end
+      end
+    end
+    import! contents, validate: true, on_duplicate_key_ignore: true
+  end 
 end

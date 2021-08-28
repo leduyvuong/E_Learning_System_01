@@ -2,9 +2,15 @@ class CategoriesController < ApplicationController
   before_action :found_category, only: :show
   def index
     @categories = Category.active.search(params[:name]).paginate(page: ( params[:page] if is_number? params[:page] ))
-    render :home
   end
   def show
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render template: "categories/show.html.erb",
+          pdf: "abc"
+      end
+    end
   end
   private
     def found_category

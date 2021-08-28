@@ -1,0 +1,16 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome";
+
+@include make-grid(sm);
+@include make-grid(md);
+@include make-grid(lg);
+
+.lesson_pdf {
+  text-align: center;
+  border: 1px solid;
+  border-radius: 10px;
+  margin: 50px 0 0 50px;
+  padding: 20px;
+  font-size: 20px;
+}

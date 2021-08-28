@@ -1,9 +1,9 @@
 <div class="row ed_dashboard_wrapper">
-  <div class="col-lg-7 col-lg-offset-2  container ed_dashboard_tab_info "> 
+  <div class="col-lg-12 col-lg-offset-1  container "> 
     <h3><%= t("lesson.show.lesson_name")%> <%= @lesson.name_lesson%></h3>
     <%= render "shared/flash_messages" %>
       <% @words.each do |w| %>
-        <div class = "col-md-3 lesson">
+        <div class = "col-md-3 lesson_pdf">
           <div class = "row">
             <% if w.image.attached? %>
               <%= image_tag w.image, size: "100x100" %>
@@ -29,18 +29,5 @@
           </div>
         </div>    
       <%end%>
-  </div>
-  <div class= "col-md-2 ed_course_single_item">
-  <%if teacher_admin %>
-    <div class="join_courses">
-        <%= link_to "Down PDF", down_lesson_path(id: @lesson.id, format: :pdf)%>
-    </div>  
-  <%end%>
-    <div class="join_courses">
-        <%= link_to t("lesson.show.strart_test"), test_path(id: @lesson.id)%>
-    </div>
-    <div class="join_courses">
-        <%= link_to "Train", train_path(id: @lesson.id)%>
-    </div>
   </div>
 </div>

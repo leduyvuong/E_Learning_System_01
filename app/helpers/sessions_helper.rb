@@ -42,6 +42,10 @@ module SessionsHelper
     end
   end
 
+  def teacher_admin
+    current_user.teacher? || current_user.admin?
+  end
+
   def logged_in?
     !current_user.nil?
   end

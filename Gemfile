@@ -24,6 +24,8 @@ gem "bootstrap-will_paginate", "~> 1.0"
 gem "faker", "~> 2.18"
 gem "config", "~> 3.1"
 gem "active_storage_validations", "~> 0.9.5"
+gem 'wicked_pdf', '~> 2.1'
+gem 'wkhtmltopdf-binary', '~> 0.12.6.5'
 
 group :development, :test do
   

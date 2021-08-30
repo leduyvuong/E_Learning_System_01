@@ -31,6 +31,10 @@ gem "activerecord-import", "~> 1.2"
 gem "groupdate", "~> 5.2", ">= 5.2.2"
 gem "chartkick", "~> 4.0", ">= 4.0.5"
 gem "axlsx_rails", "~> 0.6.1"
+gem "sidekiq", "~> 6.2", ">= 6.2.2"
+gem "sidekiq-cron", "~> 1.2"
+gem "bootstrap-email", "~> 0.3.4"
+
 
 group :development, :test do
   

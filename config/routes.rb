@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  require "sidekiq/web"
+  require "sidekiq/cron/web"
+
   scope "(:locale)", locale: /en|vi/ do
     root "sessions#new"
     get "/admin",         to: "admin#index"
@@ -15,6 +18,9 @@ Rails.application.routes.draw do
     get "result_test",    to: "tests#result_test"
     post "result_test",     to: "tests#result_test"
     
+    Rails.application.routes.draw do
+      mount Sidekiq::Web => "/sidekiq"
+    end
     resources :summaries
     resources :users do
       member do

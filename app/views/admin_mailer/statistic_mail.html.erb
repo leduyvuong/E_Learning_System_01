@@ -1,0 +1,55 @@
+
+<div class = "row col-md-12 header_report">
+  <h1 style = "color: aqua">Báo cáo ngày <%= Date.today.strftime("%d/%m/%Y")%></h1>
+</div>
+  <div class = "row">
+    <div class = "col-md-3">
+      <table class="table table-striped table-inverse table-bordered table-responsive">
+        <thead class="thead-inverse">
+          <tr>
+            <th>Người dùng</th>
+            <th>Số lượng</th>
+            <th>Trạng thái</th>
+          </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td scope="row">Giảng Viên</td>
+              <td><%= User.where(role: 1).count%></td>
+              <td>Tăng <%= @users.where(role: 1).count%> người</td>
+            </tr>
+            <tr>
+              <td scope="row">Học viên</td>
+              <td><%=User.where(role: 2).count%></td>
+              <td>Tăng <%= @users.where(role: 2).count%> người</td>
+            </tr>
+            <tr>
+              <td scope="row">Tổng cộng</td>
+              <td><%=User.all.count - User.where(role: 0).count%></td>
+            </tr>
+          </tbody>
+      </table>
+    </div>
+    <div class = "col-md-3">
+      <table class="table table-striped table-inverse table-bordered table-responsive">
+        <thead class="thead-inverse">
+          <tr>
+            <th>Khóa học</th>
+            <th>Số lượng</th>
+          </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td scope="row">Khóa học</td>
+              <td><%= Category.all.count%></td>
+            </tr>
+            <tr>
+              <td scope="row">Bài học</td>
+              <td><%= Lesson.all.count%></td>
+            </tr>
+          </tbody>
+      </table>
+    </div>
+  </div>
+  <%= link_to "Download as .xlsx", admin_export_excel_url(format: :xlsx), class: "btn btn-primary" %>
+</div>

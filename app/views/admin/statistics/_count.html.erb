@@ -1,0 +1,46 @@
+<div class="col-md-10 ">
+  <div class="col-md-3 col-xs-12">
+    <div class="dashboard-report-card red">
+      <div class = "card-content">
+      <span class="card-title">Student</span>
+      <span class="card-count"><%=User.where(role: 2).count%></span>
+      </div>
+      <div class="card-media">
+        <i class="fa fa-users fa_admin" aria-hidden="true"></i>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3 col-xs-12">
+    <div class="dashboard-report-card success">
+      <div class = "card-content">
+      <span class="card-title">Teachers</span>
+      <span class="card-count"><%= User.where(role: 1).count%></span>
+      </div>
+      <div class="card-media">
+        <i class="fa fa-graduation-cap fa_admin" aria-hidden="true"></i>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3 col-xs-12">
+    <div class="dashboard-report-card purple">
+      <div class = "card-content">
+      <span class="card-title">Courses</span>
+      <span class="card-count"><%= Category.all.count%></span>
+      </div>
+      <div class="card-media">
+        <i class="fa fa-calendar-o fa_admin" aria-hidden="true"></i>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3 col-xs-12">
+    <div class="dashboard-report-card info">
+      <div class = "card-content">
+      <span class="card-title">Lessons</span>
+      <span class="card-count"><%= Lesson.all.count%></span>
+      </div>
+      <div class="card-media">
+        <i class="fa fa-book fa_admin" aria-hidden="true"></i>
+      </div>
+    </div>
+  </div>
+</div>

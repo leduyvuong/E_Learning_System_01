@@ -4,12 +4,15 @@ class CategoriesController < ApplicationController
     @categories = Category.active.search(params[:name]).paginate(page: ( params[:page] if is_number? params[:page] ))
   end
   def show
+    @categoriess = Category.all
+    @users = parse_data_user(User.group(:role).count)
     respond_to do |format|
       format.html
       format.pdf do
         render template: "categories/show.html.erb",
           pdf: "abc"
       end
+     
     end
   end
   private

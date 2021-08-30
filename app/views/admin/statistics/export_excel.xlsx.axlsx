@@ -1,0 +1,33 @@
+wb = xlsx_package.workbook
+date_time = wb.styles.add_style(:num_fmt => Axlsx::NUM_FMT_YYYYMMDD,
+                               :border=>Axlsx::STYLE_THIN_BORDER)
+title = wb.styles.add_style(:bg_color => "0CF689",
+                           :fg_color=>"#FF000000",
+                           :border=>Axlsx::STYLE_THIN_BORDER,
+                           :alignment=>{:horizontal => :center})
+line = wb.styles.add_style(:border=>Axlsx::STYLE_THIN_BORDER,
+                           :alignment=>{:horizontal => :center})
+wb.add_worksheet(name: "Thống kê") do |sheet|  
+  sheet.add_row ["Người dùng", "Số lượng"], :style=>title
+  sheet.add_row ["Học viên", @users.where(role: 2).count],:style=>line
+  sheet.add_row ["Giảng Viên", @users.where(role: 1).count],:style=>line
+  sheet.add_row ["Tổng cộng", @users.count - User.where(role: 0).count],:style=>title
+  sheet.add_row
+  sheet.add_row ["Danh mục", "Số lượng"], :style=>title
+  sheet.add_row ["Khóa học", @categories.count],:style=>line
+  sheet.add_row ["Bài học", Lesson.all.count],:style=>line
+  sheet.add_row ["Tháng " +@users_growth.keys.first.strftime("%m")]
+  sheet.add_row ["Ngày", "Người dùng"], :style=>title
+  @users_growth.keys.uniq.each do |key|
+    sheet.add_row [key.strftime("%d"), @users_growth[key]],:style=> line
+  end
+  count_row = @users_growth.keys.count
+  sheet.add_chart(Axlsx::ScatterChart, :start_at => "D3", :end_at => "M17", :title => sheet["A9"]) do |chart|
+    chart.add_series :xData => sheet["A11:A#{11+count_row-1}"], :yData => sheet["B11:B#{11+count_row-1}"], :title => sheet["B10"], :color => '00FF00'
+  end
+  sheet.add_chart(Axlsx::Pie3DChart, :start_at => "M3", :end_at => "Q17", :title => "Thống kê Users") do |chart|
+    chart.add_series :data => @user_list.values, 
+                      :labels => [@user_list.keys.first, @user_list.keys.second, @user_list.keys.third], 
+                      :colors => ["FF0000", "00FF00", "0000FF"]
+  end
+end

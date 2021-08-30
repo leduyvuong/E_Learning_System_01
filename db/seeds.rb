@@ -3,9 +3,11 @@
                     password: "123456",
                     password_confirmation: "123456",
                     status: true,
-                    role: 0)
+                    role: 0,
+                    created_at: Faker::Time.between(from: DateTime.now - 762, to: DateTime.now),
+                    updated_at: Faker::Time.between(from: DateTime.now - 762, to: DateTime.now))
 @user.create_user_profile(fullname: @user.username)
-30.times do |n|
+90.times do |n|
   name = Faker::Name.name
   email = "elearning-#{n+1}@gmail.com"
   @user = User.create!(username: name,
@@ -13,8 +15,18 @@
                         password: "123456",
                         password_confirmation: "123456",
                         status: true,
-                        role: 2)
+                        role: 2,
+                        created_at: Faker::Time.between(from: DateTime.now - 762, to: DateTime.now),
+                        updated_at: Faker::Time.between(from: DateTime.now - 762, to: DateTime.now))
   @user.create_user_profile(fullname: @user.username)
+end
+Category.all.each do |category|
+  User.all.each  do |user| 
+    Wordlist.create!(user_id: user.id, 
+                    category_id: category.id,
+                    created_at: Faker::Time.between(from: DateTime.now - 30, to: DateTime.now),
+                    updated_at: Faker::Time.between(from: DateTime.now - 30, to: DateTime.now) ) 
+  end
 end
 36.times do 
   name = "Course of " + Faker::University.name

@@ -32,6 +32,39 @@ module SessionsHelper
     end
     array
   end
+  def parse_data_user data
+    user_data = Hash.new()
+    if I18n.locale == :vi
+      user_data["Người quản trị"] = data["admin"]
+      user_data["Giáo viên"] = data["teacher"]
+      user_data["Học viên"] = data["student"]
+    else
+      user_data["Admin"] = data["admin"]
+      user_data["Teacher"] = data["teacher"]
+      user_data["Student"] = data["student"]
+    end
+    user_data
+  end
+
+  def parse_line_user data
+    user_data = Hash.new()
+    if I18n.locale == :vi
+      data.keys.each do |n|
+        user_data[I18n.l(Date.parse(n.to_s), format: '%d %b %y')] = data[n]
+      end
+      return user_data
+    else
+      return data
+    end
+  end
+
+  def year_list data
+    data.map(&:year)
+  end
+  def float_number number
+    "%.3f" % number
+  end
+
   def admin_user
     redirect_to(home_url) unless current_user.admin?
   end

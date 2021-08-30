@@ -2,6 +2,10 @@ class User < ApplicationRecord
   enum role: {admin: 0, teacher: 1, student: 2 }
   before_create :default_author
   self.per_page = Settings.WillPaginate.user_per_page
+  scope :year_now, -> { where("extract(year  from created_at) = 2021")}
+  scope :statistics_month, ->(month){ where("extract(month  from created_at) = ?", month)}
+  scope :statistics_select, ->(month, year){ where("extract(month  from created_at) = ? and extract(year  from created_at) = ?", month, year)}
+  scope :year_list, -> { select("distinct YEAR(created_at) as year").order(created_at: :desc)}
   scope :user_admin, -> { where(role: 0)}
   scope :user_teacher, -> { where(role: 1)}
   scope :user_student, -> { where(role: 2)}
@@ -42,6 +46,26 @@ class User < ApplicationRecord
     end
   end
 
+  def self.users_status
+    now_month = statistics_month(Date.current.strftime("%m"))
+  end
+
+  def self.filter_statistic type
+    if type
+      if type == "1"
+        User.year_now.group_by_week(:created_at).count
+      elsif type == "2"
+        User.year_now.group_by_month(:created_at).count
+      else
+        User.group_by_year(:created_at).count
+      end
+    else
+      User.year_now.group_by_week(:created_at).count
+    end
+  end
+  def self.filter_month_year month, year
+    statistics_select(month, year).group_by_day(:created_at).count
+  end
   def self.search(user)
       user_array = search_name user
       return user_array unless user_array.blank?

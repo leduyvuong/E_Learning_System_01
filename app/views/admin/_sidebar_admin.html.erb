@@ -29,6 +29,16 @@
           <%= link_to t("admin.addlesson"), new_admin_lesson_path, class: "login_button"%>
         </div>
       </div>
+
+      <div class = "childdash">
+        <%= link_to  "Statistic", "#statistic", {"data-toggle" => "collapse" } %>
+      </div>
+      <div class="collapse" id="statistic">
+        <div class="card card-body childdash_cos">
+          <%= link_to "Statistic User", admin_statistics_path, class: "login_button"%>
+          <%= link_to "Statistic Category", admin_category_statistic_path, class: "login_button"%>
+        </div>
+      </div>
     </div>
   </div>
 </div>

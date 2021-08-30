@@ -28,6 +28,9 @@ gem "wicked_pdf", "~> 2.1"
 gem "wkhtmltopdf-binary", "~> 0.12.6.5"
 gem "roo", "~> 2.8", ">= 2.8.3"
 gem "activerecord-import", "~> 1.2"
+gem "groupdate", "~> 5.2", ">= 5.2.2"
+gem "chartkick", "~> 4.0", ">= 4.0.5"
+gem "axlsx_rails", "~> 0.6.1"
 
 group :development, :test do
   

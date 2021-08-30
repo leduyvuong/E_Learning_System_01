@@ -1,0 +1,37 @@
+<%= render "admin/sidebar_admin" %>
+<%= render "count" %>
+<div class="col-md-10 ">
+  <div class="col-md-7 col-xs-12" style= "text-align: center">
+    <%= form_with url:admin_filter_path , method: :get, remote: true, class:"form-inline" do |f| %>
+      <%= f.label :Month, "Month"%>
+      <%= f.select :month, options_for_select((1..12).to_a, (params[:month] unless params[:month].nil?) ), {}, {class: "form-control"} %>
+      <%= f.label :Month, "Year" %>
+      <%= f.select :year, options_for_select(year_list(User.year_list), (params[:year] unless params[:month].nil?) ), {}, {class: "form-control"} %>
+      <%= f.submit "Search",class:"btn btn-primary" %>
+      
+    <% end %>
+    <div class="dropdown" style="float: left, text-align: center">
+      <div class = "col-md-9 col-xs-12" style= "text-align: center">
+        <h3>Thống kê User</h3>
+      </div>
+      <div class = "col-md-3 btn_statictis col-xs-12">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Thống kê  <span class="caret"></span></button>
+      </button>
+      <ul class="dropdown-menu">
+        <li><%= link_to "Theo tuần", admin_statistics_path(type: 1), class: "dropdown-item" %></li>
+        <li><%= link_to "Theo tháng", admin_statistics_path(type: 2), class: "dropdown-item" %></li>
+        <li><%= link_to "Theo Năm", admin_statistics_path(type: 3), class: "dropdown-item" %></li>
+      </ul>
+    </div>
+  </div>
+    <%= line_chart parse_line_user @users %>
+  </div>
+  <div class="col-md-5 col-xs-12">
+    <div  style="float: right">
+     <%= link_to "Download as .xlsx", admin_export_excel_path(format: :xlsx), class: "btn btn-primary" %>
+    </div>
+    <%= pie_chart parse_data_user(User.group(:role).count) %>
+  </div>
+       
+</div>

@@ -43,6 +43,91 @@ a {
   text-decoration: none;
 }
 
+.dashboard-report-card {
+  position: relative;
+  margin-bottom: 30px;
+  border: 1px solid #efefef;
+  box-shadow: none;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 5px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  background: #fff; 
+  margin: 20px 0 30px;
+}
+
+.btn_statictis {
+  padding-top: 18px;
+  padding-left: 43px !important;
+}
+
+.info {
+  background-color: #45bbe0;
+  border-color: #45bbe0;
+}
+
+.success {
+  background-color: #78c350;
+  border-color: #78c350;
+}
+
+.purple {
+  background-color: #8892d6;
+  border-color: #8892d6;
+}
+
+.fa_admin {
+  font-size: 36px !important;
+  color: white;
+}
+.card-content {
+  color: #fff;
+  flex-grow: 1;
+}
+
+.card-title {
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.card-count {
+  font-size: 28px;
+  margin: 8px 0 0;
+  display: block;
+  font-weight: 600;
+}
+
+.red {
+  background-color: #fc544b;
+  border-color: #fc544b;
+}
+
+.card-content {
+  color: #fff;
+  flex-grow: 1;
+}
+
+.card-media {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-left: 15px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  background-color: rgba(255,255,255,.2);
+  justify-content: center;
+  right: 20px;
+  top: 20px;
+  position: absolute;
+}
+
 a:hover,
 a:focus {
   color: #717171;

@@ -28,12 +28,16 @@ Rails.application.routes.draw do
     resources :relationships, only: [:create, :destroy]
     namespace :admin do
       post "import", to: "content_lessons#import"
+      get "filter", to: "statistics#filter_statistic"
+      get "category_statistic", to: "statistics#category_statistic"
+      get "export_excel", to: "statistics#export_excel"
       resources :users 
       resources :categories
       resources :questions
       resources :answers
       resources :lessons
       resources :content_lessons
+      resources :statistics
     end
   end
 end

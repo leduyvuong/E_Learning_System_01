@@ -1,5 +1,10 @@
 class User < ApplicationRecord
+  enum role: {admin: 0, teacher: 1, student: 2 }
+  before_create :default_author
   self.per_page = Settings.WillPaginate.user_per_page
+  scope :user_admin, -> { where(role: 0)}
+  scope :user_teacher, -> { where(role: 1)}
+  scope :user_student, -> { where(role: 2)}
   has_one :user_profile
   has_many :summaries, dependent: :destroy
   has_many :wordlists, dependent: :destroy
@@ -41,6 +46,13 @@ class User < ApplicationRecord
       all
   end
 
+<<<<<<< HEAD
+=======
+  def default_author
+    self.status ||= true
+  end
+
+>>>>>>> 86a1beb... Authorization User
   def follow(other_user)
     following << other_user
   end

@@ -1,5 +1,6 @@
 <%= render "admin/sidebar_admin" %>
 
+<<<<<<< HEAD
 <div class = "col-md-8">
   <div class = "row">
     <%= render "shared/flash_messages" %>
@@ -51,4 +52,30 @@
       </tbody>
     </table>
     <%= will_paginate @users, :previous_label=> t("page.pre"), :next_label => t("page.next") %> 
+=======
+<div class = "col-md-10">
+  <div class = "row">
+    <%= render "shared/flash_messages" %>
+  </div>
+  
+  <div class = "col-md-10">
+    <%= form_with( url: admin_users_path,method: :get, class: "form-inline lg-form search") do |f| %>
+        <%= f.label t("admin.users.index.search")%>
+        <%= f.text_field :name, class: "form-control", style: "width:40%"%>
+        <%= f.submit t("admin.users.index.search"), class: "btn aqua-gradient btn-rounded btn-sm my-0"%>
+    <%end%>
+  </div>
+  <ul class="nav nav-pills nav-justified">
+    <li class="active"><%= link_to t("admin.users.index.all"), "#home", { class: "tab_user", "data-toggle" => "tab" } %></li>
+    <li ><%= link_to t("admin.users.index.admin"), "#admin", { class:  "tab_user", "data-toggle" => "tab" } %></li>
+    <li><%= link_to t("admin.users.index.teacher"), "#teacher", { class: "tab_user", "data-toggle" => "tab" } %></li>
+    <li><%= link_to t("admin.users.index.student"), "#student", { class: "tab_user", "data-toggle" => "tab" } %></li>
+  </ul>
+  <div class="tab-content">
+    <%= render "all_user", collection: @users %>
+    <%= render "admin_index", collection: @users %>
+    <%= render "teacher_index", collection: @users %>
+    <%= render "student_index", collection: @users %>
+  </div>
+>>>>>>> 86a1beb... Authorization User
 </div>

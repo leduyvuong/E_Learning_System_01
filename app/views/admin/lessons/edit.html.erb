@@ -1,0 +1,33 @@
+<%= render "admin/sidebar_admin" %>
+<div class = "col-md-9">
+  <%= render "shared/flash_messages" %>
+  <div class="col-md-12 ed_dashboard_tab_info"> 
+    <div class = "col-md-6  signup">
+    <%= form_with(model: [:admin, @lesson], local: true) do |f|%>
+      <%= render "shared/error_messages",object:  f.object%>
+      <%= f.label :name_lesson, value: t("admin.lessons.name")%>
+      <%= f.text_field :name_lesson, value: @lesson.name_lesson%>
+      <%= f.label :time, value: t("admin.lessons.time")%>
+      <%= f.text_field :time, value: @lesson.time%>
+      <%= f.label :categories, value: t("admin.lessons.category") %>
+      <%= f.select :category_id, options_for_select(Category.all.pluck(:name, :id), Category.find_by(id: @lesson.category_id).name)%>                   
+      <%= f.submit  t("admin.lessons.update"), class: "btn btn-primary" %>
+    <%end%>
+    </div> 
+    <div class = "col-md-6">
+      <div class="row ">
+        <h3><%= t("admin.lessons.word")%> <%= link_to t("admin.lessons.all"), admin_content_lessons_path(id_lesson: @lesson.id) %></h3>
+      </div>
+      <div class="row" style = "border: 1px solid">
+      <% @lesson.content_lessons.each do |w|%>
+        <div class = "col-md-4">
+          <%= w.word%>
+        </div>
+      <%end%>
+      </div>
+      <div class="row ">
+        <h3><%= t("admin.lessons.question")%> <%= link_to t("admin.lessons.count", count: @lesson.questions.count), admin_questions_path(id_lesson: @lesson.id) %></h3>
+      </div>
+    </div>
+  </div> 
+</div>

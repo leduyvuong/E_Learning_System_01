@@ -1,4 +1,14 @@
 en:
+  activerecord:
+    errors:
+      models:
+        content_lesson:
+          attributes:
+            image:
+              image_error:  "must be in the jpg, jpeg, png format "
+              image_error2: "size must be less than 5MB"
+            audio_word:
+              audio_error:  "must be in the mp3, mpeg format "
   inform:
     success: "Successfull"
     unsuccess: "Unsuccessfull!"
@@ -149,6 +159,13 @@ en:
       account:  "Account"
       new:
         create: "Create new user"
+      index:
+        admin:  "Admin"
+        all:  "All Users"
+        teacher:  "Teacher"
+        student:  "Student"
+        role: "Role"
+        search: "Search"
     categories:
       name: "Course Name "
       status: "Status"
@@ -181,6 +198,8 @@ en:
       delete: "Delete"
       lesson: "Lesson"
       not_found:  "Not found content lesson"
+      audio:  "Audio"
+      image:  "Image"
     questions:
       ques: "Question"
       edit: "Edit"
@@ -198,3 +217,7 @@ en:
       false:  "False"
       new: "Add new answer"
       right_ans:  "Right answer"
+      audio:  "Audio"
+      edit: "Edit"
+      delete: "Delete"
+      not_found:  "Not found answer"

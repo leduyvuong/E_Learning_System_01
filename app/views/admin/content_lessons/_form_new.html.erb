@@ -1,0 +1,46 @@
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newQuestion" data-whatever="@getbootstrap"><%= t("admin.content_lessons.new")%></button>
+<div class="modal fade" id="newQuestion" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><h3><%= t("admin.content_lessons.new")%></h3></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= form_with(model: [:admin, @content_lesson], local: true) do |c|%>
+          <div class="form-group">
+           <%= c.label :word, value: t("admin.content_lessons.word"), class: "col-form-label" %>
+           <%= c.text_field :word, class: "form-control"%>
+          </div>
+          <div class="form-group">
+            <%= c.label :pronounce, value: t("admin.content_lessons.pronounce"), class: "col-form-label" %>
+            <%= c.text_field :pronounce, class: "form-control"%>
+          </div>
+          <div class="form-group">
+            <%= c.label :mean, value: t("admin.content_lessons.mean"), class: "col-form-label"%>
+            <%= c.text_field :mean, class: "form-control"%>
+          </div>
+          <div class="form-group">
+            <%= c.label :lesson_id, value: t("admin.content_lessons.lesson"), class: "col-form-label"%>
+            <%= c.select :lesson_id, options_for_select(@lessons, @lesson.id), {}, {class: "form-control"}%> 
+          </div>
+          <div class="form-group">
+            <%= c.label :audio_word, class: "col-form-label"%><br>
+            <%= c.file_field :audio_word %>
+          </div>
+          <div class="form-group">
+            <%= c.label :image, class: "col-form-label"%><br>
+            <%= c.file_field :image %>
+          </div>
+          <div class="modal-footer">
+            <%= c.submit  t("admin.content_lessons.add"), class: "btn btn-primary" %>
+          </div>
+        <%end%>
+      </div>
+      
+    </div>
+  </div>
+</div>
+

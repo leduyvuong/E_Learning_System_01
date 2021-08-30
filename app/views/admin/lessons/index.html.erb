@@ -1,40 +1,54 @@
 <%= render "admin/sidebar_admin" %>
 <div class = "col-md-10 ">
-
+  <%= render "shared/flash_messages" %>
   <table class="table table-striped table-inverse table-responsive table-bordered table-hover">
       <thead class="thead-inverse">
         <tr>
-          <th>ID</th>
-          <th><%= t("admin.lesson.index.name")%></th>
-          <th ><%= t("admin.lesson.index.status")%></th>
-          <th><%= t("admin.lesson.index.time")%></th>
-          <th><%= t("admin.lesson.index.category")%></th>
+          <th>STT</th>
+          <th><%= t("admin.lessons.name")%></th>
+          <th ><%= t("admin.lessons.status")%></th>
+          <th><%= t("admin.lessons.time")%></th>
+          <th><%= t("admin.lessons.category")%></th>
         </tr>
         </thead>
         <tbody>
-        <% @lessons.each do |c| %>
+        <% @lessons.each do |lesson| %>
         <div class="row d-flex justify-content-center mt-4">
           <tr>
-            <td ><%= c.id%></td>
-            <td scope="row"><%= c.name_lesson%></td>           
-            <td><% if c.status%>
+            <td >
+              <%if params[:page]%>
+                <%= (params[:page].to_i - 1)*10 + @lessons.index(lesson)+1%>
+              <%else%>
+                <%= @lessons.index(lesson)+1%>
+              <%end%>
+            </td>
+            <td scope="row"><%= lesson.name_lesson%></td>           
+            <td><% if lesson.status%>
                   <div class ="active_status"></div>
                 <%else%>
                   <div class ="unactive_status"></div>
                 <%end%>
             </td>
-            <td ><%= c.time%> minutes</td>
-            <td ><%= c.category_id%></td>
+            <td ><%= lesson.time%> minutes</td>
+            <td ><%= lesson.category_id%></td>
             <td>
-              <%= link_to "Edit", "" %> | <%= link_to "Unactive", "" %>         
+              <%= link_to edit_admin_lesson_path(id: lesson.id), class: "btn btn-primary m-1"  do %>
+                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+              <%end%>
+              <%if lesson.status %>
+                <%= link_to [:admin, lesson], method: :delete, class: "btn btn-primary m-1" do %>
+                  <i class="fa fa-circle-o" aria-hidden="true"></i>
+                <%end%> 
+              <%else%>
+                <%= link_to [:admin, lesson], method: :delete, class: "btn btn-primary m-1" do %>
+                  <i class="fa fa-circle" aria-hidden="true"></i>
+                <%end%> 
+              <%end%>      
             </td>
           </tr> 
         </div>      
         <%end%>
-        
-        </tbody>
-         
+      </tbody>
     </table>
-    <%= will_paginate @categories, :previous_label=> t("page.pre"), :next_label => t("page.next") %>
+    <%= will_paginate @lessons, :previous_label=> t("page.pre"), :next_label => t("page.next") %>
 </div>
-

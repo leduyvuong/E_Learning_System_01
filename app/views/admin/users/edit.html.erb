@@ -13,8 +13,13 @@
             <%= f.text_field :username, value: @user.username %>
             <%= f.label :email, value: t("admin.users.email") %>
             <%= f.text_field :email, value: @user.email %>
+<<<<<<< HEAD
             <%= f.label :admin %>
             <%= f.select :admin, options_for_select(["0", "1" ], selected: :adm)%>       
+=======
+            <%= f.label :role %>
+            <%= f.select :role, options_for_select([["Admin", "admin" ], ["Teacher", "teacher" ], ["Student", "student" ]], @user.role)%>       
+>>>>>>> 86a1beb... Authorization User
             <%= f.label :password, t("users.new.password") %>
             <%= f.password_field :password %>
             <%= f.label :password_confirmation, t("users.new.confirm") %>

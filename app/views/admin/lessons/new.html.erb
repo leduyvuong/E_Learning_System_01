@@ -1,0 +1,14 @@
+<%= render "admin/sidebar_admin" %>
+<div class = "col-md-9 signup">
+  <%= form_with(model: [:admin, @lesson], local: true) do |c|%>
+    <%= render "shared/error_messages",object:  c.object%>
+      <%= c.label :name, value: t("admin.lessons.name") %>
+      <%= c.text_field :name_lesson%>
+      <%= c.label :time, value: t("admin.lessons.time") %>
+      <%= c.text_field :time%>
+      <%= c.label :category_id, value: t("admin.lessons.category") %>
+      <%= c.select :category_id, options_for_select(Category.all.pluck(:name, :id)), {}, {class: "js-select"}%>
+      <%= c.submit  t("admin.lessons.create"), class: "btn btn-primary" %>
+  <%end%>
+</div>
+

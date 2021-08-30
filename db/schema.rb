@@ -41,11 +41,12 @@ ActiveRecord::Schema.define(version: 2021_08_20_071218) do
   end
 
   create_table "answers", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "content"
+    t.bigint "content_lesson_id", null: false
     t.boolean "right_ans"
     t.bigint "question_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["content_lesson_id"], name: "index_answers_on_content_lesson_id"
     t.index ["question_id"], name: "index_answers_on_question_id"
   end
 
@@ -119,7 +120,7 @@ ActiveRecord::Schema.define(version: 2021_08_20_071218) do
     t.string "username"
     t.string "email"
     t.boolean "status"
-    t.boolean "admin"
+    t.integer "role"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"
@@ -136,6 +137,7 @@ ActiveRecord::Schema.define(version: 2021_08_20_071218) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "answers", "content_lessons"
   add_foreign_key "answers", "questions"
   add_foreign_key "content_lessons", "lessons"
   add_foreign_key "lessons", "categories"

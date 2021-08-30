@@ -1,4 +1,14 @@
 vi:
+  activerecord:
+      errors:
+        models:
+          content_lesson:
+            attributes:
+              image:
+                image_error1:  "phải có định dạng jpg, jpeg, png"
+                image_error2: "có dung lượng ảnh nhẹ hơn 5MB"
+              audio_word:
+                audio_error:  "phải có định dạng mp3, mpeg"
   inform:
     success: "Thành công!"
     unsuccess: "Không thành công!"
@@ -151,6 +161,13 @@ vi:
       search: "Tìm"
       new:
         create: "Tạo người dùng mới"
+      index:
+        admin:  "Quản trị viên"
+        all:  "Tất cả người dùng"
+        teacher:  "Giáo viên"
+        student:  "Học viên"
+        role: "Vai trò"
+        search: "Tìm kiếm"
     categories:
       name: "Tên khóa học"
       status: "Trạng thái"
@@ -184,6 +201,8 @@ vi:
       lesson: "Bài học"
       not_found:  "Không tìm thấy nội dung bài học"
       search: "Tìm"
+      audio:  "Âm thanh"
+      image:  "Hình ảnh"
     questions:
       ques: "Câu hỏi"
       edit: "Sửa"
@@ -203,3 +222,7 @@ vi:
       new: "Thêm đáp án"
       right_ans:  "Đáp án đúng"
       search: "Tìm"
+      audio:  "Âm thanh"
+      edit: "Sửa"
+      delete: "Xóa"
+      not_found:  "Không tìm thấy đáp án"

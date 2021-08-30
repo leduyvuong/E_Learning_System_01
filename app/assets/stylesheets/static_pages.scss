@@ -178,6 +178,9 @@ textarea {
 /* ----------Normal css end------- */
 
 /* ----------Header Top start---------- */
+.tab_user {
+  border: 1px solid;
+}
 
 .users {
   list-style: none;
@@ -240,16 +243,26 @@ textarea {
   background-color: rgb(204, 22, 22);
 }
 
+.sidebar_admin {
+  padding: 20px 0 0 0 !important;
+}
+
+.search {
+  margin: 20px 0 20px 0;
+}
+
 .dashboad_left {
-  height: 710px;
+  height: 900px;
   text-align: center;
   overflow-x: hidden;
   overflow-y: auto;
+  border-right: 1px solid #bdbebe;
 
   .childdash {
     border: 1px solid white;
     width: 100%;
     padding: 10px 10px 10px 0;
+    border-radius: 10px;
     background-color: #167ac6;
 
     a {
@@ -269,6 +282,7 @@ textarea {
     width: 100%;
     padding: 10px 10px 10px 0;
     background-color: #167ac6;
+    border-radius: 10px;
 
     a {
       text-decoration: none;
@@ -548,6 +562,7 @@ textarea {
   width: 100%;
   float: left;
   background-color: #fff;
+  border-bottom: 1px solid rgb(129, 128, 128);
 }
 
 .educo_logo {

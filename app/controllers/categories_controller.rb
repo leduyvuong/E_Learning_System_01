@@ -1,7 +1,15 @@
 class CategoriesController < ApplicationController
   before_action :found_category, only: :show
   def index
-    @categories = Category.active.search(params[:name]).paginate(page: ( params[:page] if is_number? params[:page] ))
+    if params[:name].nil?
+      @categories = Category.active.paginate(page: ( params[:page] if is_number? params[:page] ) )
+    else
+      if params[:name] == "" 
+        @categories = Category.active.paginate(page: ( params[:page] if is_number? params[:page] ) )
+      else
+        @categories = Category.active.search(params[:name],page: params[:page], per_page: Settings.WillPaginate.cate_per_page )
+      end
+    end
   end
   def show
     @categoriess = Category.all

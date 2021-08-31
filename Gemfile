@@ -34,8 +34,7 @@ gem "axlsx_rails", "~> 0.6.1"
 gem "sidekiq", "~> 6.2", ">= 6.2.2"
 gem "sidekiq-cron", "~> 1.2"
 gem "bootstrap-email", "~> 0.3.4"
-
-
+gem 'searchkick', '~> 4.6'
 group :development, :test do
   
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

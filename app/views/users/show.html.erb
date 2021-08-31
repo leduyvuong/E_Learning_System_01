@@ -1,5 +1,22 @@
 <% provide(:title, t("static_pages.home.title") )%>
-  <div class="ed_dashboard_wrapper">
+<div class = "show-course">
+  <%@categories.take(6).each do |category|%>
+    <a class = "btn btn-course">
+      <i class="fa fa-calendar-o " aria-hidden="true"></i>
+      <%= category.name%>
+    <a>
+  <%end%>
+  <div class="dropdown">
+    <button class="btn dropdown-toggle btn-course" type="button" data-toggle="dropdown"><i class="fa fa-calendar-o " aria-hidden="true"></i> Tất cả
+      <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <% (9...@categories.count).each do |i|%>
+        <li><a href="#"><%=@categories[i].name%></a></li>
+      <%end%>
+    </ul>
+  </div>
+</div>
+  <div class="">
     <div class="container">
       <div class="row">
         <%= render "layouts/sidebar" %>

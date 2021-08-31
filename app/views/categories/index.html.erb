@@ -10,7 +10,7 @@
               <div class="ed_search_form">
                 <%= form_with( url: categories_path, method: :get, class: "form-inline md-form mr-auto mb-4") do |f| %>
                   <div class="col-md-10">
-                    <%= f.text_field :name, class: "form-control mr-md-2"%>
+                    <%= f.text_field :name, value: (params[:name] unless params[:name].nil?) ,class: "form-control mr-md-2"%>
                   </div>
                   <div class="col-md-2">
                     <%= f.submit t("admin.categories.search"), class: "btn ed_btn pull-right ed_orange"%>

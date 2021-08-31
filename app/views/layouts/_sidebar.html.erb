@@ -16,11 +16,27 @@
     <%= render "stats" %>
     </h3>
     <div class="ed_tabs_left">
-      <ul class="nav nav-tabs">
-        <li class="active"><%= link_to t("layouts.header.home"), "#dasboard", { :class => "", "data-toggle" => "tab" } %></li>
-        <li><%= link_to t("layouts.sidebar.wordlist"), "#wordlist", { :class => "", "data-toggle" => "tab" } %></li>
-        <li><%= link_to t("layouts.sidebar.activity"), "#activities", { :class => "", "data-toggle" => "tab" } %></li>
-        <li><%= link_to t("layouts.sidebar.profile"), "#profile", { :class => "", "data-toggle" => "tab" } %></li>
+      <ul class="nav nav-pills nav-tabs">
+        <li class="active"> 
+          <%= link_to  "#dasboard", { :class => "", "data-toggle" => "tab" }  do%>
+           <i class="fa fa-home" aria-hidden="true"></i> <%= t("layouts.header.home")%>
+          <%end%>
+        </li>
+        <li>
+          <%= link_to "#wordlist", { :class => "", "data-toggle" => "tab" } do %>
+            <i class="fa fa-book" aria-hidden="true"></i> <%= t("layouts.sidebar.wordlist")%>
+          <%end%>
+        </li>
+        <li>
+          <%= link_to "#activities", { :class => "", "data-toggle" => "tab" } do %>
+           <i class="fa fa-bell" aria-hidden="true"></i>     <%= t("layouts.sidebar.activity")%>
+          <%end%>
+        </li>
+        <li>
+          <%= link_to "#profile", { :class => "", "data-toggle" => "tab" } do %>
+            <i class="fa fa-address-card" aria-hidden="true"></i> <%= t("layouts.sidebar.profile")%>
+          <%end%>
+        </li>
       </ul>
     </div>
   </div>

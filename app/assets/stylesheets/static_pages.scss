@@ -49,14 +49,22 @@ a {
 
 .show-course {
   border-bottom: 1px solid #e3e4e5;
-  height: 250px;
+  height: 130px;
+  margin-left: 20px;
+}
+
+.icon_course {
+  margin-right: 10px;
 }
 
 .btn-course {
+  border: 1px solid #e3e4e5;
   border-radius: 50px !important;
   background-color: #e3e4e5;
+  font-size: 16px !important;
   color: #000;
-  margin: 10px 10px 10px 10px;
+  margin: 20px 20px 0 0 !important;
+  padding: 10px 10px 10px 10px;
 }
 
 .dashboard-report-card {
@@ -684,7 +692,7 @@ textarea {
 .ed_header_bottom {
   width: 100%;
   float: left;
-  background-color: #fff;
+  background-color: #81ecec;
   border-bottom: 1px solid #e3e4e5;
 }
 
@@ -760,6 +768,13 @@ textarea {
   border-top: 1px solid #ddd;
 }
 
+.shadow_box {
+  border: 1px solid;
+  padding: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  box-shadow: 2px 2px 2px 2px #888888;
+}
 /* ---------------------menuend--------------------- */
 
 /* ------------------Submenuend----------------- */

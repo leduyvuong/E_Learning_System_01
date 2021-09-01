@@ -16,6 +16,8 @@ class WordlistsController < ApplicationController
       end
     end   
   end
+  def index
+  end
   private 
     def check_login
       unless logged_in?

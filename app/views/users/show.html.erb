@@ -1,35 +1,29 @@
 <% provide(:title, t("static_pages.home.title") )%>
-<div class = "show-course">
-  <%@categories.take(6).each do |category|%>
-    <a class = "btn btn-course">
-      <i class="fa fa-calendar-o " aria-hidden="true"></i>
-      <%= category.name%>
-    <a>
-  <%end%>
-  <div class="dropdown">
-    <button class="btn dropdown-toggle btn-course" type="button" data-toggle="dropdown"><i class="fa fa-calendar-o " aria-hidden="true"></i> Tất cả
-      <span class="caret"></span></button>
-    <ul class="dropdown-menu">
-      <% (9...@categories.count).each do |i|%>
-        <li><a href="#"><%=@categories[i].name%></a></li>
+<div class="col-md-12">
+<%if !@categories.blank?%>
+  <div class = "show-course">
+    <%@categories.take(8).each do |cate|%>
+      <%= link_to user_lesson_path, class: "btn btn-course" do%>
+        <i class="fa fa-calendar-o icon_course" aria-hidden="true">    </i><%= cate.name%>
       <%end%>
-    </ul>
+    <%end%>
+  <%if @categories.count > 8%>
+    <%= link_to "#", class: "btn btn-course" do%>
+      <i class="fa fa-calendar-o icon_course" aria-hidden="true">    </i> Tất cả
+    <%end%>
+  <%end%>
   </div>
-</div>
+<%end%>
   <div class="">
-    <div class="container">
-      <div class="row">
-        <%= render "layouts/sidebar" %>
-          <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-            <div class="ed_dashboard_tab">
-              <div class="tab-content">
-                <%= render "dashboard" %>
-                <%= render "wordlist" %>
-                <%= render "activities" %>
-                <%= render "profile" %>
-                </div>
-              </div>
-            </div>
+    <div class="row">
+      <%= render "layouts/sidebar" %>
+      <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 ">
+        <div class="ed_dashboard_tab ">
+          <div class="tab-content shadow_box">
+            <%= render "dashboard" %>
+            <%= render "wordlist" %>
+            <%= render "activities" %>
+            <%= render "profile" %>
           </div>
         </div>
       </div>

@@ -15,6 +15,9 @@ class LessonsController < ApplicationController
       end
     end
   end
+  def user_lesson
+    render :user_lesson
+  end
   def train
     @words = @lesson.content_lessons
   end

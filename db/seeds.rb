@@ -20,14 +20,6 @@
                         updated_at: Faker::Time.between(from: DateTime.now - 762, to: DateTime.now))
   @user.create_user_profile(fullname: @user.username)
 end
-Category.all.each do |category|
-  User.all.each  do |user| 
-    Wordlist.create!(user_id: user.id, 
-                    category_id: category.id,
-                    created_at: Faker::Time.between(from: DateTime.now - 30, to: DateTime.now),
-                    updated_at: Faker::Time.between(from: DateTime.now - 30, to: DateTime.now) ) 
-  end
-end
 36.times do 
   name = "Course of " + Faker::University.name
   decription = Faker::Quote.matz

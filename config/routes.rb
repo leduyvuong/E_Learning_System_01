@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   scope "(:locale)", locale: /en|vi/ do
     root "sessions#new"
+    get "/user_lesson",   to: "lessons#user_lesson"
     get "/admin",         to: "admin#index"
     get "/down_lesson",   to: "lessons#down_lesson"
     get "/home",          to: "users#show"

@@ -1,5 +1,5 @@
 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-  <div class="ed_sidebar_wrapper">
+  <div class="ed_sidebar_wrapper shadow_box">
     <div class="ed_profile_img">
       <% if @user.user_profile.image.attached? %>
           <%= image_tag  @user.user_profile.image  %>
@@ -19,22 +19,22 @@
       <ul class="nav nav-pills nav-tabs">
         <li class="active"> 
           <%= link_to  "#dasboard", { :class => "", "data-toggle" => "tab" }  do%>
-           <i class="fa fa-home" aria-hidden="true"></i> <%= t("layouts.header.home")%>
+           <i class="fa fa-home icon_course" aria-hidden="true"></i> <%= t("layouts.header.home")%>
           <%end%>
         </li>
         <li>
           <%= link_to "#wordlist", { :class => "", "data-toggle" => "tab" } do %>
-            <i class="fa fa-book" aria-hidden="true"></i> <%= t("layouts.sidebar.wordlist")%>
+            <i class="fa fa-book icon_course" aria-hidden="true"></i> <%= t("layouts.sidebar.wordlist")%>
           <%end%>
         </li>
         <li>
           <%= link_to "#activities", { :class => "", "data-toggle" => "tab" } do %>
-           <i class="fa fa-bell" aria-hidden="true"></i>     <%= t("layouts.sidebar.activity")%>
+           <i class="fa fa-bell icon_course" aria-hidden="true"></i>     <%= t("layouts.sidebar.activity")%>
           <%end%>
         </li>
         <li>
           <%= link_to "#profile", { :class => "", "data-toggle" => "tab" } do %>
-            <i class="fa fa-address-card" aria-hidden="true"></i> <%= t("layouts.sidebar.profile")%>
+            <i class="fa fa-address-card icon_course" aria-hidden="true"></i> <%= t("layouts.sidebar.profile")%>
           <%end%>
         </li>
       </ul>

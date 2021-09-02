@@ -1,0 +1,54 @@
+<div id="all_course" class="tab-pane active">
+<%if !@categories.blank?%>
+  <table class="table table-striped table-inverse table-responsive table-bordered table-hover">
+    <thead class="thead-inverse">
+      <tr>
+        <th>STT</th>
+        <th><%= t("admin.categories.name")%></th>
+        <th style = "width: 7%"><%= t("admin.categories.status")%> </th>
+        <th style = "width: 60%"><%= t("admin.categories.decrip")%> </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @categories.each do |c| %>
+      <div class="row d-flex justify-content-center mt-4">
+        <tr>
+          <td >
+            <%if params[:page]%>
+              <%= (params[:page].to_i - 1)*6 + @categories.index(c) +1 %>
+            <%else%>
+              <%= @categories.index(c) + 1 %>
+            <%end%>
+          </td>
+          <td scope="row"><%= c.name%></td>           
+          <td><% if c.active? %>
+                <div class ="active_status"></div>
+              <%else%>
+                <div class ="unactive_status"></div>
+              <%end%>
+          </td>
+          <td ><%= c.decription%></td>
+          <td>
+            <%= link_to edit_admin_category_path(id: c.id), class: "btn btn-primary m-1" do %>
+              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+            <%end%> 
+            <%if c.status %>
+              <%= link_to [:admin, c], method: :delete, class: "btn btn-primary m-1" do %>
+                <i class="fa fa-circle-o" aria-hidden="true"></i>
+              <%end%> 
+            <%else%>
+              <%= link_to [:admin, c], method: :delete, class: "btn btn-primary m-1" do %>
+                <i class="fa fa-circle" aria-hidden="true"></i>
+              <%end%> 
+            <%end%>       
+          </td>
+        </tr> 
+      </div>      
+      <%end%>
+    </tbody>
+  </table>
+  <%= will_paginate @categories, :previous_label=> t("page.pre"), :next_label => t("page.next") %>
+<%else%>
+  <h3>Chưa có khóa học</h3>
+<%end%>
+</div>

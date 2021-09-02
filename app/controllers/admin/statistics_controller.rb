@@ -1,5 +1,5 @@
 class Admin::StatisticsController < ApplicationController
-  before_action :admin_user
+  before_action :admin_teacher
   def index
     @users = User.filter_statistic(params[:type])
   end

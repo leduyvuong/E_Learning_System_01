@@ -1,6 +1,6 @@
 <%= render "admin/sidebar_admin" %>
 <div class = "col-md-9">
-  <%= form_for(model: [:admin, @category], local: true) do |c|%>
+  <%= form_with(model: [:admin , @category], local: true) do |c|%>
     <%= render "shared/error_messages",object:  c.object%>
     <%= render "shared/flash_messages" %>
     <div class="col-md-4 ed_profile_img">
@@ -15,13 +15,15 @@
     </div>
     <div class = "col-md-8 signup">
       <%= c.label :name, value: t("admin.categories.name") %>
-      <%= c.text_field :name, value: @category.name%>
+      <%= c.text_field :name, value: @category.name, id: "category_update_name"%>
       <%= c.label :decription, value: t("admin.categories.decrip")%>
       <%= c.text_area :decription, value: @category.decription, size: "709x10"%>
        <%= c.submit  t("admin.categories.update"), class: "btn btn-primary" %>
     </div>
     <h3><%= t("admin.categories.lesson")%></h3>
+    
     <div class = "row" >
+    <% if !@category.lessons.blank? %>
       <div class="ed_time_executor ed_toppadder40" style = "border: 1px solid">
           <ul>
             <%@category.lessons.each do |l|%> 
@@ -32,6 +34,9 @@
           </ul>
         </div>
       </div>
+    <%else%>
+      <h3><%= t("admin.categories.not_lesson")%></h3>
+    <%end%>
     </div>
   <%end%>
 </div>

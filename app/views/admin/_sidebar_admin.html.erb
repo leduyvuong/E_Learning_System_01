@@ -1,6 +1,7 @@
 <div class = "col-md-2 dashboad_left sidebar_admin">
   <div class="card">
     <div class="card-header" id="headingOne">
+    <% if current_user.admin?%>
       <div class = "childdash">
         <%= link_to t("admin.user"), "#user_mangament", {"data-toggle" => "collapse" } %>
       </div>
@@ -11,6 +12,7 @@
           <%= link_to t("admin.adduser"), new_admin_user_path, class: "login_button"%>
         </div>
       </div>
+    <%end%>
       <div class = "childdash">
         <%= link_to  t("admin.cate"), "#cate_mangament", {"data-toggle" => "collapse" } %>
       </div>
@@ -18,6 +20,7 @@
         <div class="card card-body childdash_cos">
           <%= link_to t("admin.catelist"), admin_categories_path, class: "login_button"%>
           <%= link_to t("admin.addcate"), new_admin_category_path, class: "login_button"%>
+          <%= link_to t("admin.categories.pending_list"), admin_pending_category_path, class: "login_button"%>
         </div>
       </div>
       <div class = "childdash">
@@ -35,7 +38,9 @@
       </div>
       <div class="collapse" id="statistic">
         <div class="card card-body childdash_cos">
+        <% if current_user.admin?%>
           <%= link_to "Statistic User", admin_statistics_path, class: "login_button"%>
+        <%end%>
           <%= link_to "Statistic Category", admin_category_statistic_path, class: "login_button"%>
         </div>
       </div>

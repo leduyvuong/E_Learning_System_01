@@ -9,7 +9,7 @@
             </p>
             <div class="ed_info_wrapper">
               <% if logged_in? %>
-                <%if current_user.admin? %>
+                <%if current_user.admin? || current_user.teacher? %>
                   <%= link_to t("admin.dashboard"), admin_path, class: "login_button"%>
                 <%end%>
                 <%= link_to t("layouts.header.logout"), logout_path, class: "login_button", method: :delete%>

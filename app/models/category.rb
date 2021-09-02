@@ -1,4 +1,6 @@
 class Category < ApplicationRecord
+  enum status: { pending: 0, active: 1, unactive: 2}
+  belongs_to :user, class_name: :User
   searchkick highlight: [:name, :decription]
   has_many :lessons, dependent: :destroy
   has_many :users, through: :wordlists
@@ -10,13 +12,12 @@ class Category < ApplicationRecord
       all
     end
   }
-  scope :active, -> { where(status: true)}
   self.per_page = Settings.WillPaginate.cate_per_page
   validates :name, presence: true, length: {maximum: 50}
   validates :decription, presence: true, length: {minimum: 30}
   has_one_attached :image
 
-  def self.search_name(name)
+  def self.found_name(name)
       categories = search_name name
       return categories unless categories.blank?
       all
@@ -28,8 +29,7 @@ class Category < ApplicationRecord
       decription: decription
     }
   end
-
   def default_status
-    self.status ||= true
+    self.status ||= 0
   end
 end

@@ -38,6 +38,8 @@ Rails.application.routes.draw do
       get "filter", to: "statistics#filter_statistic"
       get "category_statistic", to: "statistics#category_statistic"
       get "export_excel", to: "statistics#export_excel"
+      get "pending_category", to: "categories#pending_category"
+      post "accept_pending", to: "categories#accept_pending"
       resources :users 
       resources :categories
       resources :questions

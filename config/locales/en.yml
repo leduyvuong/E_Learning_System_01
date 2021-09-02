@@ -167,6 +167,8 @@ en:
         role: "Role"
         search: "Search"
     categories:
+      all_list: "All Course"
+      pending_list:  "Pending Course"
       name: "Course Name "
       status: "Status"
       decrip: "Description"
@@ -175,6 +177,7 @@ en:
       update: "Update"
       create: "Create"
       not_found:  "Not found category"
+      not_lesson: "The course has no lessons"
       search: "Search"
     lessons:
       name: "Lesson Name"

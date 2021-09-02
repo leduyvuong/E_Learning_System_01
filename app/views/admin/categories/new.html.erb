@@ -11,7 +11,7 @@
     </div>
     <div class = "col-md-8 signup">
       <%= c.label :name, value: t("admin.categories.lesson") %>
-      <%= c.text_field :name%>
+      <%= c.text_field :name, id: "category_new_name"%> 
       <%= c.label :decription, value: t("admin.categories.decrip")%>
       <%= c.text_area :decription,  size: "360x10"%>
         <%= c.submit t("admin.categories.create"), class: "btn btn-primary" %>

@@ -11,10 +11,10 @@
     <%end%>
   </div>
   <ul class="nav nav-pills nav-justified">
-    <li class="active"><%= link_to t("admin.categories.all_list"), "#all_course", { class: "tab_user", "data-toggle" => "tab" } %></li>
+    <li class="active"><%= link_to t("admin.categories.pending_list"), "#pending_course", { class: "tab_user", "data-toggle" => "tab" } %></li>
   </ul>
   <div class="tab-content">
-    <%= render "all_course", collection: @categories %>
+    <%= render "pending_course", collection: @categories %>
   </div>
   
 </div>

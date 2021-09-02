@@ -1,5 +1,5 @@
 class AdminController < ApplicationController
-  before_action :admin_user
+  before_action :admin_teacher
   def index
     
   end

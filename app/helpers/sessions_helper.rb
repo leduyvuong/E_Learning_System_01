@@ -69,6 +69,12 @@ module SessionsHelper
     redirect_to(home_url) unless current_user.admin?
   end
   
+  def admin_teacher
+    if !teacher_admin
+      redirect_to home_path
+    end
+  end
+
   def current_user
     if session[:user_id]
       @current_user ||= User.find_by(id: session[:user_id])

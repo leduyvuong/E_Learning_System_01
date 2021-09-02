@@ -169,6 +169,8 @@ vi:
         role: "Vai trò"
         search: "Tìm kiếm"
     categories:
+      all_list: "Dánh sách khóa học"
+      pending_list:  "Danh sách chờ duyệt"
       name: "Tên khóa học"
       status: "Trạng thái"
       decrip: "Thông tin"
@@ -176,6 +178,7 @@ vi:
       word: " Từ"
       update: "Cập nhật"
       create: "Tạo khóa học mới"
+      not_lesson: "Chưa có bài học cho khóa học này"
       not_found:  "Không tìm thấy khóa học!"
       search: "Tìm"
     lessons:

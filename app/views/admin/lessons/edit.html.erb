@@ -10,7 +10,7 @@
       <%= f.label :time, value: t("admin.lessons.time")%>
       <%= f.text_field :time, value: @lesson.time%>
       <%= f.label :categories, value: t("admin.lessons.category") %>
-      <%= f.select :category_id, options_for_select(Category.all.pluck(:name, :id), Category.find_by(id: @lesson.category_id).name)%>                   
+      <%= f.select :category_id, options_for_select(@categories, Category.find_by(id: @lesson.category_id).name)%>                   
       <%= f.submit  t("admin.lessons.update"), class: "btn btn-primary" %>
     <%end%>
     </div> 

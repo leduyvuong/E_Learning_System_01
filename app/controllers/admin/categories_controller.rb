@@ -1,9 +1,14 @@
 class Admin::CategoriesController < ApplicationController
-  before_action :admin_user
-  before_action :found_category, only: [:edit, :update, :show, :destroy]
+  before_action :admin_teacher
+  before_action :found_category, only: [:edit, :update, :show, :destroy, :accept_pending]
   
   def index
-    @categories = Category.search(params[:name]).paginate(page: ( params[:page] if is_number? params[:page] ) )
+    if current_user.teacher?
+      @categories = current_user.author.active.found_name(params[:name]).paginate(page: ( params[:page] if is_number? params[:page] ) )
+      
+    else
+      @categories = Category.active.found_name(params[:name]).paginate(page: ( params[:page] if is_number? params[:page] ) )
+    end
   end
 
   def edit
@@ -15,7 +20,7 @@ class Admin::CategoriesController < ApplicationController
   
   def create
     @category = Category.new(category_params)
-    @category.image.attach(params[:category][:image])
+    @category.user_id = current_user.id
     if @category.save
       flash[:success] = t("inform.success")
       redirect_to admin_categories_path
@@ -36,6 +41,24 @@ class Admin::CategoriesController < ApplicationController
     end
   end
 
+  def accept_pending
+    if @category.update(status: 1)
+      flash[:success] = t("inform.success")
+      redirect_to admin_pending_category_path
+    else
+      flash[:success] = t("inform.unsuccess")
+      redirect_to admin_pending_category_path
+    end
+  end
+
+  def pending_category
+    if current_user.teacher?
+      @categories = current_user.author.pending.found_name(params[:name]).paginate(page: ( params[:page] if is_number? params[:page] ) )     
+    else
+      @categories = Category.pending.found_name(params[:name]).paginate(page: ( params[:page] if is_number? params[:page] ) )
+    end
+  end
+
   def destroy
     if @category.update(status: !@category.status)
       flash[:success] = t("inform.success")
@@ -47,6 +70,7 @@ class Admin::CategoriesController < ApplicationController
   end
 
   private
+    
     def found_category
       @category = Category.find_by(id: params[:id])
       return @category unless @category.nil?
@@ -55,6 +79,6 @@ class Admin::CategoriesController < ApplicationController
     end
 
     def category_params
-      params.require(:category).permit(:name, :decription)
+      params.require(:category).permit(:name, :decription, :image)
     end
 end

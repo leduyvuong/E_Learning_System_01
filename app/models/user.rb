@@ -11,6 +11,7 @@ class User < ApplicationRecord
   scope :user_teacher, -> { where(role: 1)}
   scope :user_student, -> { where(role: 2)}
   has_one :user_profile
+  has_many :author, class_name: :Category, foreign_key: "user_id", dependent: :destroy
   has_many :summaries, dependent: :destroy
   has_many :wordlists, dependent: :destroy
   has_many :categories, through: :wordlists
@@ -24,7 +25,7 @@ class User < ApplicationRecord
     end
   }
   scope :activities,
-    -> (user_array) {select(:username, :"categories.name", :"wordlists.created_at").joins(:categories).where("user_id in (?) ", user_array).order("wordlists.created_at": :desc)}
+    -> (user_array) {select(:username, :"categories.name", :"wordlists.created_at").joins(:categories).where("wordlists.user_id in (?) ", user_array).order("wordlists.created_at": :desc)}
   validates :username, presence: true, length: {maximum: 50}
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :email, presence: true, length: {maximum: 255}, 

@@ -3,6 +3,7 @@ class Admin::LessonsController < ApplicationController
   before_action only: [:edit, :update, :show, :destroy] do
     found_lesson params[:id]
   end
+  before_action :list_category, only: [:edit, :update, :new]
   def index
     if current_user.teacher?
       @categories = current_user.author
@@ -12,12 +13,10 @@ class Admin::LessonsController < ApplicationController
     end
   end
 
-  def edit 
-    @categories = list_category
+  def edit  
   end
 
   def new 
-    @categories = list_category
     @lesson = Lesson.new
   end
 

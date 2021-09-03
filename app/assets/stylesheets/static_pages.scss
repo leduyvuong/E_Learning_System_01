@@ -361,6 +361,16 @@ textarea {
   border-radius: 10px;
   margin: 20px 0 0 50px;
   padding: 20px;
+  height: 250px;
+}
+
+.lesson_game {
+  text-align: center;
+  border: 1px solid;
+  border-radius: 10px;
+  margin: 20px 0 0 50px;
+  padding: 20px;
+  height: 500px;
 }
 
 .btn_train {
@@ -768,12 +778,22 @@ textarea {
   border-top: 1px solid #ddd;
 }
 
+.disabled {
+  pointer-events: none;
+  color: #ccc;
+}
+
 .shadow_box {
   border: 1px solid;
   padding: 10px;
   margin-top: 20px;
   margin-bottom: 20px;
-  box-shadow: 2px 2px 2px 2px #888888;
+  box-shadow: 2px 2px 2px 2px #888;
+
+  h1,h2,h3,p {
+    width: 100%;
+    text-align: center;
+  }
 }
 /* ---------------------menuend--------------------- */
 
@@ -1419,6 +1439,11 @@ a.ed_getinvolved {
 /* ------ instructor Single Page end ---------  */
 
 /* --------- student detail page start ------- */
+
+.button_lesson {
+  text-align: center;
+}
+
 .ed_dashboard_tab_info {
   float: left;
   width: 100%;

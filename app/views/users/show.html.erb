@@ -3,7 +3,7 @@
 <%if !@categories.blank?%>
   <div class = "show-course">
     <%@categories.take(8).each do |cate|%>
-      <%= link_to user_lesson_path, class: "btn btn-course" do%>
+      <%= link_to user_lesson_path(id: cate.id), class: "btn btn-course" do%>
         <i class="fa fa-calendar-o icon_course" aria-hidden="true">    </i><%= cate.name%>
       <%end%>
     <%end%>

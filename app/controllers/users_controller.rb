@@ -11,7 +11,6 @@ class UsersController < ApplicationController
     @categories = @user.categories
     id_array = @user.following_ids
     id_array << @user.id
-    id_array.join(", ")
     @activities = User.get_activites(id_array)
   end
 

@@ -182,6 +182,10 @@ vi:
       not_found:  "Không tìm thấy khóa học!"
       search: "Tìm"
     lessons:
+      train:  "Luyện tập"
+      down: "Tải file PDF"
+      done: "Hoàn thành "
+      lesson: "bài học."
       name: "Tên bài học"
       status: "Trạng thái"
       time: "Thời gian"

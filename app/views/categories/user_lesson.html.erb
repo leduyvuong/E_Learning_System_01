@@ -1,0 +1,14 @@
+
+<div class = "ed_sidebar_wrapper col-md-10 col-md-offset-1 shadow_box">
+  <div class = "col-md-12">
+    <%= render "shared/flash_messages" %>
+  </div>
+  <h1><%= @categories.name%> </h1>
+  <p>( <%= t("admin.lessons.done")%> <%= @result_lessons%>/<%= @lessons.lesson_active.count%> <%= t("admin.lessons.lesson")%>)</p>
+  <ul class="nav nav-pills nav-justified">
+    <%= render "lesson_name", collection: @lessons %>
+  </ul>
+  <div class="tab-content">
+    <%= render "lesson_content", collection: @lessons %>
+  </div>
+</div>

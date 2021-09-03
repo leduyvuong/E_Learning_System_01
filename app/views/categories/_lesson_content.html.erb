@@ -1,0 +1,27 @@
+<% @lessons.lesson_active.each do |lesson_content|%>
+  <% if @lessons.lesson_active.first == lesson_content%>
+    <div id="lesson<%=lesson_content.id%>" class="tab-pane active">
+      <h3><%= lesson_content.name_lesson%>( <%= lesson_content.content_lessons.count%> <%= t("lesson.show.word")%> )</h3>  
+      <%= render "content_lesson", collection: @content_lessons =  lesson_content.content_lessons%>
+      <div class ="row ed_dashboard_tab_info button_lesson">
+        <%if teacher_admin %>
+          <%= link_to t("admin.lessons.down"), down_lesson_path(id: lesson_content.id, format: :pdf), class: "btn btn-primary m-1"%>
+        <%end%>
+        <%= link_to t("lesson.show.strart_test"), test_path(id: lesson_content.id), class: "btn btn-primary m-1"%>
+        <%= link_to t("admin.lessons.train"), train_path(id: lesson_content.id), class: "btn btn-primary m-1"%>
+      </div>   
+    </div>
+  <%else%>
+    <div id="lesson<%=lesson_content.id%>" class="tab-pane">
+      <h3><%= lesson_content.name_lesson%>( <%= lesson_content.content_lessons.count%> <%= t("lesson.show.word")%>)</h3>  
+      <%= render "content_lesson", collection: @content_lessons =  lesson_content.content_lessons%>
+      <div class ="row ed_dashboard_tab_info button_lesson">
+        <%if teacher_admin %>
+          <%= link_to t("admin.lessons.down"), down_lesson_path(id: lesson_content.id, format: :pdf), class: "btn btn-primary m-1"%>
+        <%end%>
+          <%= link_to t("lesson.show.strart_test"), test_path(id: lesson_content.id), class: "btn btn-primary m-1"%>
+          <%= link_to t("admin.lessons.train"), train_path(id: lesson_content.id), class: "btn btn-primary m-1"%>
+      </div>   
+    </div>
+  <%end%>
+<%end%>

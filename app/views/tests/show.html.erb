@@ -1,4 +1,7 @@
 <div class="row ed_dashboard_wrapper">
+  <div class = "col-md-4 col-md-offset-5">
+    <h1><span id = "h"></span><span id = "p"></span><span id = "s"></span></h1>
+  </div>
   <div class="col-lg-8 col-lg-offset-2  container ed_dashboard_tab_info ">
   <%= form_with url: result_test_path(id: params[:id]) do |f| %>   
    <%= render "shared/flash_messages" %> 
@@ -40,7 +43,11 @@
     <%end%>
     <br>    
     <%end%>
-    <%= f.submit t("lesson.show.submit"), class: "btn btn-primary" %>
+    <%= f.submit t("lesson.show.submit"), class: "btn btn-primary", id: "btn_test" %>
   <%end%>
   </div>
 </div>
+<script>
+  var time = <%= @lesson.time.to_i%>;
+</script>
+<%= javascript_include_tag "/js/test.js" %>

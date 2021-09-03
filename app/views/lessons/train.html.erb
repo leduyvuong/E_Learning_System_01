@@ -4,7 +4,7 @@
     <%= render "shared/flash_messages" %>
       <% @words.each do |w| %>
         <% if @words.first == w%>
-          <div id = "game<%= w.id%>" class = "lesson">
+          <div id = "game<%= w.id%>" class = "lesson_game">
             <div class = "row">
               <% if w.image.attached? %>
                 <%= image_tag w.image, size: "200x200" %>
@@ -36,7 +36,7 @@
             </div>
           </div>
         <%else%>
-          <div id = "game<%= w.id%>" class = "lesson" hidden>
+          <div id = "game<%= w.id%>" class = "lesson_game" hidden>
             <div class = "row">
               <% if w.image.attached? %>
                 <%= image_tag w.image, size: "200x200" %>

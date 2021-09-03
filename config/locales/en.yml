@@ -180,6 +180,10 @@ en:
       not_lesson: "The course has no lessons"
       search: "Search"
     lessons:
+      train:  "Train"
+      down: "Download PDF"
+      done: "Done"
+      lesson: "lessons."
       name: "Lesson Name"
       status: "Status"
       time: "Time"

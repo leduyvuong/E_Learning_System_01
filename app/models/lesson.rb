@@ -3,6 +3,7 @@ class Lesson < ApplicationRecord
   belongs_to :category
   has_many :result_lessons, dependent: :destroy
   has_many :users, through: :result_lessons
+  scope :lesson_active, -> { where(status: true)}
   self.per_page = Settings.WillPaginate.lesson_per_page
   has_many :content_lessons, dependent: :destroy
   has_many :questions, dependent: :destroy

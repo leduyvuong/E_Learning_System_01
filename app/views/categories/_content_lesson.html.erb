@@ -1,0 +1,28 @@
+
+<% @content_lessons.each do |w| %>
+  <div class = "col-md-3 lesson">
+    <div class = "row">
+      <% if w.image.attached? %>
+        <%= image_tag w.image, size: "100x100" %>
+      <%end%>
+    </div>
+    <div class = "row">
+      <%= w.word%>
+      <% if w.audio_word.attached? %>
+        <a class = "btn-lg"  onclick="play(<%=w.id%>)">
+          <i class="fa fa-play-circle-o" aria-hidden="true"></i>
+        </a>
+        <%= audio_tag url_for(w.audio_word), id: "audio#{w.id}"%>
+      <%end%>
+    </div>
+    <div class = "row">
+      <%= w.pronounce%>
+    </div>
+    <div class = "row">
+      <%= w.mean%>
+    </div>
+    <div class = "row">
+      <%= link_to t("lesson.show.add_summary"), word_summary_path(id: w.id) %>
+    </div>
+  </div>    
+<%end%>

@@ -1,6 +1,7 @@
 class TestsController < ApplicationController
   before_action :found_lesson, only: [:show, :result_test, :train, :result_user]
   def show
+    session.delete(:ans_user)
     @questions = @lesson.questions
   end
 
@@ -13,34 +14,16 @@ class TestsController < ApplicationController
     not_choose = t("lesson.test.not_choose_ans")
     @questions.each do |q|
       ans = q.answers.right_answer.first  
-      if params["ques#{q.id}"].nil?
-        not_choose += "#{@questions.index(q) + 1 } "
-      else
-        if ans.content_lesson.word == params["ques#{q.id}"]
-          count +=1
-        end
+      if ans.content_lesson.word == params["ques#{q.id}"]
+        count +=1
       end
-    end 
-    if not_choose == t("lesson.test.not_choose_ans")     
-      flash[:success] = "#{count}/#{@questions.count}"
-      result_user count
-      return @questions && @ans_user
-    else   
-      flash[:danger] = not_choose
-      redirect_to request.referer
-    end      
+    end     
+    mark_user @lesson, count
+    return @questions && @ans_user      
   end
   
   private
-    def result_user content
-      result = ResultLesson.new(user_id: current_user.id,
-        content: content,
-        lesson_id: @lesson.id)
-      if !result.save
-        flash[:danger] = t("errors.not_login")
-        redirect_to request.referer
-      end
-    end
+
     def get_user_answer(questions)
       ans_user = Hash.new
       questions.each do |ans|
@@ -52,6 +35,34 @@ class TestsController < ApplicationController
       end
       ans_user
     end
+
+    def mark_user lesson, count
+      if count == lesson.questions.count
+        mark = 10
+      else
+        mark = count * (10 / lesson.questions.count.to_f)
+      end
+      if mark >= 8
+        if result = ResultLesson.found_user(current_user.id, lesson.id).first
+          if mark > result.content.to_i
+            unless result.update(content: mark)
+              flash[:danger] = "Lỗi hệ thống"
+              redirect_to root_path
+            end
+          end  
+        else
+          result = ResultLesson.new(content: mark, user_id: current_user.id, lesson_id: lesson.id)
+          unless result.save
+            flash[:danger] = "Lỗi hệ thống"
+            redirect_to root_path
+          end
+        end
+        flash[:success] = "#{mark}/10"
+      else
+        flash[:danger] = "Failed #{mark}/10"
+        redirect_to user_lesson_path(id: lesson.category_id)
+      end
+    end  
     def found_lesson
       @lesson = Lesson.find_by(id: params[:id])
       return @lesson unless @lesson.nil?

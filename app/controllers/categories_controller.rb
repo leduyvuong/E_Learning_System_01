@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :found_category, only: :show
+  before_action :found_category, only: [:show, :user_lesson]
   def index
     if params[:name].nil?
       @categories = Category.active.paginate(page: ( params[:page] if is_number? params[:page] ) )
@@ -23,6 +23,13 @@ class CategoriesController < ApplicationController
      
     end
   end
+
+  def user_lesson
+    @lessons = @categories.lessons
+    @result_lessons = ResultLesson.found_cate(current_user.id, @lessons.ids).count
+    render :user_lesson
+  end
+
   private
     def found_category
       @categories = Category.find_by(id: params[:id])

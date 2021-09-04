@@ -84,7 +84,9 @@ en:
       follow: "follow"
       unfollow: "unfollow"
     activity:
-      join: "joined to "
+      wordlist: "joined to "
+      result: "completed the "
+      mark: "with %{point} points."
       ago: "ago."
       you_join: "You joined to"
       nothing:  "Nothing" 

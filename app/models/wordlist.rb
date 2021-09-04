@@ -1,5 +1,6 @@
 class Wordlist < ApplicationRecord
   belongs_to :user
+  has_many :activities, as: :owner
   scope :found_category, -> wordlist { where("category_id = ? and user_id = ?", wordlist[:category_id], wordlist[:user_id])}
   scope :category_filter, -> (name){ joins(:category).where("categories.name = ?",name)}
   belongs_to :category

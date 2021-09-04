@@ -52,7 +52,12 @@ class TestsController < ApplicationController
           end  
         else
           result = ResultLesson.new(content: mark, user_id: current_user.id, lesson_id: lesson.id)
-          unless result.save
+          if result.save
+            unless Activity.create!(owner: result, user_id: result.user_id)
+              flash[:danger] = "Lỗi hệ thống"
+              redirect_to root_path
+            end
+          else
             flash[:danger] = "Lỗi hệ thống"
             redirect_to root_path
           end

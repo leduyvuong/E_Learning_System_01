@@ -10,8 +10,7 @@ class UsersController < ApplicationController
     @summary_list = @user.summaries.summary_active
     @categories = @user.categories
     id_array = @user.following_ids
-    id_array << @user.id
-    @activities = User.get_activites(id_array)
+    @activities = Activity.activity_user(id_array).paginate(page: ( params[:page] if is_number? params[:page] ))
   end
 
   def new

@@ -84,6 +84,8 @@ vi:
       unfollow: "Hủy theo dõi"
     activity:
       join: "đã tham gia "
+      result: "đã hoàn thành bài "
+      mark: "với %{point} điểm."
       ago: "trước."
       you_join: "Bạn đã tham gia"
       nothing:  "Không có gì cả"

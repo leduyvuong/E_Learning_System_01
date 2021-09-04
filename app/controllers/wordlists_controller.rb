@@ -8,6 +8,10 @@ class WordlistsController < ApplicationController
     else
       @word = Wordlist.new(category_id: params[:id_cate], user_id: current_user.id)
       if @word.save
+        unless Activity.create!(owner: @word, user_id: @word.user_id)
+          flash[:danger] = "Lỗi hệ thống"
+          redirect_to root_path
+        end
         flash[:success] = t("categories.inform.success")
         redirect_to categories_path
       else

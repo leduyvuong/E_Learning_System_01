@@ -25,11 +25,11 @@ end
   decription = Faker::Quote.matz
   users = (0...(User.all.count)).to_a
   ran = users.sample
-  @cate = Category.new(name: name, decription: decription, user_id: ran)
+  @cate = Category.new(name: name, decription: decription, user_id: ran, status: 1)
   while @cate.save == false
     name = "Course of " + Faker::University.name
     decription = Faker::Quote.matz
-    @cate = Category.new(name: name, decription: decription, user_id: ran)
+    @cate = Category.new(name: name, decription: decription, user_id: ran, status: 1)
   end
 end 
 cate = Category.order(:created_at).take(3)

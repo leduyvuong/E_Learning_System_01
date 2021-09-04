@@ -3,7 +3,7 @@ class ContentLesson < ApplicationRecord
   validates :mean, presence: :true, uniqueness: true
   belongs_to :lesson
   has_many :answers, dependent: :destroy
-  self.per_page = Settings.WillPaginate.  content_per_page
+  self.per_page = Settings.WillPaginate.content_per_page
   has_one_attached :image
   validates :image, content_type: { in: %w[image/jpg image/jpeg image/png],
     message: :image_errors1},

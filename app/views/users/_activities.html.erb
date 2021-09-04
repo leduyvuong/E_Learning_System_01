@@ -3,16 +3,17 @@
     <ul class="users">
     <%if !@activities.blank? %>
       <% @activities.each do |act|%>
-        <% if act.username == current_user.username%>
+        <% if act.owner_type == "Wordlist"%>
           <li>
-            <%= t("users.activity.you_join")%> <%=act.name%> <%= time_ago_in_words(act.created_at) %> <%= t("users.activity.ago")%>
+            <%= act.owner.user.username%> <%= t("users.activity.join")%> <%=act.owner.category.name%> - <%= time_ago_in_words(act.created_at) %> <%= t("users.activity.ago")%>
           </li>
         <%else%>
           <li>
-           <%= act.username%> <%= t("users.activity.join")%> <%=act.name%> <%= time_ago_in_words(act.created_at) %> <%= t("users.activity.ago")%>
+           <%= act.owner.user.username%> <%= t("users.activity.result")%> <%=act.owner.lesson.name_lesson%> <%= t("users.activity.mark", point: act.owner.content)%> - <%= time_ago_in_words(act.created_at) %> <%= t("users.activity.ago")%>
           </li>
         <%end%>
       <%end%>
+      <%= will_paginate @activities, :previous_label=> t("page.pre"), :next_label => t("page.next") %>
     <%else%>
       <h3><%= t("users.activity.nothing")%></h3>
     <%end%>

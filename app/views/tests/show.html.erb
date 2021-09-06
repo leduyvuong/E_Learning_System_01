@@ -6,16 +6,36 @@
     <b><%= t("lesson.show.question")%> <%= @questions.index(q) + 1%>:  </b> <%= q.content%><br>
     <%change_ans(q).each do |answer|%>
       <% if @ans_user = session[:ans_user] %>
-        <%if @ans_user["#{q.id}"] == answer.content%>
-          <%= f.radio_button "ques#{q.id}" , answer.content, checked: true, value: q.id%> 
-          <%= f.label q.id, answer.content%><br>
+        <%if @ans_user["#{q.id}"] == answer.content_lesson.word%>
+          <%= f.radio_button "ques#{q.id}" , answer.content_lesson.word, checked: true, value: q.id%> 
+          <%= f.label q.id, answer.content_lesson.word%>
+          <% if answer.content_lesson.audio_word.attached? %>
+            <a class = "btn-lg"  onclick="play(<%=answer.id%>)">
+              <i class="fa fa-play-circle-o" aria-hidden="true"></i>
+            </a>
+            <%= audio_tag url_for(answer.content_lesson.audio_word), id: "audio#{answer.id}"%>
+          <%end%>
         <%else%>
-          <%= f.radio_button "ques#{q.id}" , answer.content, checked: false, value: q.id%> 
-          <%= f.label q.id, answer.content%><br>
+          <%= f.radio_button "ques#{q.id}" , answer.content_lesson.word, checked: false, value: q.id%> 
+          <%= f.label q.id, answer.content_lesson.word%>
+          <% if answer.content_lesson.audio_word.attached? %>
+            <a class = "btn-lg"  onclick="play(<%=answer.id%>)">
+              <i class="fa fa-play-circle-o" aria-hidden="true"></i>
+            </a>
+            <%= audio_tag url_for(answer.content_lesson.audio_word), id: "audio#{answer.id}"%>
+          <%end%>
+          <br>
         <%end%>
       <%else%>
-        <%= f.radio_button "ques#{q.id}" , answer.content, checked: false, value: q.id%> 
-        <%= f.label q.id, answer.content%><br>
+        <%= f.radio_button "ques#{q.id}" , answer.content_lesson.word, checked: false, value: q.id%> 
+        <%= f.label q.id, answer.content_lesson.word%>
+        <% if answer.content_lesson.audio_word.attached? %>
+            <a class = "btn-lg"  onclick="play(<%=answer.id%>)">
+              <i class="fa fa-play-circle-o" aria-hidden="true"></i>
+            </a>
+            <%= audio_tag url_for(answer.content_lesson.audio_word), id: "audio#{answer.id}"%>
+          <%end%>
+        <br>
       <%end%>
     <%end%>
     <br>    

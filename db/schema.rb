@@ -96,6 +96,16 @@ ActiveRecord::Schema.define(version: 2021_08_31_134934) do
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
+  create_table "result_lessons", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "content"
+    t.bigint "user_id", null: false
+    t.bigint "lesson_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["lesson_id"], name: "index_result_lessons_on_lesson_id"
+    t.index ["user_id"], name: "index_result_lessons_on_user_id"
+  end
+
   create_table "summaries", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.text "content"
     t.boolean "status"
@@ -150,6 +160,8 @@ ActiveRecord::Schema.define(version: 2021_08_31_134934) do
   add_foreign_key "content_lessons", "lessons"
   add_foreign_key "lessons", "categories"
   add_foreign_key "questions", "lessons"
+  add_foreign_key "result_lessons", "lessons"
+  add_foreign_key "result_lessons", "users"
   add_foreign_key "summaries", "users"
   add_foreign_key "user_profiles", "users"
   add_foreign_key "wordlists", "categories"

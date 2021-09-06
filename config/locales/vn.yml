@@ -137,6 +137,10 @@ vi:
       question: "Câu hỏi "
       submit: "Nộp bài"
       back: "Quay về trang chủ"
+      train:  "Luyện tập"
+      check:  "Kiểm tra"
+      undo: "Làm lại"
+      next: "Tiếp theo"
     test:
       not_choose_ans: "Chọn câu trả lời cho câu "
   admin:

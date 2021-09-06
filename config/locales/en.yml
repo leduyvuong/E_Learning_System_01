@@ -138,6 +138,12 @@ en:
       question: "Question "
       submit: "Submit"
       back: "Back to home"
+      train:  "Train"
+      check:  "Check"
+      undo: "Undo"
+      next: "Next"
+      correct:  "Correct!"
+      incorrect:  "Incorrect!"
     test:
       not_choose_ans: "Choose answer question "
   admin:

@@ -1,0 +1,73 @@
+<div class="row ed_dashboard_wrapper">
+  <div class="col-lg-8 col-lg-offset-2  container ed_dashboard_tab_info "> 
+    <h3><%= t("lesson.show.lesson_name")%> <%= @lesson.name_lesson%></h3>
+    <%= render "shared/flash_messages" %>
+      <% @words.each do |w| %>
+        <% if @words.first == w%>
+          <div id = "game<%= w.id%>" class = "lesson">
+            <div class = "row">
+              <% if w.image.attached? %>
+                <%= image_tag w.image, size: "200x200" %>
+              <%end%>
+            </div>
+            <div class = "row">
+              <% if w.audio_word.attached? %>
+                <%= image_tag "audio_stop_bt.gif", onclick: "play(#{w.id})" %>
+                <%= audio_tag url_for(w.audio_word), id: "audio#{w.id}"%>
+              <%end%>
+            </div>
+            <input id ="<%= w.id%>" value=<%= w.word%> hidden/>
+            <div class = "row">
+              <% (swap_string w.word).each do %>
+                <button class = "btn_train btn_answer<%=w.id%>" value ="" disabled> </button>
+              <%end%>
+            </div>
+            <div class = "row">
+              <% (swap_string w.word).each do |word|%>
+                <button class = "btn_train <%=w.id%> btn_word" value = "<%= word%>"><%= word%></button>
+              <%end%>
+            </div>
+            <div id = "action" class = "row">
+              <button class = "btn_check <%= w.id%> btn btn-primary"><%= t("lesson.show.check")%></button>
+              <button class = "btn_undo <%= w.id%> btn btn-primary"><%= t("lesson.show.undo")%></button>
+            </div>
+            <div class = "row" id = "next" hidden>
+              <button class = "btn_next <%= w.id%> btn btn-primary"><%= t("lesson.show.next")%></button>
+            </div>
+          </div>
+        <%else%>
+          <div id = "game<%= w.id%>" class = "lesson" hidden>
+            <div class = "row">
+              <% if w.image.attached? %>
+                <%= image_tag w.image, size: "200x200" %>
+              <%end%>
+            </div>
+            <div class = "row">
+              <% if w.audio_word.attached? %>
+                <%= image_tag "audio_stop_bt.gif", onclick: "play(#{w.id})" %>
+                <%= audio_tag url_for(w.audio_word), id: "audio#{w.id}"%>
+              <%end%>
+            </div>
+            <input id ="<%= w.id%>" value=<%= w.word%> hidden/>
+            <div class = "row">
+              <% (swap_string w.word).each do %>
+                <button class = "btn_train btn_answer<%=w.id%>" value ="" disabled> </button>
+              <%end%>
+            </div>
+            <div class = "row">
+              <% (swap_string w.word).each do |word|%>
+                <button class = "btn_train <%=w.id%> btn_word" value = "<%= word%>"><%= word%></button>
+              <%end%>
+            </div>
+            <div id = "action" class = "row ">
+              <button class = "btn_check <%= w.id%> btn btn-primary"><%= t("lesson.show.check")%></button>
+              <button class = "btn_undo <%= w.id%> btn btn-primary"><%= t("lesson.show.undo")%></button>
+            </div>
+            <div id = "next" class = "row" hidden>
+              <button class = "btn_next <%= w.id%> btn btn-primary"><%= t("lesson.show.next")%></button>
+            </div>
+          </div>
+        <%end%>   
+      <%end%>
+  </div>
+</div>

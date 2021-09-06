@@ -22,6 +22,7 @@
         </div>
       </div>
       <div class="row">
+     
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div class="ed_heading_top ed_bottompadder50 ed_toppadder50">
             <h3>
@@ -30,6 +31,7 @@
             <%= render "shared/flash_messages" %>
           </div>
         </div>
+         <% if !@categories.blank?%>
         <div class="ed_mostrecomeded_course_slider">         
           <% @categories.each do |category|%>
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -71,12 +73,18 @@
               </div>
             </div>
             <%end%>
-              <div class="row">
-                <div class="col-md-6 col-md-offset-4">
-                  <%= will_paginate @categories, :previous_label=> t("page.pre"), :next_label => t("page.next") %>
-                </div>
+            <div class="row">
+              <div class="col-md-6 col-md-offset-4">
+                <%= will_paginate @categories, :previous_label=> t("page.pre"), :next_label => t("page.next") %>
               </div>
+            </div>
+          <%else%>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 signup" >
+              <h1 style = "text-align: center, width: 100%">Không có khóa học nào</h1>
+            </div>
+          <%end%>
         </div>
       </div>
+      
     </div>
   </div>

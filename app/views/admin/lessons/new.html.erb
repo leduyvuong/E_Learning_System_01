@@ -7,7 +7,7 @@
       <%= c.label :time, value: t("admin.lessons.time") %>
       <%= c.text_field :time%>
       <%= c.label :category_id, value: t("admin.lessons.category") %>
-      <%= c.select :category_id, options_for_select(@categories)%>
+      <%= c.select :category_id, options_for_select(@categories, @category.id)%>
       <%= c.submit  t("admin.lessons.create"), class: "btn btn-primary" %>
   <%end%>
 </div>

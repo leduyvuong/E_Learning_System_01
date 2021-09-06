@@ -43,5 +43,5 @@
           <%end%>
         </tbody>
       </table>
-      <%= will_paginate @users, :previous_label=> t("page.pre"), :next_label => t("page.next") %> 
+      <%= will_paginate @users.teacher, :previous_label=> t("page.pre"), :next_label => t("page.next") %> 
   </div>

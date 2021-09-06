@@ -1,5 +1,6 @@
 class Admin::LessonsController < ApplicationController
   before_action :admin_teacher
+  before_action :found_category, only: :new
   before_action only: [:edit, :update, :show, :destroy] do
     found_lesson params[:id]
   end
@@ -16,7 +17,7 @@ class Admin::LessonsController < ApplicationController
   def edit  
   end
 
-  def new 
+  def new
     @lesson = Lesson.new
   end
 
@@ -52,6 +53,14 @@ class Admin::LessonsController < ApplicationController
     end
   end
   private
+
+    def found_category
+      @category = Category.find_by(id: params[:id_cate])
+      return @category unless @category.nil?
+      flash[:danger] = t("admin.categories.not_found")
+      redirect_to admin_categories_path
+    end
+
     def list_category
       if current_user.teacher?
         @categories = current_user.author.active.pluck(:name, :id)

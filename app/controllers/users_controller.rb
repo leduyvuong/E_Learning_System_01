@@ -1,16 +1,21 @@
 class UsersController < ApplicationController
-  before_action :found_user, only: [:show, :following, :followers, :edit, :update]
+  before_action :found_user, only: [:show, :following, :followers, :edit, :update, :activity]
   
   def index
     @user = User.all.paginate(page: ( params[:page] if is_number? params[:page] ))
+  end
+
+  def activity
+    @categories = @user.categories
+    id_array = @user.following_ids
+    @activities = Activity.activity_user(id_array).paginate(page: ( params[:page] if is_number? params[:page] ))
   end
 
   def show 
     @summary = Summary.new
     @summary_list = @user.summaries.summary_active
     @categories = @user.categories
-    id_array = @user.following_ids
-    @activities = Activity.activity_user(id_array).paginate(page: ( params[:page] if is_number? params[:page] ))
+    @lessons = current_user.lessons.paginate(page: ( params[:page] if is_number? params[:page] ))
   end
 
   def new

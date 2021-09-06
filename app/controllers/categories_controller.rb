@@ -7,7 +7,7 @@ class CategoriesController < ApplicationController
       if params[:name] == "" 
         @categories = Category.active.paginate(page: ( params[:page] if is_number? params[:page] ) )
       else
-        @categories = Category.active.search(params[:name],page: params[:page], per_page: Settings.WillPaginate.cate_per_page )
+        @categories = Category.active.search(params[:name], misspellings: false, page: params[:page], per_page: Settings.WillPaginate.cate_per_page )
       end
     end
   end

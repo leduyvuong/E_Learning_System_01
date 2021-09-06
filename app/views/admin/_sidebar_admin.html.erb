@@ -10,12 +10,15 @@
           <li>
             <%= link_to "Sua",edit_admin_category_path(id: cate.id), class: "btn_admin btn btn-info"%>
           </li>
+          <li>
+            <%= link_to t("admin.addlesson"), new_admin_lesson_path(id_cate: cate.id), class: "btn_admin btn btn-info"%>
+          </li>
           <li class="dropdown-submenu">
             <a class="test btn btn-info" href="#">Bai Hoc <i class="fa fa-arrow-right" style = " margin-left: 30px" aria-hidden="true"></i></a>
             <ul class="dropdown-menu">
             <% cate.lessons.each do |lesson|%>
               <li>
-                <%= link_to lesson.name_lesson,edit_admin_lesson_path(id: lesson.id), class: "test btn btn-info"%>
+                <%= link_to lesson.name_lesson,edit_admin_lesson_path(id: lesson.id), class: "btn_admin btn btn-info"%>
               </li>
             <%end%>
             </ul>

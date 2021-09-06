@@ -1,19 +1,5 @@
 <% provide(:title, t("static_pages.home.title") )%>
-<div class="col-md-12">
-<%if !@categories.blank?%>
-  <div class = "show-course">
-    <%@categories.take(8).each do |cate|%>
-      <%= link_to user_lesson_path(id: cate.id), class: "btn btn-course" do%>
-        <i class="fa fa-calendar-o icon_course" aria-hidden="true">    </i><%= cate.name%>
-      <%end%>
-    <%end%>
-  <%if @categories.count > 8%>
-    <%= link_to "#", class: "btn btn-course" do%>
-      <i class="fa fa-calendar-o icon_course" aria-hidden="true">    </i> Tất cả
-    <%end%>
-  <%end%>
-  </div>
-<%end%>
+<%= render "show_course", collection: @categories %>
   <div class="">
     <div class="row">
       <%= render "layouts/sidebar" %>
@@ -22,7 +8,6 @@
           <div class="tab-content shadow_box">
             <%= render "dashboard" %>
             <%= render "wordlist" %>
-            <%= render "activities" %>
             <%= render "profile" %>
           </div>
         </div>

@@ -155,6 +155,9 @@ vi:
     Unactive: "Tắt hoạt động"
     active: "Kích hoạt"
     dashboard:  "Trang quản trị"
+    statistic:  "Thống kê"
+    statistic_user: "Thống kê người dùng"
+    statistic_cate: "Thống kê khóa học"
     users:
       username: "Tên người dùng"
       email:  "Email"

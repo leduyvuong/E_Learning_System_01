@@ -153,6 +153,9 @@ en:
     lessonlist: "Lesson List"
     addlesson:  "Add lesson"
     dashboard:  "Dash Board"
+    statistic:  "Statistic"
+    statistic_user: "User statistic"
+    statistic_cate: "Category statistic"
     users:
       username: "User name"
       email:  "Email"

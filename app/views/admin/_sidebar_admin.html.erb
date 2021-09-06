@@ -1,49 +1,70 @@
-<div class = "col-md-2 dashboad_left sidebar_admin">
-  <div class="card">
-    <div class="card-header" id="headingOne">
-    <% if current_user.admin?%>
-      <div class = "childdash">
-        <%= link_to t("admin.user"), "#user_mangament", {"data-toggle" => "collapse" } %>
-      </div>
-      </div>
-      <div class="collapse" id="user_mangament">
-        <div class="card card-body childdash_cos">
-          <%= link_to t("admin.userlist"), admin_users_path, class: "login_button"%>
-          <%= link_to t("admin.adduser"), new_admin_user_path, class: "login_button"%>
-        </div>
-      </div>
+<div class = "col-md-2 dashboad_left sidebar_admin"> 
+  <div class="dropdown div-inline">
+    <a class="test btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><%= t("admin.cate")%>
+    <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+    <ul class="dropdown-menu">
+    <% Category.all.take(10).each do |cate|%>
+      <li class="dropdown-submenu">
+        <a class="test btn btn-info" tabindex="-1" href="#"><%=cate.name%> <i class="fa fa-arrow-right" style = "float: right; margin-right: 10px" aria-hidden="true"></i></a>
+        <ul class="dropdown-menu">
+          <li>
+            <%= link_to "Sua",edit_admin_category_path(id: cate.id), class: "btn_admin btn btn-info"%>
+          </li>
+          <li class="dropdown-submenu">
+            <a class="test btn btn-info" href="#">Bai Hoc <i class="fa fa-arrow-right" style = " margin-left: 30px" aria-hidden="true"></i></a>
+            <ul class="dropdown-menu">
+            <% cate.lessons.each do |lesson|%>
+              <li>
+                <%= link_to lesson.name_lesson,edit_admin_lesson_path(id: lesson.id), class: "test btn btn-info"%>
+              </li>
+            <%end%>
+            </ul>
+          </li>
+        </ul>
+      </li>
     <%end%>
-      <div class = "childdash">
-        <%= link_to  t("admin.cate"), "#cate_mangament", {"data-toggle" => "collapse" } %>
-      </div>
-      <div class="collapse" id="cate_mangament">
-        <div class="card card-body childdash_cos">
-          <%= link_to t("admin.catelist"), admin_categories_path, class: "login_button"%>
-          <%= link_to t("admin.addcate"), new_admin_category_path, class: "login_button"%>
-          <%= link_to t("admin.categories.pending_list"), admin_pending_category_path, class: "login_button"%>
-        </div>
-      </div>
-      <div class = "childdash">
-        <%= link_to  t("admin.lesson"), "#lesson_mangament", {"data-toggle" => "collapse" } %>
-      </div>
-      <div class="collapse" id="lesson_mangament">
-        <div class="card card-body childdash_cos">
-          <%= link_to t("admin.lessonlist"), admin_lessons_path, class: "login_button"%>
-          <%= link_to t("admin.addlesson"), new_admin_lesson_path, class: "login_button"%>
-        </div>
-      </div>
-
-      <div class = "childdash">
-        <%= link_to  "Statistic", "#statistic", {"data-toggle" => "collapse" } %>
-      </div>
-      <div class="collapse" id="statistic">
-        <div class="card card-body childdash_cos">
+      <li class="dropdown-submenu">
+        <%= link_to t("admin.catelist"), admin_categories_path, class: "btn_admin btn btn-info"%>
+      </li>
+      <li>
+        <%= link_to t("admin.addcate"), new_admin_category_path, class: "btn_admin btn btn-info"%>
+      </li>
+    </ul>
+  </div>
+  <div class="dropdown div-inline">
+    <a class="test btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><%= t("admin.user")%>
+    <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+    <ul class="dropdown-menu">
+      <li class="dropdown-submenu">
+        <%= link_to t("admin.userlist"), admin_users_path, class: "btn_admin btn btn-info"%>
+      </li>
+      <li>
+        <%= link_to t("admin.adduser"), new_admin_user_path, class: "btn_admin btn btn-info"%>
+      </li>
+    </ul>
+  </div>
+  <div class="dropdown div-inline">
+    <a class="test btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><%= t("admin.statistic")%>
+    <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+    <ul class="dropdown-menu">
+      <li class="dropdown-submenu">
         <% if current_user.admin?%>
-          <%= link_to "Statistic User", admin_statistics_path, class: "login_button"%>
+          <%= link_to t("admin.statistic_user"), admin_statistics_path, class: "btn_admin btn btn-info"%>
         <%end%>
-          <%= link_to "Statistic Category", admin_category_statistic_path, class: "login_button"%>
-        </div>
-      </div>
-    </div>
+      </li>
+      <li>
+        <%= link_to t("admin.statistic_cate"), admin_category_statistic_path, class: "btn_admin btn btn-info"%>
+      </li>
+    </ul>
   </div>
 </div>
+
+<script>
+  $(document).ready(function(){
+    $('.dropdown-submenu a.test').on("click", function(e){
+      $(this).next('ul').toggle();
+      e.stopPropagation();
+      e.preventDefault();
+    });
+  });
+</script>

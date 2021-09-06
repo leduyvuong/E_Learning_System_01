@@ -392,11 +392,59 @@ textarea {
   margin: 20px 0 20px 0;
 }
 
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-menu {
+  top: 0 !important;
+  left: 62% !important;
+  margin-left: 93px !important;
+  margin-top: -35px !important;
+  background-color: #5bc0de !important;
+}
+
+.test {
+  padding: 10px 0 10px 0 !important;
+}
+
+.btn_admin {
+  padding: 10px 0 10px 0 !important;
+}
+
+.div-inline {
+  display:inline-block;
+  width: 100%;
+  
+  a{
+    width: 100%;
+  }
+}
+
+.dropdown-submenu {
+  width: 300px;
+}
+
+.dropdown-menu {
+  width: 300px;
+}
+
+.dropdown-submenu .dropdown-menu {
+  top: 56px;
+  left: 68% !important;
+  background-color: #5bc0de !important;
+}
+
+.dropdown-menu {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+  background-color: #5bc0de !important;
+}
+
 .dashboad_left {
   height: 900px;
-  text-align: center;
-  overflow-x: hidden;
-  overflow-y: auto;
+  padding-right: 0px !important;
+  padding-left: 0px !important;
   border-right: 1px solid #bdbebe;
 
   .childdash {
@@ -430,7 +478,6 @@ textarea {
       color: white;
       font-size: 16px;
       font-weight: 500;
-      border-bottom: 1px solid #6a5f49;
       padding-bottom: 5px;
       margin-top: 5px;
       margin-left: 5px;
@@ -442,7 +489,6 @@ textarea {
         color: white;
         font-size: 16px;
         font-weight: 500;
-        border-bottom: 1px solid #6a5f49;
         padding-bottom: 5px;
         margin-top: -5px;
         margin-left: 5px;

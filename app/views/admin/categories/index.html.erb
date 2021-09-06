@@ -12,9 +12,11 @@
   </div>
   <ul class="nav nav-pills nav-justified">
     <li class="active"><%= link_to t("admin.categories.all_list"), "#all_course", { class: "tab_user", "data-toggle" => "tab" } %></li>
+    <li><%= link_to "Khóa học bị ẩn", "#unactive_course", { class: "tab_user", "data-toggle" => "tab" } %></li>
   </ul>
   <div class="tab-content">
     <%= render "all_course", collection: @categories %>
+    <%= render "unactive_course", collection: @categories %>
   </div>
   
 </div>

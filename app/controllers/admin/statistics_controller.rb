@@ -19,7 +19,7 @@ class Admin::StatisticsController < ApplicationController
   def export_excel
     @users = User.all
     @categories = Category.all
-    @users_growth = User.filter_month_year((DateTime.now.strftime("%m").to_i - 3),"2021")
+    @users_growth = User.filter_month_year((DateTime.now.strftime("%m").to_i - 1),"2021")
     @user_list = parse_data_user(User.group(:role).count)
     respond_to do |format|
       format.xlsx {

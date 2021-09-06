@@ -4,10 +4,10 @@ class Admin::CategoriesController < ApplicationController
   
   def index
     if current_user.teacher?
-      @categories = current_user.author.active.found_name(params[:name]).paginate(page: ( params[:page] if is_number? params[:page] ) )
-      
+      @categories = current_user.author.found_name(params[:name]).paginate(page: ( params[:page] if is_number? params[:page] ) )
+
     else
-      @categories = Category.active.found_name(params[:name]).paginate(page: ( params[:page] if is_number? params[:page] ) )
+      @categories = Category.found_name(params[:name]).paginate(page: ( params[:page] if is_number? params[:page] ) )
     end
   end
 
@@ -60,7 +60,7 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def destroy
-    if @category.update(status: !@category.status)
+    if @category.update(status: (@category.status = ( @category.status == "active") ? "unactive" :  "active"))
       flash[:success] = t("inform.success")
       redirect_to admin_categories_path
     else

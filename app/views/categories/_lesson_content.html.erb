@@ -7,7 +7,9 @@
         <%if teacher_admin %>
           <%= link_to t("admin.lessons.down"), down_lesson_path(id: lesson_content.id, format: :pdf), class: "btn btn-primary m-1"%>
         <%end%>
-        <%= link_to t("lesson.show.strart_test"), test_path(id: lesson_content.id), class: "btn btn-primary m-1"%>
+        <%if !lesson_content.questions.blank?%>
+          <%= link_to t("lesson.show.strart_test"), test_path(id: lesson_content.id), class: "btn btn-primary m-1"%>
+        <%end%>
         <%= link_to t("admin.lessons.train"), train_path(id: lesson_content.id), class: "btn btn-primary m-1"%>
       </div>   
     </div>
@@ -19,7 +21,10 @@
         <%if teacher_admin %>
           <%= link_to t("admin.lessons.down"), down_lesson_path(id: lesson_content.id, format: :pdf), class: "btn btn-primary m-1"%>
         <%end%>
+        <%if !lesson_content.questions.blank?%>
           <%= link_to t("lesson.show.strart_test"), test_path(id: lesson_content.id), class: "btn btn-primary m-1"%>
+        <%end%>
+          
           <%= link_to t("admin.lessons.train"), train_path(id: lesson_content.id), class: "btn btn-primary m-1"%>
       </div>   
     </div>

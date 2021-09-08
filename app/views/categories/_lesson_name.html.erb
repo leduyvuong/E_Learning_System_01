@@ -1,11 +1,13 @@
+
 <% @lessons.lesson_active.each do |lesson|%>
   <% if @lessons.lesson_active.first == lesson%>
     <li class="active">
       <%= link_to lesson.name_lesson, "#lesson#{lesson.id}" , {class: "tab_user", "data-toggle" => "tab" }%>
     </li>
+    <% id = lesson.id%>
   <% else %>
     <% count = 0%>
-    <% if count == 0 && ResultLesson.found_user(current_user.id, (lesson.id - 1)).first%>
+    <% if count == 0 && ResultLesson.found_user(current_user.id, @lessons.lesson_active[@lessons.lesson_active.index(lesson)-1].id).first%>
       <li>
         <%= link_to lesson.name_lesson, "#lesson#{lesson.id}" , {class: "tab_user", "data-toggle" => "tab" }%>
       </li>
@@ -15,5 +17,7 @@
         <%= link_to lesson.name_lesson, "#lesson#{lesson.id}" , {class: "tab_user disabled", "data-toggle" => "tab" }%>
       </li>
     <%end%>
+    <% id = lesson.id%>
   <%end%>
+  
 <%end%>

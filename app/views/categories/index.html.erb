@@ -61,7 +61,7 @@
                   </div>
                   <div class="course_detail">
                   </div>
-                  <p>
+                  <p class = "text">
                     <%= category.decription%>
                   </p>                 
                   <%= link_to category_path(id: category.id), method: :get do %>
@@ -80,3 +80,25 @@
       </div>
     </div>
   </div>
+  <script>
+    var text = "<%= params[:name]%>"
+    if (text != null && text != "" ) {
+      var texts = text.split(" ");
+      for (var i = 0; i < texts.length; i++) {
+        highlight(texts[i]);
+      }
+    }
+    function highlight(text) {
+      var inputText = document.getElementsByClassName("text");
+      for (var i = 0; i < inputText.length; i++) {
+        var innerHTML = inputText[i].innerHTML;
+        
+        var index = innerHTML.indexOf(text);
+        
+        if (index >= 0) { 
+          innerHTML = innerHTML.substring(0,index) + "<span class='highlight'>" + innerHTML.substring(index,index+text.length) + "</span>" + innerHTML.substring(index + text.length);
+          inputText[i].innerHTML = innerHTML;
+        }
+      }
+    }
+</script>

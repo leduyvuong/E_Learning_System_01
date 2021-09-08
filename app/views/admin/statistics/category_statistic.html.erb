@@ -1,7 +1,7 @@
 <%= render "admin/sidebar_admin" %>
-<div class = "col-md-10 col-xs-10" >
+<div class = "col-md-10 col-xs-10" style= "text-align: center">
 <%= form_with url: admin_category_statistic_path , method: :get, remote: true, class:"form-inline", style: "text_align: center" do |f| %>
-  <%= f.select :category_name, options_for_select(Category.all.pluck(:name),  (params[:category_name] unless params[:category_name].nil?)), {}, {class: "form-control"} %>
+  <%= f.select :category_name, options_for_select(@categories,  (params[:category_name] unless params[:category_name].nil?)), {}, {class: "form-control"} %>
   <%= f.submit "Search",class:"btn btn-primary" %>
 <%end%>
 </div>

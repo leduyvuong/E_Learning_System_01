@@ -14,6 +14,12 @@ class Admin::StatisticsController < ApplicationController
     render :index
   end
   def category_statistic
+    if current_user.teacher? 
+      @categories = current_user.author.pluck(:name)
+    else
+      @categories = Category.all.pluck(:name)
+    end
+
     @wordlists = Wordlist.filter(params[:category_name])
   end
   def export_excel

@@ -7,7 +7,7 @@ class CategoriesController < ApplicationController
       if params[:name] == "" 
         @categories = Category.active.paginate(page: ( params[:page] if is_number? params[:page] ) )
       else
-        @categories = Category.active.search(params[:name],page: params[:page], per_page: Settings.WillPaginate.cate_per_page )
+        @categories = Category.active.search(params[:name], misspellings: false, page: params[:page], per_page: Settings.WillPaginate.cate_per_page )
       end
     end
   end
@@ -26,6 +26,7 @@ class CategoriesController < ApplicationController
 
   def user_lesson
     @lessons = @categories.lessons
+    @result = ResultLesson.result_user(current_user.id)
     @result_lessons = ResultLesson.found_cate(current_user.id, @lessons.ids).count
     render :user_lesson
   end

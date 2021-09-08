@@ -4,7 +4,8 @@
     <%= render "shared/flash_messages" %>
   </div>
   <h1><%= @categories.name%> </h1>
-  <p>( <%= t("admin.lessons.done")%> <%= @result_lessons%>/<%= @lessons.lesson_active.count%> <%= t("admin.lessons.lesson")%>)</p>
+  <p>( <%= t("admin.lessons.done")%> <%= @result_lessons%>/<%= @lessons.lesson_active.count%> <%= t("admin.lessons.lesson")%>) <%= render "result", collection: @result %></p> 
+  
   <ul class="nav nav-pills nav-justified">
     <%= render "lesson_name", collection: @lessons %>
   </ul>

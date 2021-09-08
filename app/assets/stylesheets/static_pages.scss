@@ -49,7 +49,6 @@ a {
 
 .show-course {
   border-bottom: 1px solid #e3e4e5;
-  height: 130px;
   margin-left: 20px;
 }
 
@@ -63,7 +62,7 @@ a {
   background-color: #e3e4e5;
   font-size: 16px !important;
   color: #000;
-  margin: 20px 20px 0 0 !important;
+  margin: 10px 20px 10px 0 !important;
   padding: 10px 10px 10px 10px;
 }
 
@@ -309,8 +308,10 @@ textarea {
   overflow: auto;
   margin-top: 0;
   padding: 0;
+  width: 100%;
 
   a {
+    width: 50%;
     font-size: 10px;
     float: left;
     padding: 0 10px;
@@ -419,6 +420,31 @@ textarea {
   a{
     width: 100%;
   }
+}
+
+.highlight {
+  background-color: yellow;
+}
+
+.drop_user {
+  width: auto !important;
+  top: 55px !important;
+  left: 0 !important;
+  padding-top: 0 !important;
+  margin-top: 50px !important;
+  margin-left: 0 !important;
+  background-color: #5bc0de !important;
+}
+
+.btn_course_all {
+  width: 100%;
+  text-align: center;
+  padding: 20px 0 10px 0;
+  font-size: 16px;
+}
+
+.div-inline_user {
+  display:inline-block !important;
 }
 
 .dropdown-submenu {
@@ -895,7 +921,7 @@ textarea {
       color: #fff;
       float: left;
       width: 100%;
-      font-size: 14px;
+      font-size: 20px;
       height: 45px;
       text-align: left;
 
@@ -1493,6 +1519,7 @@ a.ed_getinvolved {
   width: 100%;
   background-color: #fff;
   padding: 20px;
+  min-height: 540px;
   border: none;
   border-radius: 4px;
   box-shadow: var(--overview-portlet-shadow);
@@ -1715,7 +1742,7 @@ a.ed_getinvolved {
   width: 100%;
   background-color: #fff;
   padding: 15px;
-  height: 650px;
+  height: 700px;
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   -ms-transition: all 0.3s;

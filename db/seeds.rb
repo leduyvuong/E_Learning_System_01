@@ -20,7 +20,7 @@
                         updated_at: Faker::Time.between(from: DateTime.now - 762, to: DateTime.now))
   @user.create_user_profile(fullname: @user.username)
 end
-36.times do 
+20.times do 
   name = "Course of " + Faker::University.name
   decription = Faker::Quote.matz
   users = (0...(User.all.count)).to_a

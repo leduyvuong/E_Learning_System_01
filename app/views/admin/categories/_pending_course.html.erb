@@ -25,11 +25,13 @@
             <a class = "btn btn-danger m-1">Đang chờ duyệt</a>
           </td>
           <td ><%= c.decription%></td>
-          <td>
-            <%= link_to admin_accept_pending_path(id: c.id), method: :post,class: "btn btn-primary m-1" do %>
-              <i class="fa fa-check" aria-hidden="true"></i>
-            <%end%>      
-          </td>
+          <%if current_user.admin?%>
+            <td>
+              <%= link_to admin_accept_pending_path(id: c.id), method: :post,class: "btn btn-primary m-1" do %>
+                <i class="fa fa-check" aria-hidden="true"></i>
+              <%end%>      
+            </td>
+          <%end%>
         </tr> 
       </div>      
       <%end%>

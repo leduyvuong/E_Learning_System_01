@@ -1,4 +1,4 @@
 hard_worker:
-  cron: "* * 31 * *"
+  cron: "*/5 * * * *"
   class: "HardWorker"
   queue: "default"

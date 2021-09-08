@@ -64,7 +64,7 @@ class TestsController < ApplicationController
         end
         flash[:success] = "#{mark}/10"
       else
-        flash[:danger] = "Failed #{mark}/10"
+        flash[:danger] = "Với số điểm #{mark}/10, bạn chưa thể qua bài này!"
         redirect_to user_lesson_path(id: lesson.category_id)
       end
     end  

@@ -36,9 +36,11 @@
           <%= link_to "Down PDF", down_lesson_path(id: @lesson.id, format: :pdf)%>
       </div>  
     <%end%>
-    <div class="join_courses">
-        <%= link_to t("lesson.show.strart_test"), test_path(id: @lesson.id)%>
-    </div>
+    <%if !@lesson.questions.blank?%>
+      <div class="join_courses">
+          <%= link_to t("lesson.show.strart_test"), test_path(id: @lesson.id)%>
+      </div>
+    <%end%>
     <div class="join_courses">
         <%= link_to "Train", train_path(id: @lesson.id)%>
     </div>

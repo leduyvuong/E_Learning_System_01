@@ -12,8 +12,6 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  # For details on connection pooling, see Rails configuration guide
-  # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   database: de6l904knhuiri
   username: gjgbazjmvwtrpo
@@ -21,7 +19,12 @@ default: &default
 
 development:
   <<: *default
-  database: elearning
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  database: de6l904knhuiri
+  username: gjgbazjmvwtrpo
+  password:  <%= ENV["DATABASE_PASSWORD"] %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -52,6 +55,9 @@ test:
 #
 production:
   <<: *default
-  database: E_Learning_System_01_production
-  username: E_Learning_System_01
-  password: <%= ENV["E_LEARNING_SYSTEM_01_DATABASE_PASSWORD"] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  database: de6l904knhuiri
+  username: gjgbazjmvwtrpo
+  password:  <%= ENV["DATABASE_PASSWORD"] %>

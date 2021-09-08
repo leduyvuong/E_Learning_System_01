@@ -13,8 +13,8 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  database: de6l904knhuiri
-  username: gjgbazjmvwtrpo
+  database: df354ur2l6tm1g
+  username: grofzkecjiqift
   password:  <%= ENV["DATABASE_PASSWORD"] %>
 
 development:
@@ -22,8 +22,8 @@ development:
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  database: de6l904knhuiri
-  username: gjgbazjmvwtrpo
+  database: df354ur2l6tm1g
+  username: grofzkecjiqift
   password:  <%= ENV["DATABASE_PASSWORD"] %>
 
 # Warning: The database defined as "test" will be erased and
@@ -58,6 +58,6 @@ production:
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  database: de6l904knhuiri
-  username: gjgbazjmvwtrpo
+  database: df354ur2l6tm1g
+  username: grofzkecjiqift
   password:  <%= ENV["DATABASE_PASSWORD"] %>

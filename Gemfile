@@ -34,7 +34,7 @@ gem "axlsx_rails", "~> 0.6.1"
 gem "sidekiq", "~> 6.2", ">= 6.2.2"
 gem "sidekiq-cron", "~> 1.2"
 gem "bootstrap-email", "~> 0.3.4"
-gem 'searchkick', '~> 4.6'
+gem "searchkick", "~> 4.6"
 group :development, :test do
   
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
@@ -44,6 +44,12 @@ group :development do
   gem "web-console", ">= 4.1.0"
   gem "rack-mini-profiler", "~> 2.0"
 end
+
+group :production do
+  gem "pg", "~> 1.2", ">= 1.2.3"
+  gem "aws-sdk-s3", "~> 1.102"
+end
+  
 
 group :test do
   gem "capybara", ">= 3.26"

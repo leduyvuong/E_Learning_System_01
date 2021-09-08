@@ -4,18 +4,20 @@
 #   gem install mysql2
 #
 # Ensure the MySQL gem is defined in your Gemfile
-#   gem 'mysql2'
+#   gem "mysql2"
 #
 # And be sure to use new-style password hashing:
 #   https://dev.mysql.com/doc/refman/5.7/en/password-hashing.html
 #
 default: &default
-  adapter: mysql2
-  encoding: utf8mb4
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: "vuong"
-  password: "123456"
-  host: localhost
+  database: de6l904knhuiri
+  username: gjgbazjmvwtrpo
+  password:  <%= ENV["DATABASE_PASSWORD"] %>
 
 development:
   <<: *default
@@ -43,7 +45,7 @@ test:
 # URL environment variable explicitly:
 #
 #   production:
-#     url: <%= ENV['MY_APP_DATABASE_URL'] %>
+#     url: <%= ENV["MY_APP_DATABASE_URL"] %>
 #
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
@@ -52,4 +54,4 @@ production:
   <<: *default
   database: E_Learning_System_01_production
   username: E_Learning_System_01
-  password: <%= ENV['E_LEARNING_SYSTEM_01_DATABASE_PASSWORD'] %>
+  password: <%= ENV["E_LEARNING_SYSTEM_01_DATABASE_PASSWORD"] %>

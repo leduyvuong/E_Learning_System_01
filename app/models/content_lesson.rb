@@ -1,6 +1,6 @@
 class ContentLesson < ApplicationRecord
-  validates :word, presence: :true, uniqueness: true
-  validates :mean, presence: :true, uniqueness: true
+  validates :word, presence: :true
+  validates :mean, presence: :true
   belongs_to :lesson
   has_many :answers, dependent: :destroy
   self.per_page = Settings.WillPaginate.content_per_page
@@ -48,9 +48,11 @@ class ContentLesson < ApplicationRecord
         end
       end
     end
-    import! contents, validate: true, on_duplicate_key_ignore: true
-    # Dùng cái gem activerecord-import nên lúc lưu nó chỉ có lệnh insert của contentlesson. save_image_audio 
-    save_image_audio active_hash
+    if !contents.blank?
+      import! contents, validate: true, on_duplicate_key_ignore: true
+      # Dùng cái gem activerecord-import nên lúc lưu nó chỉ có lệnh insert của contentlesson. save_image_audio 
+      save_image_audio active_hash
+    end
   end 
 end
 

@@ -24,7 +24,7 @@
           <%= f.label :fullname, value: t("users.profile.fullname")%>
           <%= f.text_field :fullname, value: @user.user_profile.fullname %>
           <%= f.label :sex, value: t("users.profile.Sex") %>
-          <%= f.select :sex, options_for_select(["Nam", "Nữ", "Khác"], (@user.sex unless @user.user_profile.sex.nil?) )%>       
+          <%= f.select :sex, options_for_select(["Nam", "Nữ", "Khác"], (@user.user_profile.sex unless @user.user_profile.sex.nil?) )%>       
             <%= f.label :password, t("users.new.password") %>
           <%= f.text_field :sex, value: @user.user_profile.sex %>
           <%= f.label :address, value: t("users.profile.address")%>

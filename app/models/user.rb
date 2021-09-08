@@ -6,7 +6,7 @@ class User < ApplicationRecord
   scope :year_now, -> { where("extract(year  from created_at) = 2021")}
   scope :statistics_month, ->(month){ where("extract(month  from created_at) = ?", month)}
   scope :statistics_select, ->(month, year){ where("extract(month  from created_at) = ? and extract(year  from created_at) = ?", month, year)}
-  scope :year_list, -> { select("distinct YEAR(created_at) as year").order(created_at: :desc)}
+  scope :year_list, -> { select("distinct extract(year  from created_at) as year").order("year": :desc)}
   scope :user_admin, -> { where(role: 0)}
   scope :user_teacher, -> { where(role: 1)}
   scope :user_student, -> { where(role: 2)}

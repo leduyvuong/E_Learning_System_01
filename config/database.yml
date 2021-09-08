@@ -13,10 +13,9 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  database: df354ur2l6tm1g
-  username: grofzkecjiqift
+  database: <%= ENV["DATABASE_NAME"] %>
+  username: <%= ENV["DATABASE_USER"] %>
   password:  <%= ENV["DATABASE_PASSWORD"] %>
-
 development:
   <<: *default
   adapter: postgresql
@@ -58,6 +57,6 @@ production:
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  database: df354ur2l6tm1g
-  username: grofzkecjiqift
+  database: <%= ENV["DATABASE_NAME"] %>
+  username: <%= ENV["DATABASE_USER"] %>
   password:  <%= ENV["DATABASE_PASSWORD"] %>

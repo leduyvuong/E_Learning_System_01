@@ -51,7 +51,7 @@ class ContentLesson < ApplicationRecord
     if !contents.blank?
       import! contents, validate: true, on_duplicate_key_ignore: true
       # Dùng cái gem activerecord-import nên lúc lưu nó chỉ có lệnh insert của contentlesson. save_image_audio 
-      save_image_audio active_hash
+      flash[:danger] = "Thêm từ thành công, nhưng lỗi không tìm thấy path image và audio"
     end
   end 
 end

@@ -13,6 +13,15 @@
         <%= f.submit t("session.new.title"), class: "btn btn-primary" %>
       <% end %>
       <p><%= t("session.new.new_user")%> <%= link_to t("session.new.signup"), signup_path %></p>
+      <%= link_to  user_facebook_omniauth_authorize_path, class: "btn btn-lg btn-block btn-facebook", method: :post do %>
+        <i class="fa fa-facebook" aria-hidden="true"></i> FaceBook
+      <%end%>
+      <%= link_to user_google_oauth2_omniauth_authorize_path, class: "btn btn-lg btn-block btn-google", method: :post do %>
+        <i class="fa fa-google" aria-hidden="true"></i>  Google
+      <%end%>
+      <%= link_to  user_twitter_omniauth_authorize_path, class: "btn btn-lg btn-block btn-twitter", method: :post do %>
+        <i class="fa fa-twitter" aria-hidden="true"></i> Twitter
+      <%end%>
     </div>
   </div>
 </div>

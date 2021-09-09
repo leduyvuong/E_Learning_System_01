@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   end
   def create
     @user = User.where("username = ? or email = ?", params[:session][:username], params[:session][:username]).first
-    if @user && @user.authenticate(params[:session][:password])
+    if @user && @user.valid_password?(params[:session][:password])
       log_in @user
       redirect_to home_path
     else

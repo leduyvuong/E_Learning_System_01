@@ -38,6 +38,12 @@ gem "elasticsearch-rails", "~> 7.2"
 gem "wkhtmltopdf-heroku", "~> 2.12", ">= 2.12.6.0"
 gem "figaro", "~> 1.2"
 gem 'redis', '~> 4.4'
+gem "devise", "~> 4.8"
+gem "omniauth", "~> 2.0", ">= 2.0.4"
+gem "omniauth-google-oauth2", "~> 1.0"
+gem "omniauth-facebook", "~> 8.0"
+gem "omniauth-rails_csrf_protection", "~> 1.0"
+gem "omniauth-twitter", "~> 1.4"
 group :development, :test do
   
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

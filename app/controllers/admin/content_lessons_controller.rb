@@ -61,7 +61,7 @@ class Admin::ContentLessonsController < ApplicationController
     end 
 
     def params_word_update
-      params.permit(:word, :pronounce, :mean, :lesson_id, :audio_word, :image)
+      params.permit(:word, :pronounce, :mean, :audio_word, :image)
     end
 
     def params_word_new

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :users,
+            path: "",
+            controllers: {omniauth_callbacks: "omniauth_callbacks" }
   require "sidekiq/web"
   require "sidekiq/cron/web"
 

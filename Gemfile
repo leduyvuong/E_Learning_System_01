@@ -33,7 +33,7 @@ gem "omniauth-twitter", "~> 1.4"
 gem "figaro", "~> 1.2"
 
 group :development, :test do
-  
+  gem "rspec-rails", "~> 5.0", ">= 5.0.2"
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
 end
 

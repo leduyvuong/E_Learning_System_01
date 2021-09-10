@@ -55,3 +55,27 @@ cate = Category.order(:created_at).take(3)
     end
   end
 end
+#create question
+@lessons = Lesson.all
+@lessons.each do |l|
+  @content_lessons = l.content_lessons
+  @content_lessons.each do |w|
+    @content_question = "What does '#{w.word}' mean :"
+    @ques = l.questions.create!(content: @content_question)
+    #create answer
+    @ques.answers.create!(content_lesson_id: w.id, right_ans: true)
+    @count = @content_lessons.count
+    @dem = @content_lessons.index(w)
+    a  = (0...@count).to_a
+    a.delete(@dem)
+    @ran1 = a.sample
+    a.delete(@ran1)
+    @ran2 = a.sample
+    a.delete(@ran2)
+    @ran3 = a.sample
+    a.delete(@ran3)
+    @ques.answers.create!(content_lesson_id: @content_lessons[@ran1].id, right_ans: false)
+    @ques.answers.create!(content_lesson_id: @content_lessons[@ran2].id, right_ans: false)
+    @ques.answers.create!(content_lesson_id: @content_lessons[@ran3].id, right_ans: false)
+  end
+end

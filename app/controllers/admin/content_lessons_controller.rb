@@ -15,7 +15,6 @@ class Admin::ContentLessonsController < ApplicationController
   end
 
   def create
-    debugger
     @content_lesson = ContentLesson.new(params_word_new)
     if @content_lesson.save
       flash[:success] = t("inform.success")
